@@ -22,14 +22,14 @@ public class ControllerCadastroBairro implements ActionListener {
         for (JButton botao : botoes) {
             adicionarActionListener(botao);
         }
-//
-        utilies.Utilities.ativa(true, this.telaCadastroBairro.getjPanelBotoes());
-        utilies.Utilities.limpaCompenentes(false, this.telaCadastroBairro.getjPanelCorpo());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        if (e.getSource() == this.telaCadastroBairro.getjButtonNovo()) {
+            
+        } else {
+        }
     }
     
     private void adicionarActionListener(JButton button) {
