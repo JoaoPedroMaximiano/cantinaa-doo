@@ -22,7 +22,7 @@ public class ControllerCadastroBairro implements ActionListener {
         for (JButton botao : botoes) {
             adicionarActionListener(botao);
         }
-
+//
         utilies.Utilities.ativa(true, this.telaCadastroBairro.getjPanelBotoes());
         utilies.Utilities.limpaCompenentes(false, this.telaCadastroBairro.getjPanelCorpo());
     }
