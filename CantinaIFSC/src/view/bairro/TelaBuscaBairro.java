@@ -3,9 +3,10 @@ package view.bairro;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class TelaBuscaBairro extends javax.swing.JFrame {
+public class TelaBuscaBairro extends javax.swing.JDialog {
 
-    public TelaBuscaBairro() {
+    public TelaBuscaBairro(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -58,7 +59,7 @@ public class TelaBuscaBairro extends javax.swing.JFrame {
         jTextFieldDescricao = new javax.swing.JTextField();
         jLabelDescricao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar por Bairro");
 
         jPanelTitulo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -239,7 +240,14 @@ public class TelaBuscaBairro extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaBuscaBairro().setVisible(true);
+                TelaBuscaBairro dialog = new TelaBuscaBairro(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

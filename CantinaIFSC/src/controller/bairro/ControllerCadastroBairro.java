@@ -26,7 +26,7 @@ public class ControllerCadastroBairro {
     }
 
     private void abrirTelaBuscaBairro() {
-        TelaBuscaBairro telaBuscaBairro = new TelaBuscaBairro();
+        TelaBuscaBairro telaBuscaBairro = new TelaBuscaBairro(null, true);
         telaBuscaBairro.setVisible(true);
     }
 
