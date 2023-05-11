@@ -1,39 +1,46 @@
 package controller.bairro;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
+import static utilies.Utilities.ativa;
+import static utilies.Utilities.limpaCompenentes;
+import view.bairro.TelaBuscaBairro;
 import view.bairro.TelaCadastroBairro;
 
-public class ControllerCadastroBairro implements ActionListener {
+public class ControllerCadastroBairro {
     TelaCadastroBairro telaCadastroBairro;
 
     public ControllerCadastroBairro(TelaCadastroBairro telaCadastroBairro) {
         this.telaCadastroBairro = telaCadastroBairro;
-        
-        JButton[] botoes = {
-            this.telaCadastroBairro.getjButtonBuscar(),
-            this.telaCadastroBairro.getjButtonCancelar(),
-            this.telaCadastroBairro.getjButtonGravar(),
-            this.telaCadastroBairro.getjButtonNovo(),
-            this.telaCadastroBairro.getjButtonSair()
-        };
 
-        for (JButton botao : botoes) {
-            adicionarActionListener(botao);
-        }
+        setupActionListeners();
+
+        ativa(true, this.telaCadastroBairro.getjPanelBotoes());
+        limpaCompenentes(false, this.telaCadastroBairro.getjPanelCorpo());
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.telaCadastroBairro.getjButtonNovo()) {
-            
-        } else {
-        }
+    private void setupActionListeners() {
+        telaCadastroBairro.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaBairro());
+        telaCadastroBairro.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroBairro.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroBairro.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
+        telaCadastroBairro.getjButtonSair().addActionListener(e -> fecharTelaCadastroBairro());
     }
-    
-    private void adicionarActionListener(JButton button) {
-        button.addActionListener(this);
+
+    private void abrirTelaBuscaBairro() {
+        TelaBuscaBairro telaBuscaBairro = new TelaBuscaBairro();
+        telaBuscaBairro.setVisible(true);
     }
-    
+
+    private void realizarAcaoCancelarGravar() {
+        ativa(true, telaCadastroBairro.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroBairro.getjPanelCorpo());
+    }
+
+    private void realizarAcaoNovo() {
+        ativa(false, telaCadastroBairro.getjPanelBotoes());
+        limpaCompenentes(true, telaCadastroBairro.getjPanelCorpo());
+    }
+
+    private void fecharTelaCadastroBairro() {
+        telaCadastroBairro.dispose();
+    }
 }

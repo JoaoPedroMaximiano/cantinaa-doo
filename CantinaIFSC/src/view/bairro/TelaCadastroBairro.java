@@ -3,7 +3,6 @@ package view.bairro;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import view.bairro.TelaBuscaBairro;
 
 public class TelaCadastroBairro extends javax.swing.JDialog {
 
@@ -275,27 +274,23 @@ public class TelaCadastroBairro extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        utilies.Utilities.ativa(false, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(true, jPanelCorpo);
+
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        utilies.Utilities.ativa(true, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(false, jPanelCorpo);
+
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        utilies.Utilities.ativa(true, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(false, jPanelCorpo);
+
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        TelaBuscaBairro telaBuscaBairro = new TelaBuscaBairro();
-        telaBuscaBairro.setVisible(true);
+
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        this.dispose();
+
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     public static void main(String args[]) {

@@ -1,5 +1,6 @@
 package view.menuPrincipal;
 
+import controller.bairro.ControllerCadastroBairro;
 import view.funcionario.TelaCadastroFuncionario;
 import view.produto.TelaCadastroProduto;
 import view.fornecedor.TelaCadastroFornecedor;
@@ -212,6 +213,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBairroActionPerformed
         TelaCadastroBairro telaCadastroBairro = new TelaCadastroBairro(null, true);
+        ControllerCadastroBairro controllerCadastroBairro = new ControllerCadastroBairro(telaCadastroBairro);
         telaCadastroBairro.setVisible(true);
     }//GEN-LAST:event_jMenuItemBairroActionPerformed
 
