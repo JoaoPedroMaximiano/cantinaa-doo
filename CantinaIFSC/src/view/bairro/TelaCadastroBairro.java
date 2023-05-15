@@ -266,31 +266,24 @@ public class TelaCadastroBairro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIDActionPerformed
 
     private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     public static void main(String args[]) {

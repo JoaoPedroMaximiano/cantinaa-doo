@@ -234,7 +234,6 @@ public class TelaBuscaBairro extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     public static void main(String args[]) {

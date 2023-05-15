@@ -1,15 +1,10 @@
 package view.fornecedor;
 
-import view.template.TemplateCadastros2023;
-import view.fornecedor.TelaBuscaFornecedor;
-
 public class TelaCadastroFornecedor extends javax.swing.JDialog {
 
     public TelaCadastroFornecedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        utilies.Utilities.ativa(true, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(false, jPanelCorpo);
     }
 
     @SuppressWarnings("unchecked")
@@ -354,74 +349,36 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFormattedTextFieldTelefone1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefone1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldTelefone1ActionPerformed
 
     private void jTextFieldInscricaoEstadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInscricaoEstadualActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldInscricaoEstadualActionPerformed
 
     private void jTextFieldRazaoSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRazaoSocialActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldRazaoSocialActionPerformed
 
     private void jFormattedTextFieldCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCNPJActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldCNPJActionPerformed
 
     private void jComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        utilies.Utilities.ativa(false, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(true, jPanelCorpo);
     }//GEN-LAST:event_jButtonNovoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        utilies.Utilities.ativa(true, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(false, jPanelCorpo);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
-        utilies.Utilities.ativa(true, jPanelBotoes);
-        utilies.Utilities.limpaCompenentes(false, jPanelCorpo);
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        TelaBuscaFornecedor telaBuscaFornecedor = new TelaBuscaFornecedor();
-        telaBuscaFornecedor.setVisible(true);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastros2023.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastros2023.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastros2023.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TemplateCadastros2023.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 TelaCadastroFornecedor dialog = new TelaCadastroFornecedor(new javax.swing.JFrame(), true);
