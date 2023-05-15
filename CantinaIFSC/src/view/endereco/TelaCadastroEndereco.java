@@ -1,5 +1,11 @@
 package view.endereco;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 public class TelaCadastroEndereco extends javax.swing.JDialog {
 
     public TelaCadastroEndereco(java.awt.Frame parent, boolean modal) {
@@ -7,6 +13,120 @@ public class TelaCadastroEndereco extends javax.swing.JDialog {
         initComponents();
     }
 
+    public JButton getjButtonBuscar() {
+        return jButtonBuscar;
+    }
+
+    public void setjButtonBuscar(JButton jButtonBuscar) {
+        this.jButtonBuscar = jButtonBuscar;
+    }
+
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
+    }
+
+    public void setjButtonCancelar(JButton jButtonCancelar) {
+        this.jButtonCancelar = jButtonCancelar;
+    }
+
+    public JButton getjButtonGravar() {
+        return jButtonGravar;
+    }
+
+    public void setjButtonGravar(JButton jButtonGravar) {
+        this.jButtonGravar = jButtonGravar;
+    }
+
+    public JButton getjButtonNovo() {
+        return jButtonNovo;
+    }
+
+    public void setjButtonNovo(JButton jButtonNovo) {
+        this.jButtonNovo = jButtonNovo;
+    }
+
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
+    public void setjButtonSair(JButton jButtonSair) {
+        this.jButtonSair = jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxBairro() {
+        return jComboBoxBairro;
+    }
+
+    public void setjComboBoxBairro(JComboBox<String> jComboBoxBairro) {
+        this.jComboBoxBairro = jComboBoxBairro;
+    }
+
+    public JComboBox<String> getjComboBoxCidade() {
+        return jComboBoxCidade;
+    }
+
+    public void setjComboBoxCidade(JComboBox<String> jComboBoxCidade) {
+        this.jComboBoxCidade = jComboBoxCidade;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCEP() {
+        return jFormattedTextFieldCEP;
+    }
+
+    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
+        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldLogradouro() {
+        return jFormattedTextFieldLogradouro;
+    }
+
+    public void setjFormattedTextFieldLogradouro(JFormattedTextField jFormattedTextFieldLogradouro) {
+        this.jFormattedTextFieldLogradouro = jFormattedTextFieldLogradouro;
+    }
+
+    public JPanel getjPanelBotoes() {
+        return jPanelBotoes;
+    }
+
+    public void setjPanelBotoes(JPanel jPanelBotoes) {
+        this.jPanelBotoes = jPanelBotoes;
+    }
+
+    public JPanel getjPanelCorpo() {
+        return jPanelCorpo;
+    }
+
+    public void setjPanelCorpo(JPanel jPanelCorpo) {
+        this.jPanelCorpo = jPanelCorpo;
+    }
+
+    public JPanel getjPanelTitulo() {
+        return jPanelTitulo;
+    }
+
+    public void setjPanelTitulo(JPanel jPanelTitulo) {
+        this.jPanelTitulo = jPanelTitulo;
+    }
+
+    public JTextField getjTextFieldID() {
+        return jTextFieldID;
+    }
+
+    public void setjTextFieldID(JTextField jTextFieldID) {
+        this.jTextFieldID = jTextFieldID;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

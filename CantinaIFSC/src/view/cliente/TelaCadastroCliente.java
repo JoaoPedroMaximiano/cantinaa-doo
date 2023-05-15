@@ -1,5 +1,11 @@
 package view.cliente;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 public class TelaCadastroCliente extends javax.swing.JDialog {
 
     public TelaCadastroCliente(java.awt.Frame parent, boolean modal) {
@@ -7,6 +13,168 @@ public class TelaCadastroCliente extends javax.swing.JDialog {
         initComponents();
     }
 
+    public JButton getjButtonBuscar() {
+        return jButtonBuscar;
+    }
+
+    public void setjButtonBuscar(JButton jButtonBuscar) {
+        this.jButtonBuscar = jButtonBuscar;
+    }
+
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
+    }
+
+    public void setjButtonCancelar(JButton jButtonCancelar) {
+        this.jButtonCancelar = jButtonCancelar;
+    }
+
+    public JButton getjButtonGravar() {
+        return jButtonGravar;
+    }
+
+    public void setjButtonGravar(JButton jButtonGravar) {
+        this.jButtonGravar = jButtonGravar;
+    }
+
+    public JButton getjButtonNovo() {
+        return jButtonNovo;
+    }
+
+    public void setjButtonNovo(JButton jButtonNovo) {
+        this.jButtonNovo = jButtonNovo;
+    }
+
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
+    public void setjButtonSair(JButton jButtonSair) {
+        this.jButtonSair = jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxEndereco() {
+        return jComboBoxEndereco;
+    }
+
+    public void setjComboBoxEndereco(JComboBox<String> jComboBoxEndereco) {
+        this.jComboBoxEndereco = jComboBoxEndereco;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCPF() {
+        return jFormattedTextFieldCPF;
+    }
+
+    public void setjFormattedTextFieldCPF(JFormattedTextField jFormattedTextFieldCPF) {
+        this.jFormattedTextFieldCPF = jFormattedTextFieldCPF;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataNascimento() {
+        return jFormattedTextFieldDataNascimento;
+    }
+
+    public void setjFormattedTextFieldDataNascimento(JFormattedTextField jFormattedTextFieldDataNascimento) {
+        this.jFormattedTextFieldDataNascimento = jFormattedTextFieldDataNascimento;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldMatricula() {
+        return jFormattedTextFieldMatricula;
+    }
+
+    public void setjFormattedTextFieldMatricula(JFormattedTextField jFormattedTextFieldMatricula) {
+        this.jFormattedTextFieldMatricula = jFormattedTextFieldMatricula;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldRG() {
+        return jFormattedTextFieldRG;
+    }
+
+    public void setjFormattedTextFieldRG(JFormattedTextField jFormattedTextFieldRG) {
+        this.jFormattedTextFieldRG = jFormattedTextFieldRG;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldTelefone1() {
+        return jFormattedTextFieldTelefone1;
+    }
+
+    public void setjFormattedTextFieldTelefone1(JFormattedTextField jFormattedTextFieldTelefone1) {
+        this.jFormattedTextFieldTelefone1 = jFormattedTextFieldTelefone1;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldTelefone2() {
+        return jFormattedTextFieldTelefone2;
+    }
+
+    public void setjFormattedTextFieldTelefone2(JFormattedTextField jFormattedTextFieldTelefone2) {
+        this.jFormattedTextFieldTelefone2 = jFormattedTextFieldTelefone2;
+    }
+
+    public JPanel getjPanelBotoes() {
+        return jPanelBotoes;
+    }
+
+    public void setjPanelBotoes(JPanel jPanelBotoes) {
+        this.jPanelBotoes = jPanelBotoes;
+    }
+
+    public JPanel getjPanelCorpo() {
+        return jPanelCorpo;
+    }
+
+    public void setjPanelCorpo(JPanel jPanelCorpo) {
+        this.jPanelCorpo = jPanelCorpo;
+    }
+
+    public JPanel getjPanelTitulo() {
+        return jPanelTitulo;
+    }
+
+    public void setjPanelTitulo(JPanel jPanelTitulo) {
+        this.jPanelTitulo = jPanelTitulo;
+    }
+
+    public JTextField getjTextEmail() {
+        return jTextEmail;
+    }
+
+    public void setjTextEmail(JTextField jTextEmail) {
+        this.jTextEmail = jTextEmail;
+    }
+
+    public JTextField getjTextFieldComplementoEndereco() {
+        return jTextFieldComplementoEndereco;
+    }
+
+    public void setjTextFieldComplementoEndereco(JTextField jTextFieldComplementoEndereco) {
+        this.jTextFieldComplementoEndereco = jTextFieldComplementoEndereco;
+    }
+
+    public JTextField getjTextFieldID() {
+        return jTextFieldID;
+    }
+
+    public void setjTextFieldID(JTextField jTextFieldID) {
+        this.jTextFieldID = jTextFieldID;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

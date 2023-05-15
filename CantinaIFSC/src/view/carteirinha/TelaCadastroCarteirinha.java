@@ -1,10 +1,120 @@
 package view.carteirinha;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 public class TelaCadastroCarteirinha extends javax.swing.JDialog {
 
     public TelaCadastroCarteirinha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public JButton getjButtonBuscar() {
+        return jButtonBuscar;
+    }
+
+    public void setjButtonBuscar(JButton jButtonBuscar) {
+        this.jButtonBuscar = jButtonBuscar;
+    }
+
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
+    }
+
+    public void setjButtonCancelar(JButton jButtonCancelar) {
+        this.jButtonCancelar = jButtonCancelar;
+    }
+
+    public JButton getjButtonGravar() {
+        return jButtonGravar;
+    }
+
+    public void setjButtonGravar(JButton jButtonGravar) {
+        this.jButtonGravar = jButtonGravar;
+    }
+
+    public JButton getjButtonNovo() {
+        return jButtonNovo;
+    }
+
+    public void setjButtonNovo(JButton jButtonNovo) {
+        this.jButtonNovo = jButtonNovo;
+    }
+
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
+    public void setjButtonSair(JButton jButtonSair) {
+        this.jButtonSair = jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxCliente() {
+        return jComboBoxCliente;
+    }
+
+    public void setjComboBoxCliente(JComboBox<String> jComboBoxCliente) {
+        this.jComboBoxCliente = jComboBoxCliente;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataCancelamento() {
+        return jFormattedTextFieldDataCancelamento;
+    }
+
+    public void setjFormattedTextFieldDataCancelamento(JFormattedTextField jFormattedTextFieldDataCancelamento) {
+        this.jFormattedTextFieldDataCancelamento = jFormattedTextFieldDataCancelamento;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataGeracao() {
+        return jFormattedTextFieldDataGeracao;
+    }
+
+    public void setjFormattedTextFieldDataGeracao(JFormattedTextField jFormattedTextFieldDataGeracao) {
+        this.jFormattedTextFieldDataGeracao = jFormattedTextFieldDataGeracao;
+    }
+
+    public JPanel getjPanelBotoes() {
+        return jPanelBotoes;
+    }
+
+    public void setjPanelBotoes(JPanel jPanelBotoes) {
+        this.jPanelBotoes = jPanelBotoes;
+    }
+
+    public JPanel getjPanelCorpo() {
+        return jPanelCorpo;
+    }
+
+    public void setjPanelCorpo(JPanel jPanelCorpo) {
+        this.jPanelCorpo = jPanelCorpo;
+    }
+
+    public JPanel getjPanelTitulo() {
+        return jPanelTitulo;
+    }
+
+    public void setjPanelTitulo(JPanel jPanelTitulo) {
+        this.jPanelTitulo = jPanelTitulo;
+    }
+
+    public JTextField getjTextFieldCodigoBarra() {
+        return jTextFieldCodigoBarra;
+    }
+
+    public void setjTextFieldCodigoBarra(JTextField jTextFieldCodigoBarra) {
+        this.jTextFieldCodigoBarra = jTextFieldCodigoBarra;
+    }
+
+    public JTextField getjTextFieldID() {
+        return jTextFieldID;
+    }
+
+    public void setjTextFieldID(JTextField jTextFieldID) {
+        this.jTextFieldID = jTextFieldID;
     }
 
     @SuppressWarnings("unchecked")

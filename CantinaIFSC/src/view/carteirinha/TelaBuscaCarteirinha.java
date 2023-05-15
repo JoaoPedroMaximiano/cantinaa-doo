@@ -30,7 +30,7 @@ public class TelaBuscaCarteirinha extends javax.swing.JDialog {
         jFormattedTextFieldDataGeracao = new javax.swing.JFormattedTextField();
         jLabelDataGeracao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar por Carteirinha");
 
         jPanelTitulo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

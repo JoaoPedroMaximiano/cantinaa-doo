@@ -1,14 +1,23 @@
 package view.menuPrincipal;
 
 import controller.bairro.ControllerCadastroBairro;
+import controller.caixa.ControllerCadastroCaixa;
+import controller.carteirinha.ControllerCadastroCarteirinha;
+import controller.cidade.ControllerCadastroCidade;
+import controller.cliente.ControllerCadastroCliente;
+import controller.endereco.ControllerCadastroEndereco;
+import controller.fornecedor.ControllerCadastroFornecedor;
+import controller.funcionario.ControllerCadastroFuncionario;
+import controller.produto.ControllerCadastroProduto;
+import view.bairro.TelaCadastroBairro;
+import view.caixa.TelaCadastroCaixa;
+import view.carteirinha.TelaCadastroCarteirinha;
+import view.cidade.TelaCadastroCidade;
+import view.cliente.TelaCadastroCliente;
+import view.endereco.TelaCadastroEndereco;
+import view.fornecedor.TelaCadastroFornecedor;
 import view.funcionario.TelaCadastroFuncionario;
 import view.produto.TelaCadastroProduto;
-import view.fornecedor.TelaCadastroFornecedor;
-import view.endereco.TelaCadastroEndereco;
-import view.cliente.TelaCadastroCliente;
-import view.carteirinha.TelaCadastroCarteirinha;
-import view.bairro.TelaCadastroBairro;
-import view.cidade.TelaCadastroCidade;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -30,8 +39,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItemCidade = new javax.swing.JMenuItem();
         jMenuItemEndereco = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItemCarteirina = new javax.swing.JMenuItem();
+        jMenuItemCarteirinha = new javax.swing.JMenuItem();
         jMenuItemProduto = new javax.swing.JMenuItem();
+        jMenuItemCaixa = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuMovimentos = new javax.swing.JMenu();
@@ -105,14 +115,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(jMenuItemEndereco);
         jMenuCadastros.add(jSeparator4);
 
-        jMenuItemCarteirina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Message.png"))); // NOI18N
-        jMenuItemCarteirina.setText("Carteirinha");
-        jMenuItemCarteirina.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCarteirinha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Message.png"))); // NOI18N
+        jMenuItemCarteirinha.setText("Carteirinha");
+        jMenuItemCarteirinha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCarteirinaActionPerformed(evt);
+                jMenuItemCarteirinhaActionPerformed(evt);
             }
         });
-        jMenuCadastros.add(jMenuItemCarteirina);
+        jMenuCadastros.add(jMenuItemCarteirinha);
 
         jMenuItemProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Buy.png"))); // NOI18N
         jMenuItemProduto.setText("Produto");
@@ -122,6 +132,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuCadastros.add(jMenuItemProduto);
+
+        jMenuItemCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Dollar.png"))); // NOI18N
+        jMenuItemCaixa.setText("Caixa");
+        jMenuItemCaixa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCaixaActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(jMenuItemCaixa);
         jMenuCadastros.add(jSeparator5);
 
         jMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exit.png"))); // NOI18N
@@ -185,8 +204,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCidadeActionPerformed
-       TelaCadastroCidade telaCadastroCidade = new TelaCadastroCidade(null, true);
-       telaCadastroCidade.setVisible(true);
+        TelaCadastroCidade telaCadastroCidade = new TelaCadastroCidade(null, true);
+        ControllerCadastroCidade controllerCadastroCidade = new ControllerCadastroCidade(telaCadastroCidade);
+        telaCadastroCidade.setVisible(true);
     }//GEN-LAST:event_jMenuItemCidadeActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
@@ -194,20 +214,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItemPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPagarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemPagarActionPerformed
 
     private void jMenuItemReceberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReceberActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemReceberActionPerformed
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
         TelaCadastroCliente telaCadastroCliente = new TelaCadastroCliente(null, true);
+        ControllerCadastroCliente controllerCadastroCliente = new ControllerCadastroCliente(telaCadastroCliente);
         telaCadastroCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEnderecoActionPerformed
         TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
         telaCadastroEndereco.setVisible(true);
     }//GEN-LAST:event_jMenuItemEnderecoActionPerformed
 
@@ -219,23 +239,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFornecedorActionPerformed
         TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor(null, true);
+        ControllerCadastroFornecedor controllerCadastroFornecedor = new ControllerCadastroFornecedor(telaCadastroFornecedor);
         telaCadastroFornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuItemFornecedorActionPerformed
 
     private void jMenuItemFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioActionPerformed
         TelaCadastroFuncionario telaCadastroFuncionario = new TelaCadastroFuncionario(null, true);
+        ControllerCadastroFuncionario controllerCadastroFuncionario = new ControllerCadastroFuncionario(telaCadastroFuncionario);
         telaCadastroFuncionario.setVisible(true);
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
-    private void jMenuItemCarteirinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCarteirinaActionPerformed
+    private void jMenuItemCarteirinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCarteirinhaActionPerformed
         TelaCadastroCarteirinha telaCadastroCarteirinha = new TelaCadastroCarteirinha(null, true);
+        ControllerCadastroCarteirinha controllerCadastroCarteirinha = new ControllerCadastroCarteirinha(telaCadastroCarteirinha);
         telaCadastroCarteirinha.setVisible(true);
-    }//GEN-LAST:event_jMenuItemCarteirinaActionPerformed
+    }//GEN-LAST:event_jMenuItemCarteirinhaActionPerformed
 
     private void jMenuItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoActionPerformed
         TelaCadastroProduto telaCadastroProduto = new TelaCadastroProduto(null, true);
+        ControllerCadastroProduto controllerCadastroProduto = new ControllerCadastroProduto(telaCadastroProduto);
         telaCadastroProduto.setVisible(true);
     }//GEN-LAST:event_jMenuItemProdutoActionPerformed
+
+    private void jMenuItemCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCaixaActionPerformed
+        TelaCadastroCaixa telaCadastroCaixa = new TelaCadastroCaixa(null, true);
+        ControllerCadastroCaixa controllerCadastroCaixa = new ControllerCadastroCaixa(telaCadastroCaixa);
+        telaCadastroCaixa.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCaixaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -252,7 +282,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenu jMenuContas;
     private javax.swing.JMenuItem jMenuItemBairro;
-    private javax.swing.JMenuItem jMenuItemCarteirina;
+    private javax.swing.JMenuItem jMenuItemCaixa;
+    private javax.swing.JMenuItem jMenuItemCarteirinha;
     private javax.swing.JMenuItem jMenuItemCidade;
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemEndereco;

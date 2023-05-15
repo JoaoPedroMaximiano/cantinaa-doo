@@ -26,7 +26,7 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
         jLabelUF = new javax.swing.JLabel();
         jLabelDescricao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar por Cidade");
 
         jPanelTitulo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
