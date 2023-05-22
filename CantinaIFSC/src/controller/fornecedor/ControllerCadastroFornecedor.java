@@ -43,4 +43,5 @@ public class ControllerCadastroFornecedor {
     private void fecharTelaCadastroFornecedor() {
         telaCadastroFornecedor.dispose();
     }
+    
 }
