@@ -2,6 +2,7 @@ package controller.fornecedor;
 
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
+import view.endereco.TelaCadastroEndereco;
 import view.fornecedor.TelaBuscaFornecedor;
 import view.fornecedor.TelaCadastroFornecedor;
 
@@ -23,6 +24,7 @@ public class ControllerCadastroFornecedor {
         telaCadastroFornecedor.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
         telaCadastroFornecedor.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroFornecedor.getjButtonSair().addActionListener(e -> fecharTelaCadastroFornecedor());
+        telaCadastroFornecedor.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
     }
 
     private void abrirTelaBuscaFornecedor() {
@@ -42,6 +44,11 @@ public class ControllerCadastroFornecedor {
 
     private void fecharTelaCadastroFornecedor() {
         telaCadastroFornecedor.dispose();
+    }
+    
+    private void abrirTelaCadastroEndereco(){
+        TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
+        cadastroEndereco.setVisible(true);
     }
     
 }

@@ -4,6 +4,7 @@ import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.cliente.TelaBuscaCliente;
 import view.cliente.TelaCadastroCliente;
+import view.endereco.TelaCadastroEndereco;
 
 public class ControllerCadastroCliente {
     TelaCadastroCliente telaCadastroCliente;
@@ -23,6 +24,7 @@ public class ControllerCadastroCliente {
         telaCadastroCliente.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
         telaCadastroCliente.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroCliente.getjButtonSair().addActionListener(e -> fecharTelaCadastroCliente());
+        telaCadastroCliente.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
     }
 
     private void abrirTelaBuscaCliente() {
@@ -43,4 +45,9 @@ public class ControllerCadastroCliente {
     private void fecharTelaCadastroCliente() {
         telaCadastroCliente.dispose();
     }
+    
+    private void abrirTelaCadastroEndereco(){
+        TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
+        cadastroEndereco.setVisible(true);
+    }   
 }

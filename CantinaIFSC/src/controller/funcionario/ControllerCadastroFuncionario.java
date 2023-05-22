@@ -2,6 +2,7 @@ package controller.funcionario;
 
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
+import view.endereco.TelaCadastroEndereco;
 import view.funcionario.TelaBuscaFuncionario;
 import view.funcionario.TelaCadastroFuncionario;
 
@@ -23,6 +24,7 @@ public class ControllerCadastroFuncionario {
         telaCadastroFuncionario.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
         telaCadastroFuncionario.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroFuncionario.getjButtonSair().addActionListener(e -> fecharTelaCadastroFuncionario());
+        telaCadastroFuncionario.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
     }
 
     private void abrirTelaBuscaFuncionario() {
@@ -42,5 +44,10 @@ public class ControllerCadastroFuncionario {
 
     private void fecharTelaCadastroFuncionario() {
         telaCadastroFuncionario.dispose();
+    }
+    
+    private void abrirTelaCadastroEndereco(){
+        TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
+        cadastroEndereco.setVisible(true);
     }
 }
