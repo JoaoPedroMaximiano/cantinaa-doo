@@ -55,6 +55,13 @@ public class Persiste {
         listaMovimentoCaixa = new ArrayList<>();
         listaProduto = new ArrayList<>();
         listaVenda = new ArrayList<>();
+        
+        
+        Bairro b1 = new Bairro(1, "Jao jose");
+        Bairro b2 = new Bairro(2, "EI dois");
+        listaBairro.add(b1);
+        listaBairro.add(b2);
+        
     }
     
     public static synchronized Persiste getInstancia(){

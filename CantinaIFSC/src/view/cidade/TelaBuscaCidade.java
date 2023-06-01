@@ -1,5 +1,8 @@
 package view.cidade;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 public class TelaBuscaCidade extends javax.swing.JDialog {
 
     public TelaBuscaCidade(java.awt.Frame parent, boolean modal) {
@@ -21,7 +24,7 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
         jButtonSair = new javax.swing.JButton();
         jPanelFiltros = new javax.swing.JPanel();
         jComboBoxUF = new javax.swing.JComboBox<>();
-        jButtonPesquisar1 = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
         jTextFieldDescricao = new javax.swing.JTextField();
         jLabelUF = new javax.swing.JLabel();
         jLabelDescricao = new javax.swing.JLabel();
@@ -123,8 +126,13 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
 
         jComboBoxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO" }));
 
-        jButtonPesquisar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        jButtonPesquisar1.setText("Pesquisar");
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabelUF.setText("UF");
 
@@ -148,7 +156,7 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                         .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonPesquisar1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
+                        .addComponent(jButtonPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelFiltrosLayout.setVerticalGroup(
@@ -161,7 +169,7 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDescricao)
-                    .addComponent(jButtonPesquisar1)
+                    .addComponent(jButtonPesquisar)
                     .addComponent(jComboBoxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -200,6 +208,22 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    public JButton getjButtonCarregar() {
+        return jButtonCarregar;
+    }
+
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
+    public JTable getjTable() {
+        return jTable;
+    }
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -217,7 +241,7 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCarregar;
-    private javax.swing.JButton jButtonPesquisar1;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JComboBox<String> jComboBoxUF;
     private javax.swing.JLabel jLabelDescricao;

@@ -21,7 +21,7 @@ public class ControllerCadastroFornecedor {
     private void setupActionListeners() {
         telaCadastroFornecedor.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaFornecedor());
         telaCadastroFornecedor.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroFornecedor.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroFornecedor.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroFornecedor.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroFornecedor.getjButtonSair().addActionListener(e -> fecharTelaCadastroFornecedor());
         telaCadastroFornecedor.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
@@ -29,6 +29,7 @@ public class ControllerCadastroFornecedor {
 
     private void abrirTelaBuscaFornecedor() {
         TelaBuscaFornecedor telaBuscaFornecedor = new TelaBuscaFornecedor(null, true);
+        ControllerBuscaFornecedor controllerBuscaFornecedor = new ControllerBuscaFornecedor(telaBuscaFornecedor);
         telaBuscaFornecedor.setVisible(true);
     }
 
@@ -50,5 +51,9 @@ public class ControllerCadastroFornecedor {
         TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
         cadastroEndereco.setVisible(true);
     }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroFornecedor.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroFornecedor.getjPanelCorpo());       }
     
 }

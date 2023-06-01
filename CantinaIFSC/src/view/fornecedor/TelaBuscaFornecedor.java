@@ -1,5 +1,8 @@
 package view.fornecedor;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 public class TelaBuscaFornecedor extends javax.swing.JDialog {;
 
     public TelaBuscaFornecedor(java.awt.Frame parent, boolean modal) {
@@ -20,7 +23,7 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
         jButtonCarregar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
         jPanelFiltros = new javax.swing.JPanel();
-        jButtonPesquisar1 = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
         jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jComboBoxStatus = new javax.swing.JComboBox<>();
@@ -142,8 +145,8 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
 
         jPanelFiltros.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButtonPesquisar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
-        jButtonPesquisar1.setText("Pesquisar");
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
+        jButtonPesquisar.setText("Pesquisar");
 
         jLabelNome.setText("Nome");
 
@@ -248,7 +251,7 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
                             .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                                 .addComponent(jComboBoxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltrosLayout.createSequentialGroup()
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelCNPJ)
@@ -365,7 +368,7 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPesquisar1)
+                    .addComponent(jButtonPesquisar)
                     .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -419,6 +422,19 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    public JButton getjButtonCarregar() {
+        return jButtonCarregar;
+    }
+
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
+    public JTable getjTable() {
+        return jTable;
+    }
+
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -436,7 +452,7 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCarregar;
-    private javax.swing.JButton jButtonPesquisar1;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JComboBox<String> jComboBoxEndereco;
     private javax.swing.JComboBox<String> jComboBoxStatus;

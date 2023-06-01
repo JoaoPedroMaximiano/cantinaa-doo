@@ -20,13 +20,14 @@ public class ControllerCadastroEndereco {
     private void setupActionListeners() {
         telaCadastroEndereco.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaEndereco());
         telaCadastroEndereco.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroEndereco.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroEndereco.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroEndereco.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroEndereco.getjButtonSair().addActionListener(e -> fecharTelaCadastroEndereco());
     }
 
     private void abrirTelaBuscaEndereco() {
         TelaBuscaEndereco telaBuscaEndereco = new TelaBuscaEndereco(null, true);
+        ControllerBuscaEndereco controllerBuscaEndereco = new ControllerBuscaEndereco(telaBuscaEndereco);
         telaBuscaEndereco.setVisible(true);
     }
 
@@ -42,5 +43,10 @@ public class ControllerCadastroEndereco {
 
     private void fecharTelaCadastroEndereco() {
         telaCadastroEndereco.dispose();
+    }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroEndereco.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroEndereco.getjPanelCorpo());   
     }
 }

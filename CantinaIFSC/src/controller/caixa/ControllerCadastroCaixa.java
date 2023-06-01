@@ -20,13 +20,14 @@ public class ControllerCadastroCaixa {
     private void setupActionListeners() {
         telaCadastroCaixa.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaCaixa());
         telaCadastroCaixa.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroCaixa.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroCaixa.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroCaixa.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroCaixa.getjButtonSair().addActionListener(e -> fecharTelaCadastroCaixa());
     }
 
     private void abrirTelaBuscaCaixa() {
         TelaBuscaCaixa telaBuscaCaixa = new TelaBuscaCaixa(null, true);
+        ControllerBuscaCaixa controllerBuscaCaixa = new ControllerBuscaCaixa(telaBuscaCaixa);
         telaBuscaCaixa.setVisible(true);
     }
 
@@ -42,5 +43,10 @@ public class ControllerCadastroCaixa {
 
     private void fecharTelaCadastroCaixa() {
         telaCadastroCaixa.dispose();
+    }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroCaixa.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroCaixa.getjPanelCorpo());   
     }
 }

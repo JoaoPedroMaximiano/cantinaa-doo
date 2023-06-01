@@ -1,5 +1,8 @@
 package view.endereco;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 public class TelaBuscaEndereco extends javax.swing.JDialog {
 
     public TelaBuscaEndereco(java.awt.Frame parent, boolean modal) {
@@ -273,6 +276,18 @@ public class TelaBuscaEndereco extends javax.swing.JDialog {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    public JButton getjButtonCarregar() {
+        return jButtonCarregar;
+    }
+
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
+    public JTable getjTable() {
+        return jTable;
+    }
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

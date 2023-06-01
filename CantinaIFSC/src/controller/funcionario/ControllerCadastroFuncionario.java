@@ -21,7 +21,7 @@ public class ControllerCadastroFuncionario {
     private void setupActionListeners() {
         telaCadastroFuncionario.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaFuncionario());
         telaCadastroFuncionario.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroFuncionario.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroFuncionario.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroFuncionario.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroFuncionario.getjButtonSair().addActionListener(e -> fecharTelaCadastroFuncionario());
         telaCadastroFuncionario.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
@@ -29,6 +29,7 @@ public class ControllerCadastroFuncionario {
 
     private void abrirTelaBuscaFuncionario() {
         TelaBuscaFuncionario telaBuscaFuncionario = new TelaBuscaFuncionario(null, true);
+        ControllerBuscaFuncionario controllerBuscaFuncionario = new ControllerBuscaFuncionario(telaBuscaFuncionario);
         telaBuscaFuncionario.setVisible(true);
     }
 
@@ -49,5 +50,10 @@ public class ControllerCadastroFuncionario {
     private void abrirTelaCadastroEndereco(){
         TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
         cadastroEndereco.setVisible(true);
+    }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroFuncionario.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroFuncionario.getjPanelCorpo());   
     }
 }

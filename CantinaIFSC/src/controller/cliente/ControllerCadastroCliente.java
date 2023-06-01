@@ -21,7 +21,7 @@ public class ControllerCadastroCliente {
     private void setupActionListeners() {
         telaCadastroCliente.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaCliente());
         telaCadastroCliente.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroCliente.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroCliente.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroCliente.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroCliente.getjButtonSair().addActionListener(e -> fecharTelaCadastroCliente());
         telaCadastroCliente.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
@@ -29,6 +29,7 @@ public class ControllerCadastroCliente {
 
     private void abrirTelaBuscaCliente() {
         TelaBuscaCliente telaBuscaCliente = new TelaBuscaCliente(null, true);
+        ControllerBuscaCliente controllerBuscaCliente = new ControllerBuscaCliente(telaBuscaCliente);
         telaBuscaCliente.setVisible(true);
     }
 
@@ -50,4 +51,9 @@ public class ControllerCadastroCliente {
         TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
         cadastroEndereco.setVisible(true);
     }   
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroCliente.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo()); 
+    }
 }

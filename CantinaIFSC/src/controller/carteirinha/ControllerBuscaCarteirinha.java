@@ -1,0 +1,40 @@
+package controller.carteirinha;
+
+import javax.swing.table.DefaultTableModel;
+import model.bo.Carteirinha;
+import view.carteirinha.TelaBuscaCarteirinha;
+
+public class ControllerBuscaCarteirinha {
+
+
+    TelaBuscaCarteirinha telaBuscaCarteirinha;
+
+    public ControllerBuscaCarteirinha(TelaBuscaCarteirinha telaBuscaCarteirinha) {
+        this.telaBuscaCarteirinha = telaBuscaCarteirinha;
+        setupActionListeners();
+    }
+    
+    private void setupActionListeners() {
+        telaBuscaCarteirinha.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
+        telaBuscaCarteirinha.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+
+    }
+
+    private void carregarDadosParaCadastro() {
+    }
+
+    private void filtrarPesquisa() {
+        DefaultTableModel table = (DefaultTableModel) this.telaBuscaCarteirinha.getjTable().getModel();
+        table.setRowCount(0);
+        for (Carteirinha carteirinha : model.dao.Persiste.getInstancia().listaCarteirinha) {
+            table.addRow(new Object[]{
+                carteirinha.getId(),
+                carteirinha.getCliente(),
+                carteirinha.getCodigoBarra(),
+                carteirinha.getDataCancelamento(),
+                carteirinha.getDataGeracao()
+            });
+        }
+    }    
+    
+}

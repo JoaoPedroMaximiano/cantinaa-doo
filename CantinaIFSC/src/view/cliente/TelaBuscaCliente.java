@@ -1,5 +1,8 @@
 package view.cliente;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 public class TelaBuscaCliente extends javax.swing.JDialog {
 
     public TelaBuscaCliente(java.awt.Frame parent, boolean modal) {
@@ -459,6 +462,20 @@ public class TelaBuscaCliente extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 
+    public JButton getjButtonCarregar() {
+        return jButtonCarregar;
+    }
+
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
+    public JTable getjTable() {
+        return jTable;
+    }
+
+    
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -20,13 +20,14 @@ public class ControllerCadastroProduto {
     private void setupActionListeners() {
         telaCadastroProduto.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaProduto());
         telaCadastroProduto.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroProduto.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroProduto.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroProduto.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroProduto.getjButtonSair().addActionListener(e -> fecharTelaCadastroProduto());
     }
 
     private void abrirTelaBuscaProduto() {
         TelaBuscaProduto telaBuscaProduto = new TelaBuscaProduto(null, true);
+        ControllerBuscaProduto controllerBuscaProduto = new ControllerBuscaProduto(telaBuscaProduto);
         telaBuscaProduto.setVisible(true);
     }
 
@@ -43,4 +44,8 @@ public class ControllerCadastroProduto {
     private void fecharTelaCadastroProduto() {
         telaCadastroProduto.dispose();
     }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroProduto.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroProduto.getjPanelCorpo());       }
 }

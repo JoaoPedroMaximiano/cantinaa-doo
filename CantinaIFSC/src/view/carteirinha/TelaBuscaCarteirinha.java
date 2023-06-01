@@ -1,5 +1,8 @@
 package view.carteirinha;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 public class TelaBuscaCarteirinha extends javax.swing.JDialog {
 
     public TelaBuscaCarteirinha(java.awt.Frame parent, boolean modal) {
@@ -260,6 +263,18 @@ public class TelaBuscaCarteirinha extends javax.swing.JDialog {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    public JButton getjButtonCarregar() {
+        return jButtonCarregar;
+    }
+
+    public JButton getjButtonPesquisar() {
+        return jButtonPesquisar;
+    }
+
+    public JTable getjTable() {
+        return jTable;
+    }
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

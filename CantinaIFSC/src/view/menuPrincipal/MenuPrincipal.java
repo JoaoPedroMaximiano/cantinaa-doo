@@ -22,6 +22,7 @@ import view.produto.TelaCadastroProduto;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal() {
+        model.dao.Persiste.getInstancia();
         initComponents();
     }
 

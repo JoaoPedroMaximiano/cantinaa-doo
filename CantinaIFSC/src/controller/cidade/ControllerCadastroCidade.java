@@ -20,13 +20,14 @@ public class ControllerCadastroCidade {
     private void setupActionListeners() {
         telaCadastroCidade.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaCidade());
         telaCadastroCidade.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroCidade.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroCidade.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroCidade.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroCidade.getjButtonSair().addActionListener(e -> fecharTelaCadastroCidade());
     }
 
     private void abrirTelaBuscaCidade() {
         TelaBuscaCidade telaBuscaCidade = new TelaBuscaCidade(null, true);
+        ControllerBuscaCidade controllerBuscaCidade = new ControllerBuscaCidade(telaBuscaCidade);
         telaBuscaCidade.setVisible(true);
     }
 
@@ -42,5 +43,10 @@ public class ControllerCadastroCidade {
 
     private void fecharTelaCadastroCidade() {
         telaCadastroCidade.dispose();
+    }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroCidade.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroCidade.getjPanelCorpo());   
     }
 }

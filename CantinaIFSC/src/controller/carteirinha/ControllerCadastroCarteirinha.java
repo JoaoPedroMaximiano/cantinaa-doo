@@ -20,13 +20,14 @@ public class ControllerCadastroCarteirinha {
     private void setupActionListeners() {
         telaCadastroCarteirinha.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaCarteirinha());
         telaCadastroCarteirinha.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
-        telaCadastroCarteirinha.getjButtonGravar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroCarteirinha.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
         telaCadastroCarteirinha.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroCarteirinha.getjButtonSair().addActionListener(e -> fecharTelaCadastroCarteirinha());
     }
 
     private void abrirTelaBuscaCarteirinha() {
         TelaBuscaCarteirinha telaBuscaCarteirinha = new TelaBuscaCarteirinha(null, true);
+        ControllerBuscaCarteirinha controllerBuscaCarteirinha = new ControllerBuscaCarteirinha(telaBuscaCarteirinha);
         telaBuscaCarteirinha.setVisible(true);
     }
 
@@ -42,5 +43,10 @@ public class ControllerCadastroCarteirinha {
 
     private void fecharTelaCadastroCarteirinha() {
         telaCadastroCarteirinha.dispose();
+    }
+
+    private void realizarAcaoGravar() {
+        ativa(true, telaCadastroCarteirinha.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroCarteirinha.getjPanelCorpo());   
     }
 }

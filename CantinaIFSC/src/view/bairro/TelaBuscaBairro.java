@@ -1,6 +1,8 @@
 package view.bairro;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class TelaBuscaBairro extends javax.swing.JDialog {
@@ -14,34 +16,26 @@ public class TelaBuscaBairro extends javax.swing.JDialog {
         return jButtonCarregar;
     }
 
-    public void setjButtonCarregar(JButton jButtonCarregar) {
-        this.jButtonCarregar = jButtonCarregar;
-    }
-
     public JButton getjButtonPesquisar() {
         return jButtonPesquisar;
-    }
-
-    public void setjButtonPesquisar(JButton jButtonPesquisar) {
-        this.jButtonPesquisar = jButtonPesquisar;
     }
 
     public JButton getjButtonSair() {
         return jButtonSair;
     }
 
-    public void setjButtonSair(JButton jButtonSair) {
-        this.jButtonSair = jButtonSair;
-    }
-
     public JTextField getjTextFieldDescricao() {
         return jTextFieldDescricao;
     }
 
-    public void setjTextFieldDescricao(JTextField jTextFieldDescricao) {
-        this.jTextFieldDescricao = jTextFieldDescricao;
+    public JPanel getjPanelFiltros() {
+        return jPanelFiltros;
     }
-    
+
+    public JTable getjTable() {
+        return jTable;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
