@@ -1,5 +1,6 @@
 package controller.produto;
 
+import model.bo.Produto;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.produto.TelaBuscaProduto;
@@ -46,6 +47,13 @@ public class ControllerCadastroProduto {
     }
 
     private void realizarAcaoGravar() {
+        Produto produto = new Produto();
+        produto.setId(model.dao.Persiste.getInstancia().listaProduto.size() + 1);
+        produto.setDescricao(this.telaCadastroProduto.getjTextFieldDescricao().getText());
+        produto.setCodigoBarra(this.telaCadastroProduto.getjTextFieldCodigoBarra().getText());
+        produto.setStatus(this.telaCadastroProduto.getjComboBoxStatus().getSelectedItem().toString() == "Ativo" ? '1' : '0');
+        model.dao.Persiste.getInstancia().listaProduto.add(produto);
         ativa(true, telaCadastroProduto.getjPanelBotoes());
-        limpaCompenentes(false, telaCadastroProduto.getjPanelCorpo());       }
+        limpaCompenentes(false, telaCadastroProduto.getjPanelCorpo());       
+    }
 }

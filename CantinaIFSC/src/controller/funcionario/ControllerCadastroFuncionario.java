@@ -1,5 +1,7 @@
 package controller.funcionario;
 
+import model.bo.Endereco;
+import model.bo.Funcionario;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.endereco.TelaCadastroEndereco;
@@ -53,7 +55,27 @@ public class ControllerCadastroFuncionario {
     }
 
     private void realizarAcaoGravar() {
+        Funcionario funcionario  = new Funcionario();
+        funcionario.setId(model.dao.Persiste.getInstancia().listaFuncionario.size() + 1);
+        funcionario.setNome(this.telaCadastroFuncionario.getjTextFieldNome().getText());
+        funcionario.setCpf(this.telaCadastroFuncionario.getjFormattedTextFieldCPF().getText());
+        funcionario.setRg(this.telaCadastroFuncionario.getjFormattedTextFieldRG().getText());
+        funcionario.setFone1(this.telaCadastroFuncionario.getjFormattedTextFieldTelefone1().getText());
+        funcionario.setFone2(this.telaCadastroFuncionario.getjFormattedTextFieldTelefone2().getText());
+        funcionario.setEmail(this.telaCadastroFuncionario.getjTextEmail().getText());
+        funcionario.setSenha(this.telaCadastroFuncionario.getjPasswordFieldSenha().getText());
+        funcionario.setUsuario(this.telaCadastroFuncionario.getjTextFieldUsuario().getText());
+        
+        String status = this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem().toString();
+        funcionario.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())) {
+                funcionario.setEndereco(endereco);
+            }
+        }
+        
+        model.dao.Persiste.getInstancia().listaFuncionario.add(funcionario);
         ativa(true, telaCadastroFuncionario.getjPanelBotoes());
-        limpaCompenentes(false, telaCadastroFuncionario.getjPanelCorpo());   
+        limpaCompenentes(false, telaCadastroFuncionario.getjPanelCorpo());       
     }
 }

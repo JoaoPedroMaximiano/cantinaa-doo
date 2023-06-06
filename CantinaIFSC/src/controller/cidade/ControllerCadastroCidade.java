@@ -1,5 +1,6 @@
 package controller.cidade;
 
+import model.bo.Cidade;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.cidade.TelaBuscaCidade;
@@ -46,6 +47,11 @@ public class ControllerCadastroCidade {
     }
 
     private void realizarAcaoGravar() {
+        Cidade cidade = new Cidade();
+        cidade.setId(model.dao.Persiste.getInstancia().listaCidade.size() + 1);
+        cidade.setDescricao(this.telaCadastroCidade.getjTextFieldDescricao().getText());
+        cidade.setUf(this.telaCadastroCidade.getjComboBoxUF().getSelectedItem().toString());
+        model.dao.Persiste.getInstancia().listaCidade.add(cidade);
         ativa(true, telaCadastroCidade.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCidade.getjPanelCorpo());   
     }

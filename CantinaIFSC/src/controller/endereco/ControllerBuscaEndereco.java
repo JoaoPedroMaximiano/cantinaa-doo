@@ -1,5 +1,6 @@
 package controller.endereco;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Endereco;
 import view.endereco.TelaBuscaEndereco;
@@ -24,15 +25,15 @@ public class ControllerBuscaEndereco {
     private void filtrarPesquisa() {
         DefaultTableModel table = (DefaultTableModel) this.telaBuscaEndereco.getjTable().getModel();
         table.setRowCount(0);
-        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+        model.dao.Persiste.getInstancia().listaEndereco.forEach(endereco -> {
             table.addRow(new Object[]{
                 endereco.getId(),
                 endereco.getCep(),
-                endereco.getCidade(),
-                endereco.getBairro(),
+                endereco.getCidade().getDescricao(),
+                endereco.getBairro().getDescricao(),
                 endereco.getLogradouro(),
                 endereco.getStatus()
             });
-        }
+        });
     }
 }

@@ -179,7 +179,7 @@ public class TelaCadastroProduto extends javax.swing.JDialog {
 
         jLabelStatus.setText("Status");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Desativado" }));
 
         javax.swing.GroupLayout jPanelCorpoLayout = new javax.swing.GroupLayout(jPanelCorpo);
         jPanelCorpo.setLayout(jPanelCorpoLayout);

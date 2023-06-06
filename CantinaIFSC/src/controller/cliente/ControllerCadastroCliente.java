@@ -1,5 +1,8 @@
 package controller.cliente;
 
+import javax.swing.JOptionPane;
+import model.bo.Cliente;
+import model.bo.Endereco;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.cliente.TelaBuscaCliente;
@@ -53,6 +56,26 @@ public class ControllerCadastroCliente {
     }   
 
     private void realizarAcaoGravar() {
+        Cliente cliente = new Cliente();
+        cliente.setId(model.dao.Persiste.getInstancia().listaCliente.size() + 1);
+        cliente.setNome(this.telaCadastroCliente.getjTextFieldNome().getText());
+        cliente.setCpf(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText());
+        cliente.setRg(this.telaCadastroCliente.getjFormattedTextFieldRG().getText());
+        cliente.setMatricula(this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText());
+        cliente.setDataNascimento(this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText());
+        cliente.setFone1(this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText());
+        cliente.setFone2(this.telaCadastroCliente.getjFormattedTextFieldTelefone2().getText());
+        cliente.setEmail(this.telaCadastroCliente.getjTextEmail().getText());
+        
+        String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
+        cliente.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
+                cliente.setEndereco(endereco);
+            }
+        }
+        
+        model.dao.Persiste.getInstancia().listaCliente.add(cliente);
         ativa(true, telaCadastroCliente.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo()); 
     }

@@ -211,8 +211,6 @@ public class TelaCadastroCarteirinha extends javax.swing.JDialog {
 
         jLabelCliente.setText("Cliente");
 
-        jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanelCorpoLayout = new javax.swing.GroupLayout(jPanelCorpo);
         jPanelCorpo.setLayout(jPanelCorpoLayout);
         jPanelCorpoLayout.setHorizontalGroup(

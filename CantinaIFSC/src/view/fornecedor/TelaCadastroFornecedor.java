@@ -53,10 +53,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
         this.jButtonSair = jButtonSair;
     }
 
-    public JComboBox<String> getjComboBoxEndereco() {
-        return jComboBoxEndereco;
-    }
-
     public JButton getjButtonAdd() {
         return jButtonAdd;
     }
@@ -103,12 +99,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
 
     public void setjTextFieldLogradouro(JTextField jTextFieldLogradouro) {
         this.jTextFieldLogradouro = jTextFieldLogradouro;
-    }
-
-    
-    
-    public void setjComboBoxEndereco(JComboBox<String> jComboBoxEndereco) {
-        this.jComboBoxEndereco = jComboBoxEndereco;
     }
 
     public JComboBox<String> getjComboBoxStatus() {
@@ -244,8 +234,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
         jLabelTelefone1 = new javax.swing.JLabel();
         jFormattedTextFieldTelefone2 = new javax.swing.JFormattedTextField();
         jLabelTelefone2 = new javax.swing.JLabel();
-        jLabelEndereco = new javax.swing.JLabel();
-        jComboBoxEndereco = new javax.swing.JComboBox<>();
         jFormattedTextFieldCEP = new javax.swing.JFormattedTextField();
         jLabelCEP = new javax.swing.JLabel();
         jButtonSearch = new javax.swing.JButton();
@@ -299,7 +287,7 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
 
         jLabelComplementoEndereco.setText("Complemento endereço");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo", "Pendente" }));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Desativado", "Pendente" }));
         jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxStatusActionPerformed(evt);
@@ -358,10 +346,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
 
         jLabelTelefone2.setText("Telefone 2");
 
-        jLabelEndereco.setText("Endereço");
-
-        jComboBoxEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         try {
             jFormattedTextFieldCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
@@ -394,17 +378,17 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
             .addGroup(jPanelCorpoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldRazaoSocial)
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelID)
                             .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNome)
                             .addGroup(jPanelCorpoLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabelNome)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextFieldNome))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,20 +404,16 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jTextFieldComplementoEndereco)))
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
-                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldRazaoSocial, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextFieldCNPJ, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jFormattedTextFieldCNPJ, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCNPJ, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelRazaoSocial, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldInscricaoEstadual)
                             .addGroup(jPanelCorpoLayout.createSequentialGroup()
-                                .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelInscricaoEstadual)
-                                    .addComponent(jLabelEndereco))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBoxEndereco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabelInscricaoEstadual)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addComponent(jFormattedTextFieldTelefone1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -518,7 +498,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addComponent(jLabelTelefone2)
                         .addGap(28, 28, 28)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldComplementoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
@@ -536,16 +515,9 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
                     .addComponent(jFormattedTextFieldCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldInscricaoEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelCorpoLayout.createSequentialGroup()
-                        .addComponent(jLabelRazaoSocial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelCorpoLayout.createSequentialGroup()
-                        .addComponent(jLabelEndereco)
-                        .addGap(28, 28, 28)))
+                .addComponent(jLabelRazaoSocial)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -692,7 +664,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSearch;
-    private javax.swing.JComboBox<String> jComboBoxEndereco;
     private javax.swing.JComboBox<String> jComboBoxStatus;
     private javax.swing.JFormattedTextField jFormattedTextFieldCEP;
     private javax.swing.JFormattedTextField jFormattedTextFieldCNPJ;
@@ -705,7 +676,6 @@ public class TelaCadastroFornecedor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplementoEndereco;
     private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelInscricaoEstadual;
     private javax.swing.JLabel jLabelNome;

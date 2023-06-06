@@ -1,5 +1,6 @@
 package controller.cliente;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Cliente;
 import view.cliente.TelaBuscaCliente;

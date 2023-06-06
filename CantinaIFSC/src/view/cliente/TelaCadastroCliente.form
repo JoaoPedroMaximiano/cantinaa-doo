@@ -29,7 +29,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jPanelTitulo" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jPanelBotoes" max="32767" attributes="0"/>
+                  <Component id="jPanelBotoes" pref="646" max="32767" attributes="0"/>
                   <Component id="jPanelCorpo" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -134,12 +134,11 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextFieldNome" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldNome" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -184,13 +183,13 @@
                                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jFormattedTextFieldCEP" max="32767" attributes="0"/>
+                                          <Component id="jFormattedTextFieldCEP" pref="118" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jButtonSearch" max="32767" attributes="0"/>
+                                  <Component id="jButtonSearch" pref="36" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonAdd" max="32767" attributes="0"/>
+                                  <Component id="jButtonAdd" pref="37" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jTextFieldCidade" min="-2" pref="154" max="-2" attributes="0"/>
@@ -198,18 +197,18 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldBairro" min="-2" pref="154" max="-2" attributes="0"/>
                                       <Component id="jLabelBairro" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldBairro" min="-2" pref="142" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldLogradouro" max="32767" attributes="0"/>
+                              <Component id="jTextFieldLogradouro" pref="107" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -293,9 +292,9 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelRG" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCPF" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -369,7 +368,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="Ativo"/>
-                <StringItem index="1" value="Inativo"/>
+                <StringItem index="1" value="Desativado"/>
                 <StringItem index="2" value="Pendente"/>
               </StringArray>
             </Property>

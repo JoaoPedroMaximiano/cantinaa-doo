@@ -100,9 +100,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextFieldRazaoSocial" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelID" min="-2" max="-2" attributes="0"/>
@@ -110,12 +111,11 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextFieldNome" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldNome" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -138,9 +138,8 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jTextFieldRazaoSocial" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jFormattedTextFieldCNPJ" alignment="0" pref="293" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jFormattedTextFieldCNPJ" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
                               <Component id="jLabelCNPJ" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelRazaoSocial" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -148,13 +147,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jTextFieldInscricaoEstadual" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabelInscricaoEstadual" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabelInscricaoEstadual" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jComboBoxEndereco" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -269,7 +264,6 @@
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jTextFieldComplementoEndereco" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
@@ -292,20 +286,9 @@
                       <Component id="jTextFieldInscricaoEstadual" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelRazaoSocial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextFieldRazaoSocial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelEndereco" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jLabelRazaoSocial" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTextFieldRazaoSocial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -348,7 +331,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="Ativo"/>
-                <StringItem index="1" value="Inativo"/>
+                <StringItem index="1" value="Desativado"/>
                 <StringItem index="2" value="Pendente"/>
               </StringArray>
             </Property>
@@ -426,26 +409,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Telefone 2"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelEndereco">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxEndereco">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldCEP">
           <Properties>

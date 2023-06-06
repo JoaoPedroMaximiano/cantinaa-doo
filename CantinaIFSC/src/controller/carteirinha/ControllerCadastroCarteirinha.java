@@ -1,5 +1,6 @@
 package controller.carteirinha;
 
+import model.bo.Cliente;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -13,6 +14,10 @@ public class ControllerCadastroCarteirinha {
 
         setupActionListeners();
 
+        for (Cliente cliente : model.dao.Persiste.getInstancia().listaCliente) {
+            this.telaCadastroCarteirinha.getjComboBoxCliente().addItem(cliente.getCpf());
+        }
+        
         ativa(true, this.telaCadastroCarteirinha.getjPanelBotoes());
         limpaCompenentes(false, this.telaCadastroCarteirinha.getjPanelCorpo());
     }
