@@ -27,11 +27,9 @@ public class ControllerBuscaCaixa {
         for (Caixa caixa : model.dao.Persiste.getInstancia().listaCaixa) {
             table.addRow(new Object[]{
                 caixa.getId(),
+                caixa.getFuncionario().getNome(),
                 caixa.getDataHoraAberto(),
                 caixa.getDataHoraFechamento(),
-                caixa.getFuncionario(),
-                caixa.getObservacao(),
-                caixa.getStatus(),
                 caixa.getValorAbertura(),
                 caixa.getValorFechamento()
             });

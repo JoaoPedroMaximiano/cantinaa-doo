@@ -68,7 +68,7 @@ public class ControllerCadastroCliente {
         cliente.setEmail(this.telaCadastroCliente.getjTextEmail().getText());
         
         String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
-        cliente.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
+        cliente.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
         for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
             if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
                 cliente.setEndereco(endereco);

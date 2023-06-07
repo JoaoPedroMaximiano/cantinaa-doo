@@ -1,5 +1,4 @@
 package controller.endereco;
-import javax.swing.JOptionPane;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;

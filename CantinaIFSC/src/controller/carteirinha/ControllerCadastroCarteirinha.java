@@ -1,5 +1,7 @@
 package controller.carteirinha;
 
+import javax.swing.JOptionPane;
+import model.bo.Carteirinha;
 import model.bo.Cliente;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
@@ -51,6 +53,22 @@ public class ControllerCadastroCarteirinha {
     }
 
     private void realizarAcaoGravar() {
+        Carteirinha carteirinha = new Carteirinha();
+        carteirinha.setId(model.dao.Persiste.getInstancia().listaCarteirinha.size() + 1);
+        carteirinha.setDataGeracao(this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText());
+        
+        if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText().equals("  /  /    ")) {
+            carteirinha.setDataCancelamento(this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText());
+        }
+        
+        carteirinha.setCodigoBarra(this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText());
+        for (Cliente cliente : model.dao.Persiste.getInstancia().listaCliente) {
+            if (cliente.getCpf().equals(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString())) {
+                carteirinha.setCliente(cliente);
+            }
+        }
+        
+        model.dao.Persiste.getInstancia().listaCarteirinha.add(carteirinha);
         ativa(true, telaCadastroCarteirinha.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCarteirinha.getjPanelCorpo());   
     }

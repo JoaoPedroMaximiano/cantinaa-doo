@@ -1,5 +1,6 @@
 package controller.carteirinha;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Carteirinha;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -29,10 +30,10 @@ public class ControllerBuscaCarteirinha {
         for (Carteirinha carteirinha : model.dao.Persiste.getInstancia().listaCarteirinha) {
             table.addRow(new Object[]{
                 carteirinha.getId(),
-                carteirinha.getCliente(),
                 carteirinha.getCodigoBarra(),
-                carteirinha.getDataCancelamento(),
-                carteirinha.getDataGeracao()
+                carteirinha.getDataGeracao(),
+                carteirinha.getCliente().getNome(),
+                carteirinha.getDataCancelamento()
             });
         }
     }    

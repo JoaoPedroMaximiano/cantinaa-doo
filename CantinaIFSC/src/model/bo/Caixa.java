@@ -1,12 +1,10 @@
 package model.bo;
 
-import java.util.Date;
-
 public class Caixa {
 
     private int id;
-    private Date dataHoraAberto;
-    private Date dataHoraFechamento;
+    private String dataHoraAberto;
+    private String dataHoraFechamento;
     private double valorAbertura;
     private double valorFechamento;
     private String observacao;
@@ -16,7 +14,7 @@ public class Caixa {
     public Caixa() {
     }
 
-    public Caixa(int id, Date dataHoraAberto, Date dataHoraFechamento, double valorAbertura, double valorFechamento, String observacao, char status, Funcionario funcionario) {
+    public Caixa(int id, String dataHoraAberto, String dataHoraFechamento, double valorAbertura, double valorFechamento, String observacao, char status, Funcionario funcionario) {
         this.id = id;
         this.dataHoraAberto = dataHoraAberto;
         this.dataHoraFechamento = dataHoraFechamento;
@@ -35,19 +33,19 @@ public class Caixa {
         this.id = id;
     }
 
-    public Date getDataHoraAberto() {
+    public String getDataHoraAberto() {
         return dataHoraAberto;
     }
 
-    public void setDataHoraAberto(Date dataHoraAberto) {
+    public void setDataHoraAberto(String dataHoraAberto) {
         this.dataHoraAberto = dataHoraAberto;
     }
 
-    public Date getDataHoraFechamento() {
+    public String getDataHoraFechamento() {
         return dataHoraFechamento;
     }
 
-    public void setDataHoraFechamento(Date dataHoraFechamento) {
+    public void setDataHoraFechamento(String dataHoraFechamento) {
         this.dataHoraFechamento = dataHoraFechamento;
     }
 

@@ -210,7 +210,7 @@ public class TelaCadastroCaixa extends javax.swing.JDialog {
 
         jLabelStatus.setText("Status");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aberto", "Fechado", "Cancelado", "Pendente" }));
 
         try {
             jFormattedTextFieldDataAbertura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
@@ -228,13 +228,13 @@ public class TelaCadastroCaixa extends javax.swing.JDialog {
 
         jLabelDataFechamento.setText("Data e hora do fechamento");
 
-        jFormattedTextFieldValorAbertura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        jFormattedTextFieldValorAbertura.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00"))));
 
         jLabelValorAbertura.setText("Valor abertura");
 
         jLabelValorFechamento.setText("Valor fechamento");
 
-        jFormattedTextFieldValorFechamento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        jFormattedTextFieldValorFechamento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00"))));
 
         jTextAreaObservacao.setColumns(20);
         jTextAreaObservacao.setRows(5);
@@ -243,8 +243,6 @@ public class TelaCadastroCaixa extends javax.swing.JDialog {
         jLabelObservacao.setText("Observação");
 
         jLabelFuncionario.setText("Funcionário");
-
-        jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanelCorpoLayout = new javax.swing.GroupLayout(jPanelCorpo);
         jPanelCorpo.setLayout(jPanelCorpoLayout);
