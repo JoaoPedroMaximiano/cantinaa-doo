@@ -16,6 +16,7 @@ public class ControllerBuscaCidade {
     private void setupActionListeners() {
         telaBuscaCidade.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaCidade.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaCidade.getjButtonSair().addActionListener(e -> fecharTelaBuscaCidade());
 
     }
 
@@ -32,5 +33,9 @@ public class ControllerBuscaCidade {
                 cidade.getUf()
             });
         }
+    }
+
+    private void fecharTelaBuscaCidade() {
+        this.telaBuscaCidade.dispose();
     }
 }

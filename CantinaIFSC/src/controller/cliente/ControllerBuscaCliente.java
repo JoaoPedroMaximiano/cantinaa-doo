@@ -16,6 +16,7 @@ public class ControllerBuscaCliente {
     private void setupActionListeners() {
         telaBuscaCliente.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaCliente.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaCliente.getjButtonSair().addActionListener(e -> carregarFecharBuscaCliente());
 
     }
 
@@ -36,5 +37,9 @@ public class ControllerBuscaCliente {
                 cliente.getStatus()
             });
         }
+    }
+
+    private void carregarFecharBuscaCliente() {
+        this.telaBuscaCliente.dispose();
     }
 }

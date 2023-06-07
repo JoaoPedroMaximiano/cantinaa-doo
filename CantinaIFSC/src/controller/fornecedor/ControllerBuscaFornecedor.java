@@ -16,6 +16,7 @@ public class ControllerBuscaFornecedor {
     private void setupActionListeners() {
         telaBuscaFornecedor.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaFornecedor.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaFornecedor.getjButtonSair().addActionListener(e -> carregarFecharBuscaFornecedor());
     }
 
     private void carregarDadosParaCadastro() {
@@ -36,5 +37,9 @@ public class ControllerBuscaFornecedor {
             });
         }
     }    
+
+    private void carregarFecharBuscaFornecedor() {
+        this.telaBuscaFornecedor.dispose();
+    }
     
 }

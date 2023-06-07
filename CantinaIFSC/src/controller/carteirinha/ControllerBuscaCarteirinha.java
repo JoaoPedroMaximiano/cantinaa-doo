@@ -1,6 +1,5 @@
 package controller.carteirinha;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Carteirinha;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -18,6 +17,7 @@ public class ControllerBuscaCarteirinha {
     private void setupActionListeners() {
         telaBuscaCarteirinha.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaCarteirinha.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaCarteirinha.getjButtonSair().addActionListener(e -> fecharTelaBuscaCarteirinha());
 
     }
 
@@ -37,5 +37,9 @@ public class ControllerBuscaCarteirinha {
             });
         }
     }    
+
+    private void fecharTelaBuscaCarteirinha() {
+        this.telaBuscaCarteirinha.dispose();
+    }
     
 }

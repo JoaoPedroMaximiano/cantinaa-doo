@@ -16,6 +16,7 @@ public class ControllerBuscaBairro {
     private void setupActionListeners() {
         telaBuscaBairro.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaBairro.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaBairro.getjButtonSair().addActionListener(e -> fecharTelaBuscaBairro());
 
     }
 
@@ -31,5 +32,9 @@ public class ControllerBuscaBairro {
                 bairro.getDescricao()
             });
         }
+    }
+
+    private void fecharTelaBuscaBairro() {
+        this.telaBuscaBairro.dispose();
     }
 }

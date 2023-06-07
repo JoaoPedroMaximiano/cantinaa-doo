@@ -1,6 +1,5 @@
 package controller.cliente;
 
-import javax.swing.JOptionPane;
 import model.bo.Cliente;
 import model.bo.Endereco;
 import static utilies.Utilities.ativa;

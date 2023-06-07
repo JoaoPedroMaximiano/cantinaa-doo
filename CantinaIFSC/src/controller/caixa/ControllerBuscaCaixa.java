@@ -15,6 +15,7 @@ public class ControllerBuscaCaixa {
     private void setupActionListeners() {
         telaBuscaCaixa.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaCaixa.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaCaixa.getjButtonSair().addActionListener(e -> fecharTelaBuscaCaixa());
 
     }
 
@@ -34,5 +35,9 @@ public class ControllerBuscaCaixa {
                 caixa.getValorFechamento()
             });
         }
+    }
+
+    private void fecharTelaBuscaCaixa() {
+        this.telaBuscaCaixa.dispose();
     }
 }

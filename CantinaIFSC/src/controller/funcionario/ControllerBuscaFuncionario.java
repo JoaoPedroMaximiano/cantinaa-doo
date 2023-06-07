@@ -16,6 +16,7 @@ public class ControllerBuscaFuncionario {
     private void setupActionListeners() {
         telaBuscaFuncionario.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaFuncionario.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaFuncionario.getjButtonSair().addActionListener(e -> carregarFecharBuscaFuncionario());
 
     }
 
@@ -35,5 +36,9 @@ public class ControllerBuscaFuncionario {
             });
         }
     }    
+
+    private void carregarFecharBuscaFuncionario() {
+        this.telaBuscaFuncionario.dispose();
+    }
     
 }

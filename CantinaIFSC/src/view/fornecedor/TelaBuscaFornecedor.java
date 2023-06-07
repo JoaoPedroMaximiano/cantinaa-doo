@@ -434,6 +434,11 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
         return jTable;
     }
 
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
+
+    
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

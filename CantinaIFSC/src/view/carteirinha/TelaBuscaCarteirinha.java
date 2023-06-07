@@ -274,6 +274,10 @@ public class TelaBuscaCarteirinha extends javax.swing.JDialog {
     public JTable getjTable() {
         return jTable;
     }
+
+    public JButton getjButtonSair() {
+        return jButtonSair;
+    }
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

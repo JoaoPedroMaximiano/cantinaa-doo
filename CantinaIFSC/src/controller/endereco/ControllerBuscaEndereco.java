@@ -16,6 +16,7 @@ public class ControllerBuscaEndereco {
     private void setupActionListeners() {
         telaBuscaEndereco.getjButtonPesquisar().addActionListener(e -> filtrarPesquisa());
         telaBuscaEndereco.getjButtonCarregar().addActionListener(e -> carregarDadosParaCadastro());
+        telaBuscaEndereco.getjButtonSair().addActionListener(e -> carregarFecharBuscaEndereco());
 
     }
 
@@ -35,5 +36,9 @@ public class ControllerBuscaEndereco {
                 endereco.getStatus()
             });
         });
+    }
+
+    private void carregarFecharBuscaEndereco() {
+        this.telaBuscaEndereco.dispose();
     }
 }
