@@ -21,6 +21,8 @@ public class ControllerBuscaBairro {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.bairro.ControllerCadastroBairro.codigo = (int) this.telaBuscaBairro.getjTable().getValueAt(this.telaBuscaBairro.getjTable().getSelectedRow(), 0);
+        this.telaBuscaBairro.dispose();
     }
 
     private void filtrarPesquisa() {

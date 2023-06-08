@@ -20,6 +20,8 @@ public class ControllerBuscaCaixa {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.caixa.ControllerCadastroCaixa.codigo = (int) this.telaBuscaCaixa.getjTable().getValueAt(this.telaBuscaCaixa.getjTable().getSelectedRow(), 0);
+        this.telaBuscaCaixa.dispose();
     }
 
     private void filtrarPesquisa() {

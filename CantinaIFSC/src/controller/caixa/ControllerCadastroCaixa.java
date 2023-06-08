@@ -9,6 +9,7 @@ import view.caixa.TelaCadastroCaixa;
 
 public class ControllerCadastroCaixa {
     TelaCadastroCaixa telaCadastroCaixa;
+    public static int codigo;
 
     public ControllerCadastroCaixa(TelaCadastroCaixa telaCadastroCaixa) {
         this.telaCadastroCaixa = telaCadastroCaixa;
@@ -32,9 +33,22 @@ public class ControllerCadastroCaixa {
     }
 
     private void abrirTelaBuscaCaixa() {
+        
+        codigo = 0;
         TelaBuscaCaixa telaBuscaCaixa = new TelaBuscaCaixa(null, true);
         ControllerBuscaCaixa controllerBuscaCaixa = new ControllerBuscaCaixa(telaBuscaCaixa);
         telaBuscaCaixa.setVisible(true);
+        
+        if (codigo != 0) {
+            Caixa caixa = new Caixa();
+            caixa = model.dao.Persiste.getInstancia().listaCaixa.get(codigo -1);
+            
+            ativa(false, this.telaCadastroCaixa.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroCaixa.getjPanelCorpo());
+            
+            this.telaCadastroCaixa.getjTextFieldID().setText(caixa.getId() + "");
+            this.telaCadastroCaixa.getjTextFieldID().setEnabled(false);
+        }
     }
 
     private void realizarAcaoCancelarGravar() {
@@ -45,6 +59,7 @@ public class ControllerCadastroCaixa {
     private void realizarAcaoNovo() {
         ativa(false, telaCadastroCaixa.getjPanelBotoes());
         limpaCompenentes(true, telaCadastroCaixa.getjPanelCorpo());
+        this.telaCadastroCaixa.getjTextFieldID().setEnabled(false);
     }
 
     private void fecharTelaCadastroCaixa() {
