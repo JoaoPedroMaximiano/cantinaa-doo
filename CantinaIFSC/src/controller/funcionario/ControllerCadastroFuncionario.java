@@ -1,5 +1,6 @@
 package controller.funcionario;
 
+import controller.endereco.ControllerCadastroEndereco;
 import model.bo.Endereco;
 import model.bo.Funcionario;
 import static utilies.Utilities.ativa;
@@ -27,6 +28,7 @@ public class ControllerCadastroFuncionario {
         telaCadastroFuncionario.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroFuncionario.getjButtonSair().addActionListener(e -> fecharTelaCadastroFuncionario());
         telaCadastroFuncionario.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
+        telaCadastroFuncionario.getjButtonSearch().addActionListener(e -> abrirTelaBuscaEndereco());
     }
 
     private void abrirTelaBuscaFuncionario() {
@@ -50,8 +52,9 @@ public class ControllerCadastroFuncionario {
     }
     
     private void abrirTelaCadastroEndereco(){
-        TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
-        cadastroEndereco.setVisible(true);
+        TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
+        telaCadastroEndereco.setVisible(true);
     }
 
     private void realizarAcaoGravar() {
@@ -77,5 +80,15 @@ public class ControllerCadastroFuncionario {
         model.dao.Persiste.getInstancia().listaFuncionario.add(funcionario);
         ativa(true, telaCadastroFuncionario.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroFuncionario.getjPanelCorpo());       
+    }
+
+    private void abrirTelaBuscaEndereco() {
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())) {
+                this.telaCadastroFuncionario.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
+                this.telaCadastroFuncionario.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
+                this.telaCadastroFuncionario.getjTextFieldLogradouro().setText(endereco.getLogradouro());
+            }
+        }    
     }
 }

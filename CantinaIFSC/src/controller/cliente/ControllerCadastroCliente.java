@@ -1,5 +1,6 @@
 package controller.cliente;
 
+import controller.endereco.ControllerCadastroEndereco;
 import model.bo.Cliente;
 import model.bo.Endereco;
 import static utilies.Utilities.ativa;
@@ -27,6 +28,7 @@ public class ControllerCadastroCliente {
         telaCadastroCliente.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroCliente.getjButtonSair().addActionListener(e -> fecharTelaCadastroCliente());
         telaCadastroCliente.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
+        telaCadastroCliente.getjButtonSearch().addActionListener(e -> abrirTelaBuscaEndereco());
     }
 
     private void abrirTelaBuscaCliente() {
@@ -50,8 +52,9 @@ public class ControllerCadastroCliente {
     }
     
     private void abrirTelaCadastroEndereco(){
-        TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
-        cadastroEndereco.setVisible(true);
+        TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
+        telaCadastroEndereco.setVisible(true);      
     }   
 
     private void realizarAcaoGravar() {
@@ -77,5 +80,15 @@ public class ControllerCadastroCliente {
         model.dao.Persiste.getInstancia().listaCliente.add(cliente);
         ativa(true, telaCadastroCliente.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo()); 
+    }
+
+    private void abrirTelaBuscaEndereco() {
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
+                this.telaCadastroCliente.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
+                this.telaCadastroCliente.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
+                this.telaCadastroCliente.getjTextFieldLogradouro().setText(endereco.getLogradouro());
+            }
+        }   
     }
 }

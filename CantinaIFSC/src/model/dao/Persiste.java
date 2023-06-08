@@ -63,6 +63,7 @@ public class Persiste {
         listaBairro.add(b2);
         
         Cidade c1 = new Cidade(1, "aaa", "sc");
+        listaCidade.add(c1);
         Endereco e1 = new Endereco(1, "11111-111", "11111", 'v', c1, b2);
         Cliente cli1 = new Cliente("1111", "1111", "11111111", "11/11/1111", '1', "aaa", "11111", "111", "email", "complementeEndreco", '1', e1);
         listaCliente.add(cli1);

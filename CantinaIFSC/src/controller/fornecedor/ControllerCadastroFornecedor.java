@@ -1,12 +1,14 @@
 package controller.fornecedor;
 
-import model.bo.Cliente;
+import controller.cliente.ControllerCadastroCliente;
+import controller.endereco.ControllerCadastroEndereco;
+
 import model.bo.Endereco;
 import model.bo.Fornecedor;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
+import view.cliente.TelaCadastroCliente;
 import view.endereco.TelaCadastroEndereco;
-import view.fornecedor.TelaBuscaFornecedor;
 import view.fornecedor.TelaCadastroFornecedor;
 
 public class ControllerCadastroFornecedor {
@@ -28,12 +30,13 @@ public class ControllerCadastroFornecedor {
         telaCadastroFornecedor.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
         telaCadastroFornecedor.getjButtonSair().addActionListener(e -> fecharTelaCadastroFornecedor());
         telaCadastroFornecedor.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
+        telaCadastroFornecedor.getjButtonSearch().addActionListener(e -> abrirTelaBuscarCepEndereco());
     }
 
     private void abrirTelaBuscaFornecedor() {
-        TelaBuscaFornecedor telaBuscaFornecedor = new TelaBuscaFornecedor(null, true);
-        ControllerBuscaFornecedor controllerBuscaFornecedor = new ControllerBuscaFornecedor(telaBuscaFornecedor);
-        telaBuscaFornecedor.setVisible(true);
+        TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
+        telaCadastroEndereco.setVisible(true);
     }
 
     private void realizarAcaoCancelarGravar() {
@@ -51,8 +54,9 @@ public class ControllerCadastroFornecedor {
     }
     
     private void abrirTelaCadastroEndereco(){
-        TelaCadastroEndereco cadastroEndereco = new TelaCadastroEndereco(null, true);
-        cadastroEndereco.setVisible(true);
+        TelaCadastroCliente telaCadastroCliente = new TelaCadastroCliente(null, true);
+        ControllerCadastroCliente controllerCadastroCliente = new ControllerCadastroCliente(telaCadastroCliente);
+        telaCadastroCliente.setVisible(true);
     }
 
     private void realizarAcaoGravar() {
@@ -77,6 +81,16 @@ public class ControllerCadastroFornecedor {
         model.dao.Persiste.getInstancia().listaFornecedor.add(fornecedor);
         ativa(true, telaCadastroFornecedor.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroFornecedor.getjPanelCorpo());       
+    }
+
+    private void abrirTelaBuscarCepEndereco() {
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroFornecedor.getjFormattedTextFieldCEP().getText())) {
+                this.telaCadastroFornecedor.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
+                this.telaCadastroFornecedor.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
+                this.telaCadastroFornecedor.getjTextFieldLogradouro().setText(endereco.getLogradouro());
+            }
+        }
     }
 
     
