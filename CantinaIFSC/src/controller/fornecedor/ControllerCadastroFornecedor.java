@@ -2,6 +2,7 @@ package controller.fornecedor;
 
 import controller.cliente.ControllerCadastroCliente;
 import controller.endereco.ControllerCadastroEndereco;
+import javax.swing.JOptionPane;
 
 import model.bo.Endereco;
 import model.bo.Fornecedor;
@@ -9,9 +10,12 @@ import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.cliente.TelaCadastroCliente;
 import view.endereco.TelaCadastroEndereco;
+import view.fornecedor.TelaBuscaFornecedor;
 import view.fornecedor.TelaCadastroFornecedor;
 
 public class ControllerCadastroFornecedor {
+
+    static int codigo;
     TelaCadastroFornecedor telaCadastroFornecedor;
 
     public ControllerCadastroFornecedor(TelaCadastroFornecedor telaCadastroFornecedor) {
@@ -34,9 +38,39 @@ public class ControllerCadastroFornecedor {
     }
 
     private void abrirTelaBuscaFornecedor() {
-        TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
-        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
-        telaCadastroEndereco.setVisible(true);
+                
+        codigo = 0;
+        
+        TelaBuscaFornecedor telaBuscaFornecedor = new TelaBuscaFornecedor(null, true);
+        ControllerBuscaFornecedor controllerBuscaFornecedor = new ControllerBuscaFornecedor(telaBuscaFornecedor);
+        telaBuscaFornecedor.setVisible(true);
+
+        if (codigo != 0) {
+            Fornecedor fornecedor = new Fornecedor();
+            fornecedor = model.dao.Persiste.getInstancia().listaFornecedor.get(codigo -1);
+            
+            ativa(false, this.telaCadastroFornecedor.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroFornecedor.getjPanelCorpo());
+            
+            String status = String.valueOf(fornecedor.getStatus());
+            this.telaCadastroFornecedor.getjTextFieldID().setText(fornecedor.getId() + "");
+            this.telaCadastroFornecedor.getjFormattedTextFieldCEP().setText(fornecedor.getEndereco().getCep());
+            this.telaCadastroFornecedor.getjFormattedTextFieldCNPJ().setText(fornecedor.getCnpj());
+            this.telaCadastroFornecedor.getjFormattedTextFieldTelefone1().setText(fornecedor.getFone1());
+            this.telaCadastroFornecedor.getjFormattedTextFieldTelefone2().setText(fornecedor.getFone2());
+            this.telaCadastroFornecedor.getjComboBoxStatus().setSelectedItem(
+                status.equals("1") ? "Ativo" : (status.equals("2") ? "Desativado" : "Pendente")
+            );
+            this.telaCadastroFornecedor.getjTextFieldBairro().setText(fornecedor.getEndereco().getBairro().getDescricao());
+            this.telaCadastroFornecedor.getjTextFieldCidade().setText(fornecedor.getEndereco().getCidade().getDescricao());
+            this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().setText(fornecedor.getComplementeEndreco());
+            this.telaCadastroFornecedor.getjTextFieldInscricaoEstadual().setText(fornecedor.getInscricaoEstadual());
+            this.telaCadastroFornecedor.getjTextFieldLogradouro().setText(fornecedor.getEndereco().getLogradouro());
+            this.telaCadastroFornecedor.getjTextFieldNome().setText(fornecedor.getNome());
+            this.telaCadastroFornecedor.getjTextFieldRazaoSocial().setText(fornecedor.getRazaoSocial());
+            this.telaCadastroFornecedor.getjTextEmail().setText(fornecedor.getEmail());
+            this.telaCadastroFornecedor.getjTextFieldID().setEnabled(false);
+        }
     }
 
     private void realizarAcaoCancelarGravar() {
@@ -54,9 +88,9 @@ public class ControllerCadastroFornecedor {
     }
     
     private void abrirTelaCadastroEndereco(){
-        TelaCadastroCliente telaCadastroCliente = new TelaCadastroCliente(null, true);
-        ControllerCadastroCliente controllerCadastroCliente = new ControllerCadastroCliente(telaCadastroCliente);
-        telaCadastroCliente.setVisible(true);
+        TelaCadastroEndereco telacadastroEndereco = new TelaCadastroEndereco(null, true);
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telacadastroEndereco);
+        telacadastroEndereco.setVisible(true);
     }
 
     private void realizarAcaoGravar() {
@@ -69,7 +103,7 @@ public class ControllerCadastroFornecedor {
         fornecedor.setFone1(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone1().getText());
         fornecedor.setFone2(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone2().getText());
         fornecedor.setEmail(this.telaCadastroFornecedor.getjTextEmail().getText());
-        
+        fornecedor.setComplementeEndreco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
         String status = this.telaCadastroFornecedor.getjComboBoxStatus().getSelectedItem().toString();
         fornecedor.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
         for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {

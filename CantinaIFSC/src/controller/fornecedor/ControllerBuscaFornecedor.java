@@ -20,6 +20,8 @@ public class ControllerBuscaFornecedor {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.fornecedor.ControllerCadastroFornecedor.codigo = (int) this.telaBuscaFornecedor.getjTable().getValueAt(this.telaBuscaFornecedor.getjTable().getSelectedRow(), 0);
+        this.telaBuscaFornecedor.dispose();
     }
 
     private void filtrarPesquisa() {
