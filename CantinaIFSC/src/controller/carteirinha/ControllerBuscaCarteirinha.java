@@ -1,5 +1,6 @@
 package controller.carteirinha;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Carteirinha;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -22,6 +23,8 @@ public class ControllerBuscaCarteirinha {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.carteirinha.ControllerCadastroCarteirinha.codigo = (int) this.telaBuscaCarteirinha.getjTable().getValueAt(this.telaBuscaCarteirinha.getjTable().getSelectedRow(), 0);
+        this.telaBuscaCarteirinha.dispose();
     }
 
     private void filtrarPesquisa() {
