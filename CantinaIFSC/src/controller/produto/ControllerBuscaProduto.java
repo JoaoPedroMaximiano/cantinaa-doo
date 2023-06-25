@@ -21,6 +21,8 @@ public class ControllerBuscaProduto {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.produto.ControllerCadastroProduto.codigo = (int) this.telaBuscaProduto.getjTable().getValueAt(this.telaBuscaProduto.getjTable().getSelectedRow(), 0);
+        this.telaBuscaProduto.dispose();
     }
 
     private void filtrarPesquisa() {
