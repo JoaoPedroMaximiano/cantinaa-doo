@@ -1,6 +1,5 @@
 package controller.cliente;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Cliente;
 import view.cliente.TelaBuscaCliente;
@@ -21,6 +20,8 @@ public class ControllerBuscaCliente {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.cliente.ControllerCadastroCliente.codigo = (int) this.telaBuscaCliente.getjTable().getValueAt(this.telaBuscaCliente.getjTable().getSelectedRow(), 0);
+        this.telaBuscaCliente.dispose();
     }
 
     private void filtrarPesquisa() {

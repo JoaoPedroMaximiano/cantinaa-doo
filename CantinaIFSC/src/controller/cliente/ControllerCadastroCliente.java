@@ -1,6 +1,7 @@
 package controller.cliente;
 
 import controller.endereco.ControllerCadastroEndereco;
+import javax.swing.JOptionPane;
 import model.bo.Cliente;
 import model.bo.Endereco;
 import static utilies.Utilities.ativa;
@@ -10,6 +11,8 @@ import view.cliente.TelaCadastroCliente;
 import view.endereco.TelaCadastroEndereco;
 
 public class ControllerCadastroCliente {
+
+    static int codigo;
     TelaCadastroCliente telaCadastroCliente;
 
     public ControllerCadastroCliente(TelaCadastroCliente telaCadastroCliente) {
@@ -32,9 +35,38 @@ public class ControllerCadastroCliente {
     }
 
     private void abrirTelaBuscaCliente() {
+        
+        codigo = 0;
+        
         TelaBuscaCliente telaBuscaCliente = new TelaBuscaCliente(null, true);
         ControllerBuscaCliente controllerBuscaCliente = new ControllerBuscaCliente(telaBuscaCliente);
         telaBuscaCliente.setVisible(true);
+        if (codigo != 0) {
+            Cliente cliente = new Cliente();
+            cliente = model.dao.Persiste.getInstancia().listaCliente.get(codigo -1);
+            ativa(false, this.telaCadastroCliente.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroCliente.getjPanelCorpo());
+
+            String status = String.valueOf(cliente.getStatus());
+            this.telaCadastroCliente.getjTextFieldID().setText(cliente.getId() + "");
+            this.telaCadastroCliente.getjFormattedTextFieldCEP().setText(cliente.getEndereco().getCep());
+            this.telaCadastroCliente.getjFormattedTextFieldCPF().setText(cliente.getCpf());
+            this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().setText(cliente.getDataNascimento());
+            this.telaCadastroCliente.getjFormattedTextFieldMatricula().setText(cliente.getMatricula());
+            this.telaCadastroCliente.getjFormattedTextFieldRG().setText(cliente.getRg());
+            this.telaCadastroCliente.getjFormattedTextFieldTelefone1().setText(cliente.getFone1());
+            this.telaCadastroCliente.getjFormattedTextFieldTelefone2().setText(cliente.getFone2());
+            this.telaCadastroCliente.getjComboBoxStatus().setSelectedItem(
+                status.equals("1") ? "Ativo" : (status.equals("2") ? "Desativado" : "Pendente")
+            );
+            this.telaCadastroCliente.getjTextEmail().setText(cliente.getEmail());
+            this.telaCadastroCliente.getjTextFieldBairro().setText(cliente.getEndereco().getBairro().getDescricao());
+            this.telaCadastroCliente.getjTextFieldCidade().setText(cliente.getEndereco().getCidade().getDescricao());
+            this.telaCadastroCliente.getjTextFieldComplementoEndereco().setText(cliente.getComplementeEndreco());
+            this.telaCadastroCliente.getjTextFieldLogradouro().setText(cliente.getEndereco().getLogradouro());
+            this.telaCadastroCliente.getjTextFieldNome().setText(cliente.getNome());
+            this.telaCadastroCliente.getjTextFieldID().setEnabled(false);
+        }
     }
 
     private void realizarAcaoCancelarGravar() {
