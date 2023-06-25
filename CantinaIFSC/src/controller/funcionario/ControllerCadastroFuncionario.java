@@ -10,6 +10,8 @@ import view.funcionario.TelaBuscaFuncionario;
 import view.funcionario.TelaCadastroFuncionario;
 
 public class ControllerCadastroFuncionario {
+
+    static int codigo;
     TelaCadastroFuncionario telaCadastroFuncionario;
 
     public ControllerCadastroFuncionario(TelaCadastroFuncionario telaCadastroFuncionario) {
@@ -32,9 +34,42 @@ public class ControllerCadastroFuncionario {
     }
 
     private void abrirTelaBuscaFuncionario() {
+        
+        codigo = 0;
+        
         TelaBuscaFuncionario telaBuscaFuncionario = new TelaBuscaFuncionario(null, true);
         ControllerBuscaFuncionario controllerBuscaFuncionario = new ControllerBuscaFuncionario(telaBuscaFuncionario);
         telaBuscaFuncionario.setVisible(true);
+        
+        if (codigo != 0) {
+            Funcionario funcionario = new Funcionario();
+            funcionario = model.dao.Persiste.getInstancia().listaFuncionario.get(codigo -1);
+            
+            ativa(false, this.telaCadastroFuncionario.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroFuncionario.getjPanelCorpo());
+            
+            String status = String.valueOf(funcionario.getStatus());
+            this.telaCadastroFuncionario.getjTextFieldID().setText(funcionario.getId() + "");
+            this.telaCadastroFuncionario.getjFormattedTextFieldCEP().setText(funcionario.getEndereco().getCep());
+            this.telaCadastroFuncionario.getjFormattedTextFieldTelefone1().setText(funcionario.getFone1());
+            this.telaCadastroFuncionario.getjFormattedTextFieldTelefone2().setText(funcionario.getFone2());
+            this.telaCadastroFuncionario.getjFormattedTextFieldCPF().setText(funcionario.getCpf());
+            this.telaCadastroFuncionario.getjFormattedTextFieldRG().setText(funcionario.getRg());
+            
+            this.telaCadastroFuncionario.getjComboBoxStatus().setSelectedItem(
+                status.equals("1") ? "Ativo" : (status.equals("2") ? "Desativado" : "Pendente")
+            );
+            this.telaCadastroFuncionario.getjTextFieldBairro().setText(funcionario.getEndereco().getBairro().getDescricao());
+            this.telaCadastroFuncionario.getjTextFieldCidade().setText(funcionario.getEndereco().getCidade().getDescricao());
+            this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().setText(funcionario.getComplementeEndreco());
+            this.telaCadastroFuncionario.getjTextFieldLogradouro().setText(funcionario.getEndereco().getLogradouro());
+            this.telaCadastroFuncionario.getjTextFieldNome().setText(funcionario.getNome());
+            this.telaCadastroFuncionario.getjTextEmail().setText(funcionario.getEmail());
+            
+            this.telaCadastroFuncionario.getjPasswordFieldSenha().setText(funcionario.getSenha());
+            this.telaCadastroFuncionario.getjTextFieldUsuario().setText(funcionario.getUsuario());
+            this.telaCadastroFuncionario.getjTextFieldID().setEnabled(false);
+        }        
     }
 
     private void realizarAcaoCancelarGravar() {
@@ -68,6 +103,7 @@ public class ControllerCadastroFuncionario {
         funcionario.setEmail(this.telaCadastroFuncionario.getjTextEmail().getText());
         funcionario.setSenha(this.telaCadastroFuncionario.getjPasswordFieldSenha().getText());
         funcionario.setUsuario(this.telaCadastroFuncionario.getjTextFieldUsuario().getText());
+        funcionario.setComplementeEndreco(this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().getText());
         
         String status = this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem().toString();
         funcionario.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));

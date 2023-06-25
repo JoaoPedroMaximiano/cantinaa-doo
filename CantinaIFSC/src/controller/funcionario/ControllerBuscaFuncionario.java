@@ -21,6 +21,8 @@ public class ControllerBuscaFuncionario {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.funcionario.ControllerCadastroFuncionario.codigo = (int) this.telaBuscaFuncionario.getjTable().getValueAt(this.telaBuscaFuncionario.getjTable().getSelectedRow(), 0);
+        this.telaBuscaFuncionario.dispose();
     }
 
     private void filtrarPesquisa() {
