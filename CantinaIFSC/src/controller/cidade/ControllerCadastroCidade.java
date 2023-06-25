@@ -7,6 +7,8 @@ import view.cidade.TelaBuscaCidade;
 import view.cidade.TelaCadastroCidade;
 
 public class ControllerCadastroCidade {
+
+    static int codigo;
     TelaCadastroCidade telaCadastroCidade;
 
     public ControllerCadastroCidade(TelaCadastroCidade telaCadastroCidade) {
@@ -27,9 +29,25 @@ public class ControllerCadastroCidade {
     }
 
     private void abrirTelaBuscaCidade() {
+        
+        codigo = 0;
+        
         TelaBuscaCidade telaBuscaCidade = new TelaBuscaCidade(null, true);
         ControllerBuscaCidade controllerBuscaCidade = new ControllerBuscaCidade(telaBuscaCidade);
         telaBuscaCidade.setVisible(true);
+        
+        if (codigo != 0) {
+            Cidade cidade = new Cidade();
+            cidade = model.dao.Persiste.getInstancia().listaCidade.get(codigo -1);
+            
+            ativa(false, this.telaCadastroCidade.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroCidade.getjPanelCorpo());
+            
+            this.telaCadastroCidade.getjTextFieldID().setText(cidade.getId() + "");
+            this.telaCadastroCidade.getjTextFieldDescricao().setText(cidade.getDescricao());
+            this.telaCadastroCidade.getjComboBoxUF().setSelectedItem(cidade.getUf());
+            this.telaCadastroCidade.getjTextFieldID().setEnabled(false);
+        }
     }
 
     private void realizarAcaoCancelarGravar() {
