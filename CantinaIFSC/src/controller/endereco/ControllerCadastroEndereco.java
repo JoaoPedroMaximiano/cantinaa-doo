@@ -8,6 +8,8 @@ import view.endereco.TelaBuscaEndereco;
 import view.endereco.TelaCadastroEndereco;
 
 public class ControllerCadastroEndereco {
+
+    static int codigo;
     TelaCadastroEndereco telaCadastroEndereco;
 
     public ControllerCadastroEndereco(TelaCadastroEndereco telaCadastroEndereco) {
@@ -33,9 +35,32 @@ public class ControllerCadastroEndereco {
     }
 
     private void abrirTelaBuscaEndereco() {
+        
+        codigo = 0;
+        
         TelaBuscaEndereco telaBuscaEndereco = new TelaBuscaEndereco(null, true);
         ControllerBuscaEndereco controllerBuscaEndereco = new ControllerBuscaEndereco(telaBuscaEndereco);
         telaBuscaEndereco.setVisible(true);
+        
+        if (codigo != 0) {
+            Endereco endereco = new Endereco();
+            endereco = model.dao.Persiste.getInstancia().listaEndereco.get(codigo -1);
+            
+            ativa(false, this.telaCadastroEndereco.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroEndereco.getjPanelCorpo());
+            
+            String status = String.valueOf(endereco.getStatus());
+            this.telaCadastroEndereco.getjTextFieldID().setText(endereco.getId() + "");
+            this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().setText(endereco.getLogradouro());
+            this.telaCadastroEndereco.getjComboBoxBairro().setSelectedItem(endereco.getBairro().getDescricao());
+            this.telaCadastroEndereco.getjComboBoxCidade().setSelectedItem(endereco.getCidade().getDescricao());
+            this.telaCadastroEndereco.getjComboBoxStatus().setSelectedItem(
+                status.equals("1") ? "Ativo" : (status.equals("2") ? "Desativado" : "Pendente")
+            );
+            this.telaCadastroEndereco.getjFormattedTextFieldCEP().setText(endereco.getCep());
+            this.telaCadastroEndereco.getjTextFieldID().setEnabled(false);
+        }
+        
     }
 
     private void realizarAcaoCancelarGravar() {
@@ -54,7 +79,7 @@ public class ControllerCadastroEndereco {
 
     private void realizarAcaoGravar() {
         Endereco endereco = new Endereco();
-        endereco.setId(model.dao.Persiste.getInstancia().listaBairro.size() + 1);
+        endereco.setId(model.dao.Persiste.getInstancia().listaEndereco.size() + 1);
         endereco.setCep(this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText());
         endereco.setLogradouro(this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().getText());
         for (Bairro bairro : model.dao.Persiste.getInstancia().listaBairro) {
@@ -69,7 +94,7 @@ public class ControllerCadastroEndereco {
             }
         }
         String item = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
-        endereco.setStatus(item == "Ativo" ? '1' : (item == "Desativado" ? '2' : '3'));
+        endereco.setStatus(item.equals("Ativo") ? '1' : (item.equals("Desativado") ? '2' : '3'));
         model.dao.Persiste.getInstancia().listaEndereco.add(endereco);
         ativa(true, telaCadastroEndereco.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroEndereco.getjPanelCorpo());   

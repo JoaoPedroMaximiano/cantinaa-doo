@@ -21,6 +21,8 @@ public class ControllerBuscaEndereco {
     }
 
     private void carregarDadosParaCadastro() {
+        controller.endereco.ControllerCadastroEndereco.codigo = (int) this.telaBuscaEndereco.getjTable().getValueAt(this.telaBuscaEndereco.getjTable().getSelectedRow(), 0);
+        this.telaBuscaEndereco.dispose();
     }
 
     private void filtrarPesquisa() {
