@@ -46,7 +46,17 @@ public class ControllerCadastroCaixa {
             ativa(false, this.telaCadastroCaixa.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCaixa.getjPanelCorpo());
             
+            String status = String.valueOf(caixa.getStatus());
             this.telaCadastroCaixa.getjTextFieldID().setText(caixa.getId() + "");
+            this.telaCadastroCaixa.getjComboBoxStatus().setSelectedItem(
+            status.equals("1") ? "Aberto" : (status.equals("2") ? "Fechado" : (status.equals("3") ? "Cancelado" : "Pendente"))
+            );
+            this.telaCadastroCaixa.getjComboBoxFuncionario().setSelectedItem(caixa.getFuncionario().getCpf());
+            this.telaCadastroCaixa.getjFormattedTextFieldDataAbertura().setText(caixa.getDataHoraAberto());
+            this.telaCadastroCaixa.getjFormattedTextFieldDataFechamento().setText(caixa.getDataHoraFechamento());
+            this.telaCadastroCaixa.getjFormattedTextFieldValorAbertura().setText(String.valueOf(caixa.getValorAbertura()));
+            this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().setText(String.valueOf(caixa.getValorFechamento()));
+            this.telaCadastroCaixa.getjTextAreaObservacao().setText(caixa.getObservacao());
             this.telaCadastroCaixa.getjTextFieldID().setEnabled(false);
         }
     }
