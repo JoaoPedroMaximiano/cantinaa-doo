@@ -10,8 +10,8 @@ public class Funcionario extends Pessoa{
     public Funcionario() {
     }
 
-    public Funcionario(String cpf, String rg, String usuario, String senha, int id, String nome, String fone1, String fone2, String email, String complementeEndreco, char status, Endereco endereco) {
-        super(id, nome, fone1, fone2, email, complementeEndreco, status, endereco);
+    public Funcionario(String cpf, String rg, String usuario, String senha, int id, String nome, String fone1, String fone2, String email, String complementeEndereco, char status, Endereco endereco) {
+        super(id, nome, fone1, fone2, email, complementeEndereco, status, endereco);
         this.cpf = cpf;
         this.rg = rg;
         this.usuario = usuario;

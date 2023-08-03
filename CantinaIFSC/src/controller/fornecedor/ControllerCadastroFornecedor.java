@@ -1,14 +1,11 @@
 package controller.fornecedor;
 
-import controller.cliente.ControllerCadastroCliente;
 import controller.endereco.ControllerCadastroEndereco;
-import javax.swing.JOptionPane;
 
 import model.bo.Endereco;
 import model.bo.Fornecedor;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
-import view.cliente.TelaCadastroCliente;
 import view.endereco.TelaCadastroEndereco;
 import view.fornecedor.TelaBuscaFornecedor;
 import view.fornecedor.TelaCadastroFornecedor;
@@ -63,7 +60,7 @@ public class ControllerCadastroFornecedor {
             );
             this.telaCadastroFornecedor.getjTextFieldBairro().setText(fornecedor.getEndereco().getBairro().getDescricao());
             this.telaCadastroFornecedor.getjTextFieldCidade().setText(fornecedor.getEndereco().getCidade().getDescricao());
-            this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().setText(fornecedor.getComplementeEndreco());
+            this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().setText(fornecedor.getComplementeEndereco());
             this.telaCadastroFornecedor.getjTextFieldInscricaoEstadual().setText(fornecedor.getInscricaoEstadual());
             this.telaCadastroFornecedor.getjTextFieldLogradouro().setText(fornecedor.getEndereco().getLogradouro());
             this.telaCadastroFornecedor.getjTextFieldNome().setText(fornecedor.getNome());
@@ -103,7 +100,7 @@ public class ControllerCadastroFornecedor {
         fornecedor.setFone1(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone1().getText());
         fornecedor.setFone2(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone2().getText());
         fornecedor.setEmail(this.telaCadastroFornecedor.getjTextEmail().getText());
-        fornecedor.setComplementeEndreco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
+        fornecedor.setComplementeEndereco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
         String status = this.telaCadastroFornecedor.getjComboBoxStatus().getSelectedItem().toString();
         fornecedor.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
         for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {

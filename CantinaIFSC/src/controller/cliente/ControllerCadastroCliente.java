@@ -1,7 +1,6 @@
 package controller.cliente;
 
 import controller.endereco.ControllerCadastroEndereco;
-import javax.swing.JOptionPane;
 import model.bo.Cliente;
 import model.bo.Endereco;
 import static utilies.Utilities.ativa;
@@ -62,7 +61,7 @@ public class ControllerCadastroCliente {
             this.telaCadastroCliente.getjTextEmail().setText(cliente.getEmail());
             this.telaCadastroCliente.getjTextFieldBairro().setText(cliente.getEndereco().getBairro().getDescricao());
             this.telaCadastroCliente.getjTextFieldCidade().setText(cliente.getEndereco().getCidade().getDescricao());
-            this.telaCadastroCliente.getjTextFieldComplementoEndereco().setText(cliente.getComplementeEndreco());
+            this.telaCadastroCliente.getjTextFieldComplementoEndereco().setText(cliente.getComplementeEndereco());
             this.telaCadastroCliente.getjTextFieldLogradouro().setText(cliente.getEndereco().getLogradouro());
             this.telaCadastroCliente.getjTextFieldNome().setText(cliente.getNome());
             this.telaCadastroCliente.getjTextFieldID().setEnabled(false);

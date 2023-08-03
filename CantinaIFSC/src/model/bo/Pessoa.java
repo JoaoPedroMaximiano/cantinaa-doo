@@ -7,20 +7,20 @@ public class Pessoa {
     private String fone1;
     private String fone2;
     private String email;
-    private String complementeEndreco;
+    private String complementeEndereco;
     private char status;
     private Endereco endereco;
 
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String fone1, String fone2, String email, String complementeEndreco, char status, Endereco endereco) {
+    public Pessoa(int id, String nome, String fone1, String fone2, String email, String complementeEndereco, char status, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.fone1 = fone1;
         this.fone2 = fone2;
         this.email = email;
-        this.complementeEndreco = complementeEndreco;
+        this.complementeEndereco = complementeEndereco;
         this.status = status;
         this.endereco = endereco;
     }
@@ -65,12 +65,12 @@ public class Pessoa {
         this.email = email;
     }
 
-    public String getComplementeEndreco() {
-        return complementeEndreco;
+    public String getComplementeEndereco() {
+        return complementeEndereco;
     }
 
-    public void setComplementeEndreco(String complementeEndreco) {
-        this.complementeEndreco = complementeEndreco;
+    public void setComplementeEndereco(String complementeEndereco) {
+        this.complementeEndereco = complementeEndereco;
     }
 
     public char getStatus() {
@@ -91,7 +91,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", fone1=" + fone1 + ", fone2=" + fone2 + ", email=" + email + ", complementeEndreco=" + complementeEndreco + ", status=" + status + ", endereco=" + endereco + '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", fone1=" + fone1 + ", fone2=" + fone2 + ", email=" + email + ", complementeEndereco=" + complementeEndereco + ", status=" + status + ", endereco=" + endereco + '}';
     }
     
 }
