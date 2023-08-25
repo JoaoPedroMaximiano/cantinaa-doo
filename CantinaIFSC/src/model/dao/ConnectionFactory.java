@@ -8,20 +8,19 @@ import java.sql.PreparedStatement;
 
 public class ConnectionFactory {
 
-   private static final String driver = "com.mysql.jdbc.Driver";
-   private static final String banco = "jdbc:mysql://localhost:3036/catina_ifsc";
-   private static final String usuario = "root";
-   private static final String senha = "ifsc"; 
+   private static final String BANCO = "jdbc:mysql://localhost:3036/Cantina";
+   private static final String USUARIO = "root";
+   private static final String SENHA = "ifsc"; 
 
    public static Connection getConnection() {
     try {
         return DriverManager.getConnection(
-            banco +
+            BANCO +
             "?verifyServerCertificate=false" +
             "&useSSL=false" +
             "&requireSSL=false" +
-            "&USER=" + usuario +
-            "&password=" + senha +
+            "&USER=" + USUARIO +
+            "&password=" + SENHA +
             "&serverTimezone=UTC"
         );
     } catch (SQLException ex) {
