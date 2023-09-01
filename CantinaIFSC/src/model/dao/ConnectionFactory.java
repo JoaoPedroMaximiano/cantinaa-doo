@@ -7,8 +7,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
 public class ConnectionFactory {
-
-   private static final String BANCO = "jdbc:mysql://localhost:3036/Cantina";
+   private static final String BANCO = "jdbc:mysql://127.0.0.1:3306/Cantina";
    private static final String USUARIO = "root";
    private static final String SENHA = "ifsc"; 
 

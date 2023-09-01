@@ -1,7 +1,10 @@
 package controller.bairro;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Bairro;
+import service.BairroService;
 import view.bairro.TelaBuscaBairro;
 
 public class ControllerBuscaBairro {
@@ -11,6 +14,7 @@ public class ControllerBuscaBairro {
     public ControllerBuscaBairro(TelaBuscaBairro telaBuscaBairro) {
         this.telaBuscaBairro = telaBuscaBairro;
         setupActionListeners();
+        filtrarPesquisa();
     }
     
     private void setupActionListeners() {
@@ -28,7 +32,7 @@ public class ControllerBuscaBairro {
     private void filtrarPesquisa() {
         DefaultTableModel table = (DefaultTableModel) this.telaBuscaBairro.getjTable().getModel();
         table.setRowCount(0);
-        for (Bairro bairro : model.dao.Persiste.getInstancia().listaBairro) {
+        for (Bairro bairro : new BairroService().carregar()) {
             table.addRow(new Object[]{
                 bairro.getId(),
                 bairro.getDescricao()
