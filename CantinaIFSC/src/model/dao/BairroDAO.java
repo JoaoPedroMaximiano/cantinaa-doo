@@ -86,22 +86,24 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public Bairro retrive(String descricao) {
+    public List<Bairro> retrive(String descricao) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao FROM bairro WHERE descricao = ?";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        Bairro bairro = null;
+        List<Bairro> bairros = new ArrayList<>();
 
         try {
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1, descricao);
             rs = pstm.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("id");
-                bairro = new Bairro(id, descricao);
+                String descricaoPstm = rs.getString("descricao");
+                Bairro bairro = new Bairro(id, descricaoPstm);
+                bairros.add(bairro);
             }
 
         } catch (SQLException ex) {
@@ -110,7 +112,7 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairro;
+        return bairros;
     }
 
     @Override

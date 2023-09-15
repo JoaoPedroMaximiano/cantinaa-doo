@@ -18,7 +18,7 @@ public class BairroService {
         return new BairroDAO().retrive(id);
     }
 
-    public static Bairro carregar(String descricao){
+    public static List<Bairro> carregar(String descricao){
         return new BairroDAO().retrive(descricao);
     }
     

@@ -37,7 +37,7 @@ public class ControllerCadastroBairro {
         
         if (codigo != 0) {
             Bairro bairro = new Bairro();
-            bairro = model.dao.Persiste.getInstancia().listaBairro.get(codigo -1);
+            bairro = new model.dao.BairroDAO().retrive(codigo);
             
             ativa(false, this.telaCadastroBairro.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroBairro.getjPanelCorpo());
@@ -66,10 +66,12 @@ public class ControllerCadastroBairro {
     private void realizarAcaoGravar() {
         
         Bairro bairro = new Bairro();
-        bairro.setId(model.dao.Persiste.getInstancia().listaBairro.size() + 1);
         bairro.setDescricao(this.telaCadastroBairro.getjTextFieldDescricao().getText());
-        if (this.telaCadastroBairro.getjTextFieldID().getText().equals("")) {
-            model.dao.Persiste.getInstancia().listaBairro.add(bairro);
+        if (this.telaCadastroBairro.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.BairroService().adicionar(bairro);
+        } else {
+            bairro.setId(Integer.parseInt(this.telaCadastroBairro.getjTextFieldID().getText()));
+            new service.BairroService().atualizar(bairro);
         }
         ativa(true, telaCadastroBairro.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroBairro.getjPanelCorpo());
