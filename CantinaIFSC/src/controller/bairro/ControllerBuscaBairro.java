@@ -1,7 +1,5 @@
 package controller.bairro;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Bairro;
@@ -33,10 +31,11 @@ public class ControllerBuscaBairro {
     private void filtrarPesquisa() {
         DefaultTableModel table = (DefaultTableModel) this.telaBuscaBairro.getjTable().getModel();
         table.setRowCount(0);
-        for (Iterator<Bairro> it = (telaBuscaBairro.getjTextFieldDescricao().getText().isEmpty() 
-                ? new BairroService().carregar() : 
-                new BairroService().carregar(telaBuscaBairro.getjTextFieldDescricao().getText())) .iterator(); it.hasNext();) {
-            Bairro bairro = it.next();
+
+        String descricao = telaBuscaBairro.getjTextFieldDescricao().getText();
+        List<Bairro> bairros = descricao.isEmpty() ? BairroService.carregar() : BairroService.carregar(descricao);
+
+        for (Bairro bairro : bairros) {
             table.addRow(new Object[]{
                 bairro.getId(),
                 bairro.getDescricao()
