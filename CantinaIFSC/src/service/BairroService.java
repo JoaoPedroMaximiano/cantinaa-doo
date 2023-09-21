@@ -18,8 +18,8 @@ public class BairroService {
         return new BairroDAO().retrive(id);
     }
 
-    public static List<Bairro> carregar(String descricao){
-        return new BairroDAO().retrive(descricao);
+    public static List<Bairro> carregar(Bairro filtro){
+        return new BairroDAO().retrive(filtro);
     }
     
     public void atualizar(Bairro objeto){

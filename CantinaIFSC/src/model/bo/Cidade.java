@@ -43,8 +43,5 @@ public class Cidade {
 
     public void setUf(String uf) {
         this.uf = uf;
-    }
-    
-    
-    
+    }    
 }

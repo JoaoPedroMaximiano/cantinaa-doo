@@ -6,36 +6,36 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.bo.Bairro;
+import model.bo.Cidade;
 
-public class BairroDAO implements InterfaceDAO<Bairro> {
+public class CidadeDAO implements InterfaceDAO<Cidade> {
 
     @Override
-    public void create(Bairro objeto) {
+    public void create(Cidade objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO bairro (descricao) VALUES (?)";
+        String sql = "INSERT INTO cidade (descricao, uf) VALUES (?, ?)";
 
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1, objeto.getDescricao());
+            pstm.setString(2, objeto.getUf());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             ConnectionFactory.closeConnection(conexao, pstm);
-        }   
-        
+        }
     }
 
     @Override
-    public List<Bairro> retrive() {
+    public List<Cidade> retrive() {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao FROM bairro";
+        String sql = "SELECT id, descricao, uf FROM cidade";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<Bairro> bairros = new ArrayList<>();
+        List<Cidade> cidades = new ArrayList<>();
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -44,8 +44,9 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                Bairro bairro = new Bairro(id, descricao);
-                bairros.add(bairro);
+                String uf = rs.getString("uf");
+                Cidade cidade = new Cidade(id, descricao, uf);
+                cidades.add(cidade);
             }
 
         } catch (SQLException ex) {
@@ -54,17 +55,19 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairros;
-    }
+        return cidades;
 
+    }
+    
+    
     @Override
-    public Bairro retrive(int id) {
+    public Cidade retrive(int id) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao FROM bairro WHERE id = ?";
+        String sql = "SELECT id, descricao, uf FROM cidade WHERE id = ?";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        Bairro bairro = null;
+        Cidade cidade = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -73,7 +76,8 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
 
             if (rs.next()) {
                 String descricao = rs.getString("descricao");
-                bairro = new Bairro(id, descricao);
+                String uf = rs.getString("uf");
+                cidade = new Cidade(id, descricao, uf);
             }
 
         } catch (SQLException ex) {
@@ -82,13 +86,13 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairro;
+        return cidade;
     }
-
+    
     @Override
-    public List<Bairro> retrive(Bairro filtro) {
+    public List<Cidade> retrive(Cidade filtro) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao FROM bairro WHERE 1=1";
+        String sql = "SELECT id, descricao, uf FROM cidade WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
@@ -101,11 +105,16 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
                 sql += " AND descricao = ?";
                 parametros.add(filtro.getDescricao());
             }
+
+            if (filtro.getUf() != null && !filtro.getUf().isEmpty()) {
+                sql += " AND uf = ?";
+                parametros.add(filtro.getUf());
+            }
         }
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<Bairro> bairros = new ArrayList<>();
+        List<Cidade> cidades = new ArrayList<>();
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -123,9 +132,10 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String descricaoPstm = rs.getString("descricao");
-                Bairro bairro = new Bairro(id, descricaoPstm);
-                bairros.add(bairro);
+                String descricao = rs.getString("descricao");
+                String uf = rs.getString("uf");
+                Cidade cidade = new Cidade(id, descricao, uf);
+                cidades.add(cidade);
             }
 
         } catch (SQLException ex) {
@@ -134,20 +144,21 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairros;
+        return cidades;
     }
 
     @Override
-    public void update(Bairro objeto) {
+    public void update(Cidade objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "UPDATE bairro SET descricao = ? WHERE id = ?";
+        String sql = "UPDATE cidade SET descricao = ?, uf = ? WHERE id = ?";
 
         PreparedStatement pstm = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
             pstm.setString(1, objeto.getDescricao());
-            pstm.setInt(2, objeto.getId());
+            pstm.setString(2, objeto.getUf());
+            pstm.setInt(3, objeto.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -157,9 +168,9 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public void delete(Bairro objeto) {
+    public void delete(Cidade objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "DELETE FROM bairro WHERE id = ?";
+        String sql = "DELETE FROM cidade WHERE id = ?";
 
         PreparedStatement pstm = null;
 
