@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 import model.bo.Caixa;
 
 public class CaixaService {

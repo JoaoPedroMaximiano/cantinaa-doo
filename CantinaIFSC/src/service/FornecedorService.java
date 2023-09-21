@@ -1,5 +1,30 @@
 package service;
 
-public class FornecedorService {
+import java.util.List;
+import model.bo.Fornecedor;
 
+public class FornecedorService {
+    public void adicionar(Fornecedor objeto){
+        new FornecedorDAO().create(objeto);
+    }
+
+    public static List<Fornecedor> carregar(){
+        return new FornecedorDAO().retrive();
+    }
+
+    public static Fornecedor carregar(int id){
+        return new FornecedorDAO().retrive(id);
+    }
+
+    public static List<Fornecedor> carregar(Fornecedor filtro){
+        return new FornecedorDAO().retrive(filtro);
+    }
+
+    public void atualizar(Fornecedor objeto){
+        new FornecedorDAO().update(objeto);
+    }
+
+    public void deletar(Fornecedor objeto){
+        new FornecedorDAO().delete(objeto);
+    }
 }
