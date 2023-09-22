@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.Endereco;
+import model.dao.EnderecoDAO;
 
 public class EnderecoService {
     public void adicionar(Endereco objeto){

@@ -1,31 +1,31 @@
 package service;
 
 import java.util.List;
-import model.bo.Cidade;
-import model.dao.CidadeDAO;
+import model.bo.Cliente;
+import model.dao.ClienteDAO;
 
 public class ClienteService {
-    public void adicionar(Cidade objeto){
-        new CidadeDAO().create(objeto);
+    public void adicionar(Cliente objeto){
+        new ClienteDAO().create(objeto);
     }
 
-    public static List<Cidade> carregar(){
-        return new CidadeDAO().retrive();
+    public static List<Cliente> carregar(){
+        return new ClienteDAO().retrive();
     }
 
-    public static Cidade carregar(int id){
-        return new CidadeDAO().retrive(id);
+    public static Cliente carregar(int id){
+        return new ClienteDAO().retrive(id);
     }
 
-    public static List<Cidade> carregar(Cidade filtro){
-        return new CidadeDAO().retrive(filtro);
+    public static List<Cliente> carregar(Cliente filtro){
+        return new ClienteDAO().retrive(filtro);
     }
 
-    public void atualizar(Cidade objeto){
-        new CidadeDAO().update(objeto);
+    public void atualizar(Cliente objeto){
+        new ClienteDAO().update(objeto);
     }
 
-    public void deletar(Cidade objeto){
-        new CidadeDAO().delete(objeto);
+    public void deletar(Cliente objeto){
+        new ClienteDAO().delete(objeto);
     }
 }
