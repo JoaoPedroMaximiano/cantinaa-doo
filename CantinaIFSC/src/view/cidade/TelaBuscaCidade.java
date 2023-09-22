@@ -1,7 +1,9 @@
 package view.cidade;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class TelaBuscaCidade extends javax.swing.JDialog {
 
@@ -259,4 +261,20 @@ public class TelaBuscaCidade extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDescricao;
     private java.awt.Label labelTitulo;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getjComboBoxUF() {
+        return jComboBoxUF;
+    }
+
+    public void setjComboBoxUF(JComboBox<String> jComboBoxUF) {
+        this.jComboBoxUF = jComboBoxUF;
+    }
+
+    public JTextField getjTextFieldDescricao() {
+        return jTextFieldDescricao;
+    }
+
+    public void setjTextFieldDescricao(JTextField jTextFieldDescricao) {
+        this.jTextFieldDescricao = jTextFieldDescricao;
+    }
 }

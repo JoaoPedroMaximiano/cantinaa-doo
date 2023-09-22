@@ -1,7 +1,9 @@
 package controller.cidade;
 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Cidade;
+import service.CidadeService;
 import view.cidade.TelaBuscaCidade;
 
 public class ControllerBuscaCidade {
@@ -27,8 +29,17 @@ public class ControllerBuscaCidade {
 
     private void filtrarPesquisa() {
         DefaultTableModel table = (DefaultTableModel) this.telaBuscaCidade.getjTable().getModel();
+        
+        Cidade filtro = new Cidade();
+        filtro.setDescricao(telaBuscaCidade.getjTextFieldDescricao().getText());
+        filtro.setUf(telaBuscaCidade.getjComboBoxUF().getSelectedItem().toString());
+        
+        List<Cidade> cidades = (filtro.getDescricao().isEmpty() && filtro.getUf().isEmpty()) ?
+                CidadeService.carregar() :
+                CidadeService.carregar(filtro);
+
         table.setRowCount(0);
-        for (Cidade cidade : model.dao.Persiste.getInstancia().listaCidade) {
+        for (Cidade cidade : cidades) {
             table.addRow(new Object[]{
                 cidade.getId(),
                 cidade.getDescricao(),

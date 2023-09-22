@@ -38,7 +38,7 @@ public class ControllerCadastroCidade {
         
         if (codigo != 0) {
             Cidade cidade = new Cidade();
-            cidade = model.dao.Persiste.getInstancia().listaCidade.get(codigo -1);
+            cidade = service.CidadeService.carregar(codigo);
             
             ativa(false, this.telaCadastroCidade.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCidade.getjPanelCorpo());
@@ -66,10 +66,15 @@ public class ControllerCadastroCidade {
 
     private void realizarAcaoGravar() {
         Cidade cidade = new Cidade();
-        cidade.setId(model.dao.Persiste.getInstancia().listaCidade.size() + 1);
+        
         cidade.setDescricao(this.telaCadastroCidade.getjTextFieldDescricao().getText());
         cidade.setUf(this.telaCadastroCidade.getjComboBoxUF().getSelectedItem().toString());
-        model.dao.Persiste.getInstancia().listaCidade.add(cidade);
+        if (this.telaCadastroCidade.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.CidadeService().adicionar(cidade);
+        } else {
+            cidade.setId(Integer.parseInt(this.telaCadastroCidade.getjTextFieldID().getText()));
+            new service.CidadeService().atualizar(cidade);
+        }
         ativa(true, telaCadastroCidade.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCidade.getjPanelCorpo());   
     }
