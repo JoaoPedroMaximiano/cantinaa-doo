@@ -90,11 +90,10 @@ public class Compra {
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
-    
 
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", numeroNf=" + numeroNf + ", dataHoraCompra=" + dataHoraCompra + ", valorDesconto=" + valorDesconto + ", observacao=" + observacao + ", flagTipoDesconto=" + flagTipoDesconto + ", status=" + status + '}';
-    } 
-    
+        return "Compra{" + "id=" + id + ", numeroNf=" + numeroNf + ", dataHoraCompra=" + dataHoraCompra + ", valorDesconto=" + valorDesconto + ", observacao=" + observacao + ", flagTipoDesconto=" + flagTipoDesconto + ", status=" + status + ", fornecedor=" + fornecedor + '}';
+    }
+
 }
