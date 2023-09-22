@@ -1,41 +1,44 @@
 package model.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.bo.Bairro;
+import model.bo.Carteirinha;
+import model.bo.Cliente;
 
-public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
+public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
 
     @Override
-    public void create(Bairro objeto) {
+    public void create(Carteirinha objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO bairro (descricao) VALUES (?)";
+        String sql = "INSERT INTO carteirinha (cliente_id, codigoBarra, dataGeracao, dataCancelamento) VALUES (?, ?, ?, ?)";
 
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, objeto.getDescricao());
+            pstm.setInt(1, objeto.getCliente().getId());
+            pstm.setString(2, objeto.getCodigoBarra());
+            pstm.setString(3, objeto.getDataGeracao());
+            pstm.setString(4, objeto.getDataCancelamento());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             ConnectionFactory.closeConnection(conexao, pstm);
-        }   
-        
+        }
     }
 
     @Override
-    public List<Bairro> retrive() {
+    public List<Carteirinha> retrive() {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao FROM bairro";
+        String sql = "SELECT id, cliente_id, codigoBarra, dataGeracao, dataCancelamento FROM carteirinha";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<Bairro> bairros = new ArrayList<>();
+        List<Carteirinha> carteirinhas = new ArrayList<>();
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -43,9 +46,16 @@ public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String descricao = rs.getString("descricao");
-                Bairro bairro = new Bairro(id, descricao);
-                bairros.add(bairro);
+                int clienteId = rs.getInt("cliente_id");
+                String codigoBarra = rs.getString("codigoBarra");
+                String dataGeracao = rs.getString("dataGeracao");
+                String dataCancelamento = rs.getString("dataCancelamento");
+
+                ClienteDAO clienteDAO = new ClienteDAO();
+                Cliente cliente = clienteDAO.retrive(clienteId);
+
+                Carteirinha carteirinha = new Carteirinha(id, codigoBarra, dataGeracao, dataCancelamento, cliente);
+                carteirinhas.add(carteirinha);
             }
 
         } catch (SQLException ex) {
@@ -54,17 +64,17 @@ public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairros;
+        return carteirinhas;
     }
 
     @Override
-    public Bairro retrive(int id) {
+    public Carteirinha retrive(int id) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao FROM bairro WHERE id = ?";
+        String sql = "SELECT cliente_id, codigoBarra, dataGeracao, dataCancelamento FROM carteirinha WHERE id = ?";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        Bairro bairro = null;
+        Carteirinha carteirinha = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -72,8 +82,15 @@ public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
             rs = pstm.executeQuery();
 
             if (rs.next()) {
-                String descricao = rs.getString("descricao");
-                bairro = new Bairro(id, descricao);
+                int clienteId = rs.getInt("cliente_id");
+                String codigoBarra = rs.getString("codigoBarra");
+                String dataGeracao = rs.getString("dataGeracao");
+                String dataCancelamento = rs.getString("dataCancelamento");
+
+                ClienteDAO clienteDAO = new ClienteDAO();
+                Cliente cliente = clienteDAO.retrive(clienteId);
+
+                carteirinha = new Carteirinha(id, codigoBarra, dataGeracao, dataCancelamento, cliente);
             }
 
         } catch (SQLException ex) {
@@ -82,50 +99,67 @@ public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairro;
+        return carteirinha;
     }
 
     @Override
-    public List<Bairro> retrive(Bairro filtro) {
+    public List<Carteirinha> retrive(Carteirinha filtro) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao FROM bairro WHERE 1=1";
+        StringBuilder sql = new StringBuilder("SELECT c.id, c.cliente_id, c.codigoBarra, c.dataGeracao, c.dataCancelamento"
+                + " FROM carteirinha c"
+                + " INNER JOIN cliente cl ON c.cliente_id = cl.id"
+                + " WHERE 1=1");
+
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
-            if (filtro.getId() != 0) {
-                sql += " AND id = ?";
-                parametros.add(filtro.getId());
+            if (filtro.getCliente() != null) {
+                sql.append(" AND c.cliente_id = ?");
+                parametros.add(filtro.getCliente().getId());
             }
 
-            if (filtro.getDescricao() != null && !filtro.getDescricao().isEmpty()) {
-                sql += " AND descricao = ?";
-                parametros.add(filtro.getDescricao());
+            if (filtro.getCodigoBarra() != null && !filtro.getCodigoBarra().isEmpty()) {
+                sql.append(" AND c.codigoBarra = ?");
+                parametros.add(filtro.getCodigoBarra());
+            }
+
+            if (filtro.getDataGeracao() != null && !filtro.getDataGeracao().isEmpty()) {
+                sql.append(" AND c.dataGeracao = ?");
+                parametros.add(filtro.getDataGeracao());
+            }
+
+            if (filtro.getDataCancelamento() != null && !filtro.getDataCancelamento().isEmpty()) {
+                sql.append(" AND c.dataCancelamento = ?");
+                parametros.add(filtro.getDataCancelamento());
             }
         }
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<Bairro> bairros = new ArrayList<>();
+        List<Carteirinha> carteirinhas = new ArrayList<>();
 
         try {
-            pstm = conexao.prepareStatement(sql);
+            pstm = conexao.prepareStatement(sql.toString());
 
             for (int i = 0; i < parametros.size(); i++) {
                 Object parametro = parametros.get(i);
-                if (parametro instanceof Integer) {
-                    pstm.setInt(i + 1, (Integer) parametro);
-                } else if (parametro instanceof String) {
-                    pstm.setString(i + 1, (String) parametro);
-                }
+                pstm.setString(i + 1, parametro.toString());
             }
 
             rs = pstm.executeQuery();
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String descricaoPstm = rs.getString("descricao");
-                Bairro bairro = new Bairro(id, descricaoPstm);
-                bairros.add(bairro);
+                int clienteId = rs.getInt("cliente_id");
+                String codigoBarra = rs.getString("codigoBarra");
+                String dataGeracao = rs.getString("dataGeracao");
+                String dataCancelamento = rs.getString("dataCancelamento");
+
+                ClienteDAO clienteDAO = new ClienteDAO();
+                Cliente cliente = clienteDAO.retrive(clienteId);
+
+                Carteirinha carteirinha = new Carteirinha(id, codigoBarra, dataGeracao, dataCancelamento, cliente);
+                carteirinhas.add(carteirinha);
             }
 
         } catch (SQLException ex) {
@@ -134,20 +168,23 @@ public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return bairros;
+        return carteirinhas;
     }
 
     @Override
-    public void update(Bairro objeto) {
+    public void update(Carteirinha objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "UPDATE bairro SET descricao = ? WHERE id = ?";
+        String sql = "UPDATE carteirinha SET cliente_id = ?, codigoBarra = ?, dataGeracao = ?, dataCancelamento = ? WHERE id = ?";
 
         PreparedStatement pstm = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, objeto.getDescricao());
-            pstm.setInt(2, objeto.getId());
+            pstm.setInt(1, objeto.getCliente().getId());
+            pstm.setString(2, objeto.getCodigoBarra());
+            pstm.setString(3, objeto.getDataGeracao());
+            pstm.setString(4, objeto.getDataCancelamento());
+            pstm.setInt(5, objeto.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -157,9 +194,9 @@ public class CarteirinhaDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public void delete(Bairro objeto) {
+    public void delete(Carteirinha objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "DELETE FROM bairro WHERE id = ?";
+        String sql = "DELETE FROM carteirinha WHERE id = ?";
 
         PreparedStatement pstm = null;
 
