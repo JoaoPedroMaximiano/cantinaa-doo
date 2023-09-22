@@ -32,8 +32,9 @@ public class ControllerBuscaBairro {
         DefaultTableModel table = (DefaultTableModel) this.telaBuscaBairro.getjTable().getModel();
         table.setRowCount(0);
 
-        String descricao = telaBuscaBairro.getjTextFieldDescricao().getText();
-        List<Bairro> bairros = descricao.isEmpty() ? BairroService.carregar() : BairroService.carregar(descricao);
+        Bairro filtro = new Bairro();
+        filtro.setDescricao(telaBuscaBairro.getjTextFieldDescricao().getText());
+        List<Bairro> bairros = filtro.getDescricao().isEmpty() ? BairroService.carregar() : BairroService.carregar(filtro);
 
         for (Bairro bairro : bairros) {
             table.addRow(new Object[]{

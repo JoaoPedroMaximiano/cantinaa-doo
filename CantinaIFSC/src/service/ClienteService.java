@@ -2,9 +2,9 @@ package service;
 
 import java.util.List;
 import model.bo.Cidade;
+import model.dao.CidadeDAO;
 
 public class ClienteService {
-   
     public void adicionar(Cidade objeto){
         new CidadeDAO().create(objeto);
     }
@@ -27,5 +27,5 @@ public class ClienteService {
 
     public void deletar(Cidade objeto){
         new CidadeDAO().delete(objeto);
-     }
+    }
 }
