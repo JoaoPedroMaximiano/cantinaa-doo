@@ -5,7 +5,7 @@ import java.util.Date;
 public class Compra {
 
     private int id;
-    private int numberoNf;
+    private int numeroNf;
     private Date dataHoraCompra;
     private double valorDesconto;
     private String observacao;
@@ -15,9 +15,9 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(int id, int numberoNf, Date dataHoraCompra, double valorDesconto, String observacao, char flagTipoDesconto, char status) {
+    public Compra(int id, int numeroNf, Date dataHoraCompra, double valorDesconto, String observacao, char flagTipoDesconto, char status) {
         this.id = id;
-        this.numberoNf = numberoNf;
+        this.numeroNf = numeroNf;
         this.dataHoraCompra = dataHoraCompra;
         this.valorDesconto = valorDesconto;
         this.observacao = observacao;
@@ -33,12 +33,12 @@ public class Compra {
         this.id = id;
     }
 
-    public int getNumberoNf() {
-        return numberoNf;
+    public int getNumeroNf() {
+        return numeroNf;
     }
 
-    public void setNumberoNf(int numberoNf) {
-        this.numberoNf = numberoNf;
+    public void setNumeroNf(int numeroNf) {
+        this.numeroNf = numeroNf;
     }
 
     public Date getDataHoraCompra() {
@@ -83,7 +83,7 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", numberoNf=" + numberoNf + ", dataHoraCompra=" + dataHoraCompra + ", valorDesconto=" + valorDesconto + ", observacao=" + observacao + ", flagTipoDesconto=" + flagTipoDesconto + ", status=" + status + '}';
+        return "Compra{" + "id=" + id + ", numeroNf=" + numeroNf + ", dataHoraCompra=" + dataHoraCompra + ", valorDesconto=" + valorDesconto + ", observacao=" + observacao + ", flagTipoDesconto=" + flagTipoDesconto + ", status=" + status + '}';
     } 
     
 }
