@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.Carteirinha;
+import model.dao.CarteirinhaDAO;
 
 public class CarteirinhaService {
     public void adicionar(Carteirinha objeto){
@@ -26,4 +27,5 @@ public class CarteirinhaService {
 
     public void deletar(Carteirinha objeto){
         new CarteirinhaDAO().delete(objeto);
+    }
 }
