@@ -1,187 +1,125 @@
-package model.dao;
+package controller.cliente;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import model.bo.Cidade;
+import controller.endereco.ControllerCadastroEndereco;
+import model.bo.Cliente;
+import model.bo.Endereco;
+import static utilies.Utilities.ativa;
+import static utilies.Utilities.limpaCompenentes;
+import view.cliente.TelaBuscaCliente;
+import view.cliente.TelaCadastroCliente;
+import view.endereco.TelaCadastroEndereco;
 
-public class CidadeDAO implements InterfaceDAO<Cidade> {
+public class ControllerCadastroCliente {
 
-    @Override
-    public void create(Cidade objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO cidade (descricao, uf) VALUES (?, ?)";
+    static int codigo;
+    TelaCadastroCliente telaCadastroCliente;
 
-        PreparedStatement pstm = null;
-        try {
-            pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, objeto.getDescricao());
-            pstm.setString(2, objeto.getUf());
-            pstm.execute();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm);
+    public ControllerCadastroCliente(TelaCadastroCliente telaCadastroCliente) {
+        this.telaCadastroCliente = telaCadastroCliente;
+
+        setupActionListeners();
+
+        ativa(true, this.telaCadastroCliente.getjPanelBotoes());
+        limpaCompenentes(false, this.telaCadastroCliente.getjPanelCorpo());
+    }
+
+    private void setupActionListeners() {
+        telaCadastroCliente.getjButtonBuscar().addActionListener(e -> abrirTelaBuscaCliente());
+        telaCadastroCliente.getjButtonCancelar().addActionListener(e -> realizarAcaoCancelarGravar());
+        telaCadastroCliente.getjButtonGravar().addActionListener(e -> realizarAcaoGravar());
+        telaCadastroCliente.getjButtonNovo().addActionListener(e -> realizarAcaoNovo());
+        telaCadastroCliente.getjButtonSair().addActionListener(e -> fecharTelaCadastroCliente());
+        telaCadastroCliente.getjButtonAdd().addActionListener(e -> abrirTelaCadastroEndereco());
+        telaCadastroCliente.getjButtonSearch().addActionListener(e -> abrirTelaBuscaEndereco());
+    }
+
+    private void abrirTelaBuscaCliente() {
+        
+        codigo = 0;
+        
+        TelaBuscaCliente telaBuscaCliente = new TelaBuscaCliente(null, true);
+        ControllerBuscaCliente controllerBuscaCliente = new ControllerBuscaCliente(telaBuscaCliente);
+        telaBuscaCliente.setVisible(true);
+        if (codigo != 0) {
+            Cliente cliente = new Cliente();
+            cliente = model.dao.Persiste.getInstancia().listaCliente.get(codigo -1);
+            ativa(false, this.telaCadastroCliente.getjPanelBotoes());
+            limpaCompenentes(true, this.telaCadastroCliente.getjPanelCorpo());
+
+            String status = String.valueOf(cliente.getStatus());
+            this.telaCadastroCliente.getjTextFieldID().setText(cliente.getId() + "");
+            this.telaCadastroCliente.getjFormattedTextFieldCEP().setText(cliente.getEndereco().getCep());
+            this.telaCadastroCliente.getjFormattedTextFieldCPF().setText(cliente.getCpf());
+            this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().setText(cliente.getDataNascimento());
+            this.telaCadastroCliente.getjFormattedTextFieldMatricula().setText(cliente.getMatricula());
+            this.telaCadastroCliente.getjFormattedTextFieldRG().setText(cliente.getRg());
+            this.telaCadastroCliente.getjFormattedTextFieldTelefone1().setText(cliente.getFone1());
+            this.telaCadastroCliente.getjFormattedTextFieldTelefone2().setText(cliente.getFone2());
+            this.telaCadastroCliente.getjComboBoxStatus().setSelectedItem(
+                status.equals("1") ? "Ativo" : (status.equals("2") ? "Desativado" : "Pendente")
+            );
+            this.telaCadastroCliente.getjTextEmail().setText(cliente.getEmail());
+            this.telaCadastroCliente.getjTextFieldBairro().setText(cliente.getEndereco().getBairro().getDescricao());
+            this.telaCadastroCliente.getjTextFieldCidade().setText(cliente.getEndereco().getCidade().getDescricao());
+            this.telaCadastroCliente.getjTextFieldComplementoEndereco().setText(cliente.getComplementoEndereco());
+            this.telaCadastroCliente.getjTextFieldLogradouro().setText(cliente.getEndereco().getLogradouro());
+            this.telaCadastroCliente.getjTextFieldNome().setText(cliente.getNome());
+            this.telaCadastroCliente.getjTextFieldID().setEnabled(false);
         }
     }
 
-    @Override
-    public List<Cidade> retrive() {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao, uf FROM cidade";
-
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        List<Cidade> cidades = new ArrayList<>();
-
-        try {
-            pstm = conexao.prepareStatement(sql);
-            rs = pstm.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String descricao = rs.getString("descricao");
-                String uf = rs.getString("uf");
-                Cidade cidade = new Cidade(id, descricao, uf);
-                cidades.add(cidade);
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm, rs);
-        }
-
-        return cidades;
-
+    private void realizarAcaoCancelarGravar() {
+        ativa(true, telaCadastroCliente.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo());
     }
-    
-    
-    @Override
-    public Cidade retrive(int id) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao, uf FROM cidade WHERE id = ?";
 
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        Cidade cidade = null;
+    private void realizarAcaoNovo() {
+        ativa(false, telaCadastroCliente.getjPanelBotoes());
+        limpaCompenentes(true, telaCadastroCliente.getjPanelCorpo());
+    }
 
-        try {
-            pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, id);
-            rs = pstm.executeQuery();
-
-            if (rs.next()) {
-                String descricao = rs.getString("descricao");
-                String uf = rs.getString("uf");
-                cidade = new Cidade(id, descricao, uf);
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm, rs);
-        }
-
-        return cidade;
+    private void fecharTelaCadastroCliente() {
+        telaCadastroCliente.dispose();
     }
     
-    @Override
-    public List<Cidade> retrive(Cidade filtro) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao, uf FROM cidade WHERE 1=1";
-        List<Object> parametros = new ArrayList<>();
+    private void abrirTelaCadastroEndereco(){
+        TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
+        ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
+        telaCadastroEndereco.setVisible(true);      
+    }   
 
-        if (filtro != null) {
-            if (filtro.getId() != 0) {
-                sql += " AND id = ?";
-                parametros.add(filtro.getId());
-            }
-
-            if (filtro.getDescricao() != null && !filtro.getDescricao().isEmpty()) {
-                sql += " AND descricao = ?";
-                parametros.add(filtro.getDescricao());
-            }
-
-            if (filtro.getUf() != null && !filtro.getUf().isEmpty()) {
-                sql += " AND uf = ?";
-                parametros.add(filtro.getUf());
+    private void realizarAcaoGravar() {
+        Cliente cliente = new Cliente();
+        cliente.setId(model.dao.Persiste.getInstancia().listaCliente.size() + 1);
+        cliente.setNome(this.telaCadastroCliente.getjTextFieldNome().getText());
+        cliente.setCpf(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText());
+        cliente.setRg(this.telaCadastroCliente.getjFormattedTextFieldRG().getText());
+        cliente.setMatricula(this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText());
+        cliente.setDataNascimento(this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText());
+        cliente.setFone1(this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText());
+        cliente.setFone2(this.telaCadastroCliente.getjFormattedTextFieldTelefone2().getText());
+        cliente.setEmail(this.telaCadastroCliente.getjTextEmail().getText());
+        
+        String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
+        cliente.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
+                cliente.setEndereco(endereco);
             }
         }
-
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        List<Cidade> cidades = new ArrayList<>();
-
-        try {
-            pstm = conexao.prepareStatement(sql);
-
-            for (int i = 0; i < parametros.size(); i++) {
-                Object parametro = parametros.get(i);
-                if (parametro instanceof Integer) {
-                    pstm.setInt(i + 1, (Integer) parametro);
-                } else if (parametro instanceof String) {
-                    pstm.setString(i + 1, (String) parametro);
-                }
-            }
-
-            rs = pstm.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String descricao = rs.getString("descricao");
-                String uf = rs.getString("uf");
-                Cidade cidade = new Cidade(id, descricao, uf);
-                cidades.add(cidade);
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm, rs);
-        }
-
-        return cidades;
+        
+        model.dao.Persiste.getInstancia().listaCliente.add(cliente);
+        ativa(true, telaCadastroCliente.getjPanelBotoes());
+        limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo()); 
     }
 
-    @Override
-    public void update(Cidade objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sql = "UPDATE cidade SET descricao = ?, uf = ? WHERE id = ?";
-
-        PreparedStatement pstm = null;
-
-        try {
-            pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, objeto.getDescricao());
-            pstm.setString(2, objeto.getUf());
-            pstm.setInt(3, objeto.getId());
-            pstm.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm);
-        }
-    }
-
-    @Override
-    public void delete(Cidade objeto) {
-        Connection conexao = ConnectionFactory.getConnection();
-        String sql = "DELETE FROM cidade WHERE id = ?";
-
-        PreparedStatement pstm = null;
-
-        try {
-            pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, objeto.getId());
-            pstm.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm);
-        }
+    private void abrirTelaBuscaEndereco() {
+        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
+            if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
+                this.telaCadastroCliente.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
+                this.telaCadastroCliente.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
+                this.telaCadastroCliente.getjTextFieldLogradouro().setText(endereco.getLogradouro());
+            }
+        }   
     }
 }

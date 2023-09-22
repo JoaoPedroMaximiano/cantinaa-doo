@@ -60,7 +60,7 @@ public class ControllerCadastroFornecedor {
             );
             this.telaCadastroFornecedor.getjTextFieldBairro().setText(fornecedor.getEndereco().getBairro().getDescricao());
             this.telaCadastroFornecedor.getjTextFieldCidade().setText(fornecedor.getEndereco().getCidade().getDescricao());
-            this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().setText(fornecedor.getComplementeEndereco());
+            this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().setText(fornecedor.getComplementoEndereco());
             this.telaCadastroFornecedor.getjTextFieldInscricaoEstadual().setText(fornecedor.getInscricaoEstadual());
             this.telaCadastroFornecedor.getjTextFieldLogradouro().setText(fornecedor.getEndereco().getLogradouro());
             this.telaCadastroFornecedor.getjTextFieldNome().setText(fornecedor.getNome());
@@ -100,7 +100,7 @@ public class ControllerCadastroFornecedor {
         fornecedor.setFone1(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone1().getText());
         fornecedor.setFone2(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone2().getText());
         fornecedor.setEmail(this.telaCadastroFornecedor.getjTextEmail().getText());
-        fornecedor.setComplementeEndereco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
+        fornecedor.setComplementoEndereco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
         String status = this.telaCadastroFornecedor.getjComboBoxStatus().getSelectedItem().toString();
         fornecedor.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
         for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {

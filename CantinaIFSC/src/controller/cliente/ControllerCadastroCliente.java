@@ -61,7 +61,7 @@ public class ControllerCadastroCliente {
             this.telaCadastroCliente.getjTextEmail().setText(cliente.getEmail());
             this.telaCadastroCliente.getjTextFieldBairro().setText(cliente.getEndereco().getBairro().getDescricao());
             this.telaCadastroCliente.getjTextFieldCidade().setText(cliente.getEndereco().getCidade().getDescricao());
-            this.telaCadastroCliente.getjTextFieldComplementoEndereco().setText(cliente.getComplementeEndereco());
+            this.telaCadastroCliente.getjTextFieldComplementoEndereco().setText(cliente.getComplementoEndereco());
             this.telaCadastroCliente.getjTextFieldLogradouro().setText(cliente.getEndereco().getLogradouro());
             this.telaCadastroCliente.getjTextFieldNome().setText(cliente.getNome());
             this.telaCadastroCliente.getjTextFieldID().setEnabled(false);

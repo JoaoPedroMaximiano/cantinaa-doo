@@ -61,7 +61,7 @@ public class ControllerCadastroFuncionario {
             );
             this.telaCadastroFuncionario.getjTextFieldBairro().setText(funcionario.getEndereco().getBairro().getDescricao());
             this.telaCadastroFuncionario.getjTextFieldCidade().setText(funcionario.getEndereco().getCidade().getDescricao());
-            this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().setText(funcionario.getComplementeEndereco());
+            this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().setText(funcionario.getComplementoEndereco());
             this.telaCadastroFuncionario.getjTextFieldLogradouro().setText(funcionario.getEndereco().getLogradouro());
             this.telaCadastroFuncionario.getjTextFieldNome().setText(funcionario.getNome());
             this.telaCadastroFuncionario.getjTextEmail().setText(funcionario.getEmail());
@@ -103,7 +103,7 @@ public class ControllerCadastroFuncionario {
         funcionario.setEmail(this.telaCadastroFuncionario.getjTextEmail().getText());
         funcionario.setSenha(this.telaCadastroFuncionario.getjPasswordFieldSenha().getText());
         funcionario.setUsuario(this.telaCadastroFuncionario.getjTextFieldUsuario().getText());
-        funcionario.setComplementeEndereco(this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().getText());
+        funcionario.setComplementoEndereco(this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().getText());
         
         String status = this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem().toString();
         funcionario.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
