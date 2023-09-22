@@ -27,4 +27,5 @@ public class CarteirinhaService {
 
     public void deletar(Carteirinha objeto){
         new CarteirinhaDAO().delete(objeto);
+    }
 }
