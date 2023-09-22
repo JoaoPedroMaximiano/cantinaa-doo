@@ -11,11 +11,12 @@ public class Compra {
     private String observacao;
     private char flagTipoDesconto;
     private char status;
+    private Fornecedor fornecedor;
 
     public Compra() {
     }
 
-    public Compra(int id, int numeroNf, Date dataHoraCompra, double valorDesconto, String observacao, char flagTipoDesconto, char status) {
+    public Compra(int id, int numeroNf, Date dataHoraCompra, double valorDesconto, String observacao, char flagTipoDesconto, char status, Fornecedor fornecedor) {
         this.id = id;
         this.numeroNf = numeroNf;
         this.dataHoraCompra = dataHoraCompra;
@@ -23,6 +24,7 @@ public class Compra {
         this.observacao = observacao;
         this.flagTipoDesconto = flagTipoDesconto;
         this.status = status;
+        this.fornecedor = fornecedor;
     }
 
     public int getId() {
@@ -80,6 +82,15 @@ public class Compra {
     public void setStatus(char status) {
         this.status = status;
     }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+    
 
     @Override
     public String toString() {
