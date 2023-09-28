@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.ItemCompra;
+import model.dao.ItemCompraDAO;
 
 public class ItemCompraService {
     public void adicionar(ItemCompra objeto){
