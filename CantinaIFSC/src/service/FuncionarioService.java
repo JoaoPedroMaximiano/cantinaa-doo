@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.Funcionario;
+import model.dao.FuncionarioDAO;
 
 public class FuncionarioService {
     public void adicionar(Funcionario objeto){
