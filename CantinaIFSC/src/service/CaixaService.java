@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.Caixa;
+import model.dao.CaixaDAO;
 
 public class CaixaService {
 
