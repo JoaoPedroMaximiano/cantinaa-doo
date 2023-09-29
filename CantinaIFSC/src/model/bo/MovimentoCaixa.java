@@ -11,11 +11,12 @@ public class MovimentoCaixa {
     private char flagTipoMovimento;
     private char status;
     private Caixa caixa;
-
+    private Contas contas;
+    
     public MovimentoCaixa() {
     }
 
-    public MovimentoCaixa(int id, Date dataHoraMovimento, double valorMovimento, String observacao, char flagTipoMovimento, char status, Caixa caixa) {
+    public MovimentoCaixa(int id, Date dataHoraMovimento, double valorMovimento, String observacao, char flagTipoMovimento, char status, Caixa caixa, Contas contas) {
         this.id = id;
         this.dataHoraMovimento = dataHoraMovimento;
         this.valorMovimento = valorMovimento;
@@ -23,8 +24,9 @@ public class MovimentoCaixa {
         this.flagTipoMovimento = flagTipoMovimento;
         this.status = status;
         this.caixa = caixa;
+        this.contas = contas;
     }
-
+    
     public int getId() {
         return id;
     }
@@ -81,9 +83,17 @@ public class MovimentoCaixa {
         this.caixa = caixa;
     }
 
+    public Contas getContas() {
+        return contas;
+    }
+
+    public void setContas(Contas contas) {
+        this.contas = contas;
+    }
+
     @Override
     public String toString() {
-        return "MovimentoCaixa{" + "id=" + id + ", dataHoraMovimento=" + dataHoraMovimento + ", valorMovimento=" + valorMovimento + ", observacao=" + observacao + ", flagTipoMovimento=" + flagTipoMovimento + ", status=" + status + ", caixa=" + caixa + '}';
+        return "MovimentoCaixa{" + "id=" + id + ", dataHoraMovimento=" + dataHoraMovimento + ", valorMovimento=" + valorMovimento + ", observacao=" + observacao + ", flagTipoMovimento=" + flagTipoMovimento + ", status=" + status + ", caixa=" + caixa + ", contas=" + contas + '}';
     }
     
 }

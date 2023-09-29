@@ -41,7 +41,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
     }
 
     @Override
-    public List<Compra> retrive() {
+    public List<Compra> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, fornecedor_id, numeroNf, valorDesconto, flagTipoDesconto, status, observacao, dataHoraCompra FROM compra";
 
@@ -63,7 +63,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
                 String observacao = rs.getString("observacao");
                 String dataHoraCompra = rs.getString("dataHoraCompra");
 
-                Fornecedor fornecedor = new FornecedorDAO().retrive(fornecedorId);
+                Fornecedor fornecedor = new FornecedorDAO().retrieve(fornecedorId);
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 java.util.Date dataHora = sdf.parse(dataHoraCompra);
@@ -81,7 +81,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
     }
 
     @Override
-    public Compra retrive(int id) {
+    public Compra retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT fornecedor_id, numeroNf, valorDesconto, flagTipoDesconto, status, observacao, dataHoraCompra FROM compra WHERE id = ?";
 
@@ -103,7 +103,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
                 String observacao = rs.getString("observacao");
                 String dataHoraCompra = rs.getString("dataHoraCompra");
 
-                Fornecedor fornecedor = new FornecedorDAO().retrive(fornecedorId);
+                Fornecedor fornecedor = new FornecedorDAO().retrieve(fornecedorId);
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 java.util.Date dataHora = sdf.parse(dataHoraCompra);
@@ -120,7 +120,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
     }
 
     @Override
-    public List<Compra> retrive(Compra filtro) {
+    public List<Compra> retrieve(Compra filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, fornecedor_id, numeroNf, valorDesconto, flagTipoDesconto, status, observacao, dataHoraCompra FROM compra WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
@@ -195,7 +195,7 @@ public class CompraDAO implements InterfaceDAO<Compra> {
                 String observacao = rs.getString("observacao");
                 String dataHoraCompra = rs.getString("dataHoraCompra");
 
-                Fornecedor fornecedor = new FornecedorDAO().retrive(fornecedorId);
+                Fornecedor fornecedor = new FornecedorDAO().retrieve(fornecedorId);
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 java.util.Date dataHora = sdf.parse(dataHoraCompra);

@@ -29,7 +29,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     }
 
     @Override
-    public List<Cidade> retrive() {
+    public List<Cidade> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao, uf FROM cidade";
 
@@ -61,7 +61,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     
     
     @Override
-    public Cidade retrive(int id) {
+    public Cidade retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao, uf FROM cidade WHERE id = ?";
 
@@ -90,7 +90,7 @@ public class CidadeDAO implements InterfaceDAO<Cidade> {
     }
     
     @Override
-    public List<Cidade> retrive(Cidade filtro) {
+    public List<Cidade> retrieve(Cidade filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao, uf FROM cidade WHERE 1=1";
         List<Object> parametros = new ArrayList<>();

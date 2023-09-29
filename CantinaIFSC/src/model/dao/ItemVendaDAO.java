@@ -6,25 +6,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.bo.Compra;
-import model.bo.ItemCompra;
+import model.bo.ItemVenda;
 import model.bo.Produto;
+import model.bo.Venda;
 
-public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
+public class ItemVendaDAO implements InterfaceDAO<ItemVenda> {
 
     @Override
-    public void create(ItemCompra itemCompra) {
+    public void create(ItemVenda itemVenda) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO itemcompra (compra_id, produto_id, qtdProduto, valorUnitario, status) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO itemvenda (venda_id, produto_id, qtdProduto, valorUnitario, status) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, itemCompra.getCompra().getId());
-            pstm.setInt(2, itemCompra.getProduto().getId());
-            pstm.setDouble(3, itemCompra.getQtdProduto());
-            pstm.setDouble(4, itemCompra.getValorUnitario());
-            pstm.setString(5, String.valueOf(itemCompra.getStatus()));
+            pstm.setInt(1, itemVenda.getVenda().getId());
+            pstm.setInt(2, itemVenda.getProduto().getId());
+            pstm.setDouble(3, itemVenda.getQtdProduto());
+            pstm.setDouble(4, itemVenda.getValorUnitario());
+            pstm.setString(5, String.valueOf(itemVenda.getStatus()));
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -34,13 +34,13 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
     }
 
     @Override
-    public List<ItemCompra> retrieve() {
+    public List<ItemVenda> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, compra_id, produto_id, qtdProduto, valorUnitario, status FROM itemcompra";
+        String sql = "SELECT venda_id, produto_id, qtdProduto, valorUnitario, status FROM itemvenda";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<ItemCompra> itensCompra = new ArrayList<>();
+        List<ItemVenda> itensVenda = new ArrayList<>();
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -48,35 +48,36 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                int compraId = rs.getInt("compra_id");
+                int vendaId = rs.getInt("venda_id");
                 int produtoId = rs.getInt("produto_id");
                 double qtdProduto = rs.getDouble("qtdProduto");
                 double valorUnitario = rs.getDouble("valorUnitario");
                 char status = rs.getString("status").charAt(0);
 
-                Compra compra = new CompraDAO().retrieve(compraId);
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
+                Venda venda = new VendaDAO().retrieve(vendaId);
 
-                ItemCompra itemCompra = new ItemCompra(id, qtdProduto, valorUnitario, status, compra, produto);
-                itensCompra.add(itemCompra);
+                ItemVenda itemVenda = new ItemVenda(id, qtdProduto, valorUnitario, status, produto, venda);
+                itensVenda.add(itemVenda);
             }
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return itensCompra;
+        return itensVenda;
     }
 
     @Override
-    public ItemCompra retrieve(int id) {
+    public ItemVenda retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT compra_id, produto_id, qtdProduto, valorUnitario, status FROM itemcompra WHERE id = ?";
+        String sql = "SELECT venda_id, produto_id, qtdProduto, valorUnitario, status FROM itemvenda WHERE id = ?";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        ItemCompra itemCompra = null;
+        ItemVenda itemVenda = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -84,30 +85,31 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
             rs = pstm.executeQuery();
 
             if (rs.next()) {
-                int compraId = rs.getInt("compra_id");
+                int vendaId = rs.getInt("venda_id");
                 int produtoId = rs.getInt("produto_id");
                 double qtdProduto = rs.getDouble("qtdProduto");
                 double valorUnitario = rs.getDouble("valorUnitario");
                 char status = rs.getString("status").charAt(0);
 
-                Compra compra = new CompraDAO().retrieve(compraId);
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
+                Venda venda = new VendaDAO().retrieve(vendaId);
 
-                itemCompra = new ItemCompra(id, qtdProduto, valorUnitario, status, compra, produto);
+                itemVenda = new ItemVenda(id, qtdProduto, valorUnitario, status, produto, venda);
             }
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return itemCompra;
+        return itemVenda;
     }
-    
+
     @Override
-    public List<ItemCompra> retrieve(ItemCompra filtro) {
+    public List<ItemVenda> retrieve(ItemVenda filtro) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, compra_id, produto_id, qtdProduto, valorUnitario, status FROM itemcompra WHERE 1=1";
+        String sql = "SELECT venda_id, produto_id, qtdProduto, valorUnitario, status FROM itemvenda WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
@@ -116,9 +118,9 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
                 parametros.add(filtro.getId());
             }
 
-            if (filtro.getCompra() != null && filtro.getCompra().getId() != 0) {
-                sql += " AND compra_id = ?";
-                parametros.add(filtro.getCompra().getId());
+            if (filtro.getVenda() != null && filtro.getVenda().getId() != 0) {
+                sql += " AND venda_id = ?";
+                parametros.add(filtro.getVenda().getId());
             }
 
             if (filtro.getProduto() != null && filtro.getProduto().getId() != 0) {
@@ -126,25 +128,25 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
                 parametros.add(filtro.getProduto().getId());
             }
 
-            if (filtro.getQtdProduto() != 0) {
+            if (filtro.getQtdProduto() != 0.0) {
                 sql += " AND qtdProduto = ?";
                 parametros.add(filtro.getQtdProduto());
             }
 
-            if (filtro.getValorUnitario() != 0) {
+            if (filtro.getValorUnitario() != 0.0) {
                 sql += " AND valorUnitario = ?";
                 parametros.add(filtro.getValorUnitario());
             }
 
-            if (filtro.getStatus() != '\u0000') {
+            if (filtro.getStatus() != '\0') {
                 sql += " AND status = ?";
-                parametros.add(String.valueOf(filtro.getStatus()));
+                parametros.add(filtro.getStatus());
             }
         }
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<ItemCompra> itensCompra = new ArrayList<>();
+        List<ItemVenda> itensVenda = new ArrayList<>();
 
         try {
             pstm = conexao.prepareStatement(sql);
@@ -153,10 +155,12 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
                 Object parametro = parametros.get(i);
                 if (parametro instanceof Integer) {
                     pstm.setInt(i + 1, (Integer) parametro);
-                } else if (parametro instanceof Double) {
-                    pstm.setDouble(i + 1, (Double) parametro);
                 } else if (parametro instanceof String) {
                     pstm.setString(i + 1, (String) parametro);
+                } else if (parametro instanceof Double) {
+                    pstm.setDouble(i + 1, (Double) parametro);
+                } else if (parametro instanceof Character) {
+                    pstm.setString(i + 1, String.valueOf(parametro));
                 }
             }
 
@@ -164,17 +168,17 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                int compraId = rs.getInt("compra_id");
+                int vendaId = rs.getInt("venda_id");
                 int produtoId = rs.getInt("produto_id");
                 double qtdProduto = rs.getDouble("qtdProduto");
                 double valorUnitario = rs.getDouble("valorUnitario");
                 char status = rs.getString("status").charAt(0);
 
-                Compra compra = new CompraDAO().retrieve(compraId);
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
+                Venda venda = new VendaDAO().retrieve(vendaId);
 
-                ItemCompra itemCompra = new ItemCompra(id, qtdProduto, valorUnitario, status, compra, produto);
-                itensCompra.add(itemCompra);
+                ItemVenda itemVenda = new ItemVenda(id, qtdProduto, valorUnitario, status, produto, venda);
+                itensVenda.add(itemVenda);
             }
 
         } catch (SQLException ex) {
@@ -183,24 +187,24 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
             ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
 
-        return itensCompra;
+        return itensVenda;
     }
 
     @Override
-    public void update(ItemCompra itemCompra) {
+    public void update(ItemVenda itemVenda) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "UPDATE itemcompra SET compra_id = ?, produto_id = ?, qtdProduto = ?, valorUnitario = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE itemvenda SET venda_id = ?, produto_id = ?, qtdProduto = ?, valorUnitario = ?, status = ? WHERE id = ?";
 
         PreparedStatement pstm = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, itemCompra.getCompra().getId());
-            pstm.setInt(2, itemCompra.getProduto().getId());
-            pstm.setDouble(3, itemCompra.getQtdProduto());
-            pstm.setDouble(4, itemCompra.getValorUnitario());
-            pstm.setString(5, String.valueOf(itemCompra.getStatus()));
-            pstm.setInt(6, itemCompra.getId());
+            pstm.setInt(1, itemVenda.getVenda().getId());
+            pstm.setInt(2, itemVenda.getProduto().getId());
+            pstm.setDouble(3, itemVenda.getQtdProduto());
+            pstm.setDouble(4, itemVenda.getValorUnitario());
+            pstm.setString(5, String.valueOf(itemVenda.getStatus()));
+            pstm.setInt(6, itemVenda.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -210,15 +214,15 @@ public class ItemCompraDAO implements InterfaceDAO<ItemCompra> {
     }
 
     @Override
-    public void delete(ItemCompra itemCompra) {
+    public void delete(ItemVenda itemVenda) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "DELETE FROM itemcompra WHERE id = ?";
+        String sql = "DELETE FROM itemvenda WHERE id = ?";
 
         PreparedStatement pstm = null;
 
         try {
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, itemCompra.getId());
+            pstm.setInt(1, itemVenda.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -10,15 +10,15 @@ public class VendaService {
     }
 
     public static List<Venda> carregar(){
-        return new VendaDAO().retrive();
+        return new VendaDAO().retrieve();
     }
 
     public static Venda carregar(int id){
-        return new VendaDAO().retrive(id);
+        return new VendaDAO().retrieve(id);
     }
 
     public static List<Venda> carregar(Venda filtro){
-        return new VendaDAO().retrive(filtro);
+        return new VendaDAO().retrieve(filtro);
     }
 
     public void atualizar(Venda objeto){

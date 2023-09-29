@@ -30,7 +30,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     }
 
     @Override
-    public List<Produto> retrive() {
+    public List<Produto> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao, codigoBarra, status FROM produto";
 
@@ -62,7 +62,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     }
 
     @Override
-    public Produto retrive(int id) {
+    public Produto retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT descricao, codigoBarra, status FROM produto WHERE id = ?";
 
@@ -93,7 +93,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     }
 
     @Override
-    public List<Produto> retrive(Produto filtro) {
+    public List<Produto> retrieve(Produto filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         StringBuilder sql = new StringBuilder("SELECT id, descricao, codigoBarra, status FROM produto WHERE 1=1");
         List<Object> parametros = new ArrayList<>();

@@ -35,7 +35,7 @@ public class CaixaDAO implements InterfaceDAO<Caixa> {
     }
 
     @Override
-    public List<Caixa> retrive() {
+    public List<Caixa> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, funcionario_id, valorAberto, valorFechamento, observacao, status, dataHoraAbertura, dataHoraFechamento FROM caixa";
 
@@ -57,7 +57,7 @@ public class CaixaDAO implements InterfaceDAO<Caixa> {
                 String dataHoraAbertura = rs.getString("dataHoraAbertura");
                 String dataHoraFechamento = rs.getString("dataHoraFechamento");
 
-                Funcionario funcionario = new FuncionarioDAO().retrive(funcionarioId);
+                Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
                 Caixa caixa = new Caixa(id, dataHoraAbertura, dataHoraFechamento, valorAbertura, valorFechamento, observacao, status, funcionario);
                 caixas.add(caixa);
@@ -72,7 +72,7 @@ public class CaixaDAO implements InterfaceDAO<Caixa> {
     }
 
     @Override
-    public Caixa retrive(int id) {
+    public Caixa retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT funcionario_id, valorAberto, valorFechamento, observacao, status, dataHoraAbertura, dataHoraFechamento FROM caixa WHERE id = ?";
 
@@ -94,7 +94,7 @@ public class CaixaDAO implements InterfaceDAO<Caixa> {
                 String dataHoraAbertura = rs.getString("dataHoraAbertura");
                 String dataHoraFechamento = rs.getString("dataHoraFechamento");
 
-                Funcionario funcionario = new FuncionarioDAO().retrive(funcionarioId);
+                Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
                 caixa = new Caixa(id, dataHoraAbertura, dataHoraFechamento, valorAbertura, valorFechamento, observacao, status, funcionario);
             }
@@ -108,7 +108,7 @@ public class CaixaDAO implements InterfaceDAO<Caixa> {
     }
     
     @Override
-    public List<Caixa> retrive(Caixa filtro) {
+    public List<Caixa> retrieve(Caixa filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, funcionario_id, valorAberto, valorFechamento, observacao, status, dataHoraAbertura, dataHoraFechamento FROM caixa WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
@@ -185,7 +185,7 @@ public class CaixaDAO implements InterfaceDAO<Caixa> {
                 String dataHoraAbertura = rs.getString("dataHoraAbertura");
                 String dataHoraFechamento = rs.getString("dataHoraFechamento");
 
-                Funcionario funcionario = new FuncionarioDAO().retrive(funcionarioId);
+                Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
                 Caixa caixa = new Caixa(id, dataHoraAbertura, dataHoraFechamento, valorAbertura, valorFechamento, observacao, status, funcionario);
                 caixas.add(caixa);

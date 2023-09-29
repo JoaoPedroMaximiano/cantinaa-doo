@@ -39,7 +39,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
     }
 
     @Override
-    public List<Funcionario> retrive() {
+    public List<Funcionario> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, endereco_id, nome, email, fone1, fone2, status, complementoEndereco, cpf, rg, usuario, senha FROM funcionario";
 
@@ -65,7 +65,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
                 String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
 
-                Endereco endereco = new EnderecoDAO().retrive(enderecoId);
+                Endereco endereco = new EnderecoDAO().retrieve(enderecoId);
 
                 Funcionario funcionario = new Funcionario(cpf, rg, usuario, senha, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
                 funcionarios.add(funcionario);
@@ -81,7 +81,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
     }
 
     @Override
-    public Funcionario retrive(int id) {
+    public Funcionario retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT endereco_id, nome, email, fone1, fone2, status, complementoEndereco, cpf, rg, usuario, senha FROM funcionario WHERE id = ?";
 
@@ -107,7 +107,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
                 String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
 
-                Endereco endereco = new EnderecoDAO().retrive(enderecoId);
+                Endereco endereco = new EnderecoDAO().retrieve(enderecoId);
 
                 funcionario = new Funcionario(cpf, rg, usuario, senha, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
             }
@@ -122,7 +122,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
     }
 
     @Override
-    public List<Funcionario> retrive(Funcionario filtro) {
+    public List<Funcionario> retrieve(Funcionario filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, endereco_id, nome, email, fone1, fone2, status, complementoEndereco, cpf, rg, usuario, senha FROM funcionario WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
@@ -214,7 +214,7 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
                 String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
 
-                Endereco endereco = new EnderecoDAO().retrive(enderecoId);
+                Endereco endereco = new EnderecoDAO().retrieve(enderecoId);
 
                 Funcionario funcionario = new Funcionario(cpf, rg, usuario, senha, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
                 funcionarios.add(funcionario);

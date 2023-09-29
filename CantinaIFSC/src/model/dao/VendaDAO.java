@@ -37,7 +37,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
     }
 
     @Override
-    public List<Venda> retrive() {
+    public List<Venda> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, carteirinha_id, funcionario_id, valorDesconto, flagTipoDesconto, observacao, status, dataHoraVenda FROM venda";
 
@@ -59,8 +59,8 @@ public class VendaDAO implements InterfaceDAO<Venda> {
                 char status = rs.getString("status").charAt(0);
                 Date dataHoraVenda = rs.getTimestamp("dataHoraVenda");
 
-                Carteirinha carteirinha = new CarteirinhaDAO().retrive(carteirinhaId);
-                Funcionario funcionario = new FuncionarioDAO().retrive(funcionarioId);
+                Carteirinha carteirinha = new CarteirinhaDAO().retrieve(carteirinhaId);
+                Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
                 Venda venda = new Venda(id, dataHoraVenda, valorDesconto, observacao, flagTipoDesconto, status, carteirinha, funcionario);
                 vendas.add(venda);
@@ -75,7 +75,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
     }
 
     @Override
-    public Venda retrive(int id) {
+    public Venda retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT carteirinha_id, funcionario_id, valorDesconto, flagTipoDesconto, observacao, status, dataHoraVenda FROM venda WHERE id = ?";
 
@@ -97,8 +97,8 @@ public class VendaDAO implements InterfaceDAO<Venda> {
                 char status = rs.getString("status").charAt(0);
                 Date dataHoraVenda = rs.getTimestamp("dataHoraVenda");
 
-                Carteirinha carteirinha = new CarteirinhaDAO().retrive(carteirinhaId);
-                Funcionario funcionario = new FuncionarioDAO().retrive(funcionarioId);
+                Carteirinha carteirinha = new CarteirinhaDAO().retrieve(carteirinhaId);
+                Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
                 venda = new Venda(id, dataHoraVenda, valorDesconto, observacao, flagTipoDesconto, status, carteirinha, funcionario);
             }
@@ -112,7 +112,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
     }
 
         @Override
-    public List<Venda> retrive(Venda filtro) {
+    public List<Venda> retrieve(Venda filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, carteirinha_id, funcionario_id, valorDesconto, flagTipoDesconto, observacao, status, dataHoraVenda FROM venda WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
@@ -186,8 +186,8 @@ public class VendaDAO implements InterfaceDAO<Venda> {
                 char status = rs.getString("status").charAt(0);
                 Date dataHoraVenda = rs.getTimestamp("dataHoraVenda");
 
-                Carteirinha carteirinha = new CarteirinhaDAO().retrive(carteirinhaId);
-                Funcionario funcionario = new FuncionarioDAO().retrive(funcionarioId);
+                Carteirinha carteirinha = new CarteirinhaDAO().retrieve(carteirinhaId);
+                Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
                 Venda venda = new Venda(id, dataHoraVenda, valorDesconto, observacao, flagTipoDesconto, status, carteirinha, funcionario);
                 vendas.add(venda);
