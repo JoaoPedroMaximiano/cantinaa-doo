@@ -1,6 +1,7 @@
 package controller.bairro;
 
 import model.bo.Bairro;
+import service.BairroService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.bairro.TelaBuscaBairro;
@@ -37,7 +38,7 @@ public class ControllerCadastroBairro {
         
         if (codigo != 0) {
             Bairro bairro = new Bairro();
-            bairro = new service.BairroService().carregar(codigo);
+            bairro = new BairroService().carregar(codigo);
             ativa(false, this.telaCadastroBairro.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroBairro.getjPanelCorpo());
             

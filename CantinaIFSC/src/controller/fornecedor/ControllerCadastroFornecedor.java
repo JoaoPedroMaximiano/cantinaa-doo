@@ -1,9 +1,12 @@
 package controller.fornecedor;
 
 import controller.endereco.ControllerCadastroEndereco;
+import java.util.List;
 
 import model.bo.Endereco;
 import model.bo.Fornecedor;
+import service.EnderecoService;
+import service.FornecedorService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.endereco.TelaCadastroEndereco;
@@ -44,8 +47,7 @@ public class ControllerCadastroFornecedor {
 
         if (codigo != 0) {
             Fornecedor fornecedor = new Fornecedor();
-            fornecedor = model.dao.Persiste.getInstancia().listaFornecedor.get(codigo -1);
-            
+            fornecedor = new FornecedorService().carregar(codigo);
             ativa(false, this.telaCadastroFornecedor.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroFornecedor.getjPanelCorpo());
             
@@ -103,11 +105,11 @@ public class ControllerCadastroFornecedor {
         fornecedor.setComplementoEndereco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
         String status = this.telaCadastroFornecedor.getjComboBoxStatus().getSelectedItem().toString();
         fornecedor.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
-        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
-            if (endereco.getCep().equals(this.telaCadastroFornecedor.getjFormattedTextFieldCEP().getText())) {
-                fornecedor.setEndereco(endereco);
-            }
-        }
+
+        Endereco filtro = new Endereco();
+        filtro.setCep(this.telaCadastroFornecedor.getjFormattedTextFieldCEP().getText());
+        List<Endereco> enderecos = new EnderecoService().carregar(filtro);
+        fornecedor.setEndereco(enderecos.get(0));        
         
         model.dao.Persiste.getInstancia().listaFornecedor.add(fornecedor);
         ativa(true, telaCadastroFornecedor.getjPanelBotoes());

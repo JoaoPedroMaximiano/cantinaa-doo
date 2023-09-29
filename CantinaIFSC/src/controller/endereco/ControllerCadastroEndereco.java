@@ -2,6 +2,7 @@ package controller.endereco;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
+import service.EnderecoService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.endereco.TelaBuscaEndereco;
@@ -44,7 +45,7 @@ public class ControllerCadastroEndereco {
         
         if (codigo != 0) {
             Endereco endereco = new Endereco();
-            endereco = model.dao.Persiste.getInstancia().listaEndereco.get(codigo -1);
+            endereco = new EnderecoService().carregar(codigo);
             
             ativa(false, this.telaCadastroEndereco.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroEndereco.getjPanelCorpo());
@@ -95,7 +96,14 @@ public class ControllerCadastroEndereco {
         }
         String item = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
         endereco.setStatus(item.equals("Ativo") ? '1' : (item.equals("Desativado") ? '2' : '3'));
-        model.dao.Persiste.getInstancia().listaEndereco.add(endereco);
+        
+        if (this.telaCadastroEndereco.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.EnderecoService().adicionar(endereco);
+        } else {
+            endereco.setId(Integer.parseInt(this.telaCadastroEndereco.getjTextFieldID().getText()));
+            new service.EnderecoService().atualizar(endereco);
+        }
+        
         ativa(true, telaCadastroEndereco.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroEndereco.getjPanelCorpo());   
     }

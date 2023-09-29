@@ -1,8 +1,11 @@
 package controller.cliente;
 
 import controller.endereco.ControllerCadastroEndereco;
+import java.util.List;
 import model.bo.Cliente;
 import model.bo.Endereco;
+import service.ClienteService;
+import service.EnderecoService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.cliente.TelaBuscaCliente;
@@ -42,7 +45,7 @@ public class ControllerCadastroCliente {
         telaBuscaCliente.setVisible(true);
         if (codigo != 0) {
             Cliente cliente = new Cliente();
-            cliente = model.dao.Persiste.getInstancia().listaCliente.get(codigo -1);
+            cliente = new ClienteService().carregar(codigo);
             ativa(false, this.telaCadastroCliente.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCliente.getjPanelCorpo());
 
@@ -90,7 +93,6 @@ public class ControllerCadastroCliente {
 
     private void realizarAcaoGravar() {
         Cliente cliente = new Cliente();
-        cliente.setId(model.dao.Persiste.getInstancia().listaCliente.size() + 1);
         cliente.setNome(this.telaCadastroCliente.getjTextFieldNome().getText());
         cliente.setCpf(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText());
         cliente.setRg(this.telaCadastroCliente.getjFormattedTextFieldRG().getText());
@@ -102,13 +104,18 @@ public class ControllerCadastroCliente {
         
         String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
         cliente.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
-        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
-            if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
-                cliente.setEndereco(endereco);
-            }
-        }
+
+        Endereco filtro = new Endereco();
+        filtro.setCep(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText());
+        List<Endereco> enderecos = new EnderecoService().carregar(filtro);
+        cliente.setEndereco(enderecos.get(0));
         
-        model.dao.Persiste.getInstancia().listaCliente.add(cliente);
+        if (this.telaCadastroCliente.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.ClienteService().adicionar(cliente);
+        } else {
+            cliente.setId(Integer.parseInt(this.telaCadastroCliente.getjTextFieldID().getText()));
+            new service.ClienteService().atualizar(cliente);
+        }
         ativa(true, telaCadastroCliente.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo()); 
     }

@@ -1,6 +1,5 @@
 package controller.carteirinha;
 
-import javax.swing.JOptionPane;
 import model.bo.Carteirinha;
 import model.bo.Cliente;
 import static utilies.Utilities.ativa;

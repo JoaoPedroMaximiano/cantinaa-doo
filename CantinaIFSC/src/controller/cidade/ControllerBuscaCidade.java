@@ -34,7 +34,7 @@ public class ControllerBuscaCidade {
         filtro.setDescricao(telaBuscaCidade.getjTextFieldDescricao().getText());
         filtro.setUf(telaBuscaCidade.getjComboBoxUF().getSelectedItem().toString());
         
-        List<Cidade> cidades = (filtro.getDescricao().isEmpty() && filtro.getUf().isEmpty()) ?
+        List<Cidade> cidades = (filtro.getDescricao().equals("") && filtro.getUf().equals("")) ?
                 CidadeService.carregar() :
                 CidadeService.carregar(filtro);
 

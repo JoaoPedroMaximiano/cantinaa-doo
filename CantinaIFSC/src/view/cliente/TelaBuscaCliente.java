@@ -1,7 +1,10 @@
 package view.cliente;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class TelaBuscaCliente extends javax.swing.JDialog {
 
@@ -464,6 +467,126 @@ public class TelaBuscaCliente extends javax.swing.JDialog {
 
     public JButton getjButtonCarregar() {
         return jButtonCarregar;
+    }
+
+    public JComboBox<String> getjComboBoxEndereco() {
+        return jComboBoxEndereco;
+    }
+
+    public void setjComboBoxEndereco(JComboBox<String> jComboBoxEndereco) {
+        this.jComboBoxEndereco = jComboBoxEndereco;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCEP() {
+        return jFormattedTextFieldCEP;
+    }
+
+    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
+        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCPF() {
+        return jFormattedTextFieldCPF;
+    }
+
+    public void setjFormattedTextFieldCPF(JFormattedTextField jFormattedTextFieldCPF) {
+        this.jFormattedTextFieldCPF = jFormattedTextFieldCPF;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataNascimento() {
+        return jFormattedTextFieldDataNascimento;
+    }
+
+    public void setjFormattedTextFieldDataNascimento(JFormattedTextField jFormattedTextFieldDataNascimento) {
+        this.jFormattedTextFieldDataNascimento = jFormattedTextFieldDataNascimento;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldMatricula() {
+        return jFormattedTextFieldMatricula;
+    }
+
+    public void setjFormattedTextFieldMatricula(JFormattedTextField jFormattedTextFieldMatricula) {
+        this.jFormattedTextFieldMatricula = jFormattedTextFieldMatricula;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldRG() {
+        return jFormattedTextFieldRG;
+    }
+
+    public void setjFormattedTextFieldRG(JFormattedTextField jFormattedTextFieldRG) {
+        this.jFormattedTextFieldRG = jFormattedTextFieldRG;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldTelefone1() {
+        return jFormattedTextFieldTelefone1;
+    }
+
+    public void setjFormattedTextFieldTelefone1(JFormattedTextField jFormattedTextFieldTelefone1) {
+        this.jFormattedTextFieldTelefone1 = jFormattedTextFieldTelefone1;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldTelefone2() {
+        return jFormattedTextFieldTelefone2;
+    }
+
+    public void setjFormattedTextFieldTelefone2(JFormattedTextField jFormattedTextFieldTelefone2) {
+        this.jFormattedTextFieldTelefone2 = jFormattedTextFieldTelefone2;
+    }
+
+    public JTextField getjTextEmail() {
+        return jTextEmail;
+    }
+
+    public void setjTextEmail(JTextField jTextEmail) {
+        this.jTextEmail = jTextEmail;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    public JTextField getjTextFieldCidade() {
+        return jTextFieldCidade;
+    }
+
+    public void setjTextFieldCidade(JTextField jTextFieldCidade) {
+        this.jTextFieldCidade = jTextFieldCidade;
+    }
+
+    public JTextField getjTextFieldComplementoEndereco() {
+        return jTextFieldComplementoEndereco;
+    }
+
+    public void setjTextFieldComplementoEndereco(JTextField jTextFieldComplementoEndereco) {
+        this.jTextFieldComplementoEndereco = jTextFieldComplementoEndereco;
+    }
+
+    public JTextField getjTextFieldLogradouro() {
+        return jTextFieldLogradouro;
+    }
+
+    public void setjTextFieldLogradouro(JTextField jTextFieldLogradouro) {
+        this.jTextFieldLogradouro = jTextFieldLogradouro;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
     }
 
     public JButton getjButtonPesquisar() {

@@ -1,7 +1,9 @@
 package view.produto;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class TelaBuscaProduto extends javax.swing.JDialog {
 
@@ -224,6 +226,30 @@ public class TelaBuscaProduto extends javax.swing.JDialog {
 
     public JButton getjButtonSair() {
         return jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JTextField getjTextFieldCodigoBarra() {
+        return jTextFieldCodigoBarra;
+    }
+
+    public void setjTextFieldCodigoBarra(JTextField jTextFieldCodigoBarra) {
+        this.jTextFieldCodigoBarra = jTextFieldCodigoBarra;
+    }
+
+    public JTextField getjTextFieldDescricao() {
+        return jTextFieldDescricao;
+    }
+
+    public void setjTextFieldDescricao(JTextField jTextFieldDescricao) {
+        this.jTextFieldDescricao = jTextFieldDescricao;
     }
 
     

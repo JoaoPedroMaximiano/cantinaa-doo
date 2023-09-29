@@ -1,7 +1,10 @@
 package view.fornecedor;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class TelaBuscaFornecedor extends javax.swing.JDialog {;
 
@@ -421,6 +424,118 @@ public class TelaBuscaFornecedor extends javax.swing.JDialog {;
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    public JComboBox<String> getjComboBoxEndereco() {
+        return jComboBoxEndereco;
+    }
+
+    public void setjComboBoxEndereco(JComboBox<String> jComboBoxEndereco) {
+        this.jComboBoxEndereco = jComboBoxEndereco;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCEP() {
+        return jFormattedTextFieldCEP;
+    }
+
+    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
+        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCNPJ() {
+        return jFormattedTextFieldCNPJ;
+    }
+
+    public void setjFormattedTextFieldCNPJ(JFormattedTextField jFormattedTextFieldCNPJ) {
+        this.jFormattedTextFieldCNPJ = jFormattedTextFieldCNPJ;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldTelefone1() {
+        return jFormattedTextFieldTelefone1;
+    }
+
+    public void setjFormattedTextFieldTelefone1(JFormattedTextField jFormattedTextFieldTelefone1) {
+        this.jFormattedTextFieldTelefone1 = jFormattedTextFieldTelefone1;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldTelefone2() {
+        return jFormattedTextFieldTelefone2;
+    }
+
+    public void setjFormattedTextFieldTelefone2(JFormattedTextField jFormattedTextFieldTelefone2) {
+        this.jFormattedTextFieldTelefone2 = jFormattedTextFieldTelefone2;
+    }
+
+    public JTextField getjTextEmail() {
+        return jTextEmail;
+    }
+
+    public void setjTextEmail(JTextField jTextEmail) {
+        this.jTextEmail = jTextEmail;
+    }
+
+    public JTextField getjTextFieldBairro() {
+        return jTextFieldBairro;
+    }
+
+    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
+        this.jTextFieldBairro = jTextFieldBairro;
+    }
+
+    public JTextField getjTextFieldCidade() {
+        return jTextFieldCidade;
+    }
+
+    public void setjTextFieldCidade(JTextField jTextFieldCidade) {
+        this.jTextFieldCidade = jTextFieldCidade;
+    }
+
+    public JTextField getjTextFieldComplementoEndereco() {
+        return jTextFieldComplementoEndereco;
+    }
+
+    public void setjTextFieldComplementoEndereco(JTextField jTextFieldComplementoEndereco) {
+        this.jTextFieldComplementoEndereco = jTextFieldComplementoEndereco;
+    }
+
+    public JTextField getjTextFieldInscricaoEstadual() {
+        return jTextFieldInscricaoEstadual;
+    }
+
+    public void setjTextFieldInscricaoEstadual(JTextField jTextFieldInscricaoEstadual) {
+        this.jTextFieldInscricaoEstadual = jTextFieldInscricaoEstadual;
+    }
+
+    public JTextField getjTextFieldLogradouro() {
+        return jTextFieldLogradouro;
+    }
+
+    public void setjTextFieldLogradouro(JTextField jTextFieldLogradouro) {
+        this.jTextFieldLogradouro = jTextFieldLogradouro;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldRazaoSocial() {
+        return jTextFieldRazaoSocial;
+    }
+
+    public void setjTextFieldRazaoSocial(JTextField jTextFieldRazaoSocial) {
+        this.jTextFieldRazaoSocial = jTextFieldRazaoSocial;
+    }
 
     public JButton getjButtonCarregar() {
         return jButtonCarregar;

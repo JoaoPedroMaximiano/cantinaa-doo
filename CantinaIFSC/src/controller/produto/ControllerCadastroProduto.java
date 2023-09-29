@@ -1,6 +1,7 @@
 package controller.produto;
 
 import model.bo.Produto;
+import service.ProdutoService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.produto.TelaBuscaProduto;
@@ -38,8 +39,7 @@ public class ControllerCadastroProduto {
         
         if (codigo != 0) {
             Produto produto = new Produto();
-            produto = model.dao.Persiste.getInstancia().listaProduto.get(codigo -1);
-            
+            produto = new ProdutoService().carregar(codigo);
             ativa(false, this.telaCadastroProduto.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroProduto.getjPanelCorpo());
             
@@ -70,11 +70,15 @@ public class ControllerCadastroProduto {
 
     private void realizarAcaoGravar() {
         Produto produto = new Produto();
-        produto.setId(model.dao.Persiste.getInstancia().listaProduto.size() + 1);
         produto.setDescricao(this.telaCadastroProduto.getjTextFieldDescricao().getText());
         produto.setCodigoBarra(this.telaCadastroProduto.getjTextFieldCodigoBarra().getText());
         produto.setStatus(this.telaCadastroProduto.getjComboBoxStatus().getSelectedItem().toString().equals("Ativo") ? '1' : '0');
-        model.dao.Persiste.getInstancia().listaProduto.add(produto);
+        if (this.telaCadastroProduto.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.ProdutoService().adicionar(produto);
+        } else {
+            produto.setId(Integer.parseInt(this.telaCadastroProduto.getjTextFieldID().getText()));
+            new service.ProdutoService().atualizar(produto);
+        }
         ativa(true, telaCadastroProduto.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroProduto.getjPanelCorpo());       
     }

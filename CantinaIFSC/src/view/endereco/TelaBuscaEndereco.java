@@ -1,6 +1,8 @@
 package view.endereco;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 
 public class TelaBuscaEndereco extends javax.swing.JDialog {
@@ -290,6 +292,46 @@ public class TelaBuscaEndereco extends javax.swing.JDialog {
 
     public JButton getjButtonSair() {
         return jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxBairro() {
+        return jComboBoxBairro;
+    }
+
+    public void setjComboBoxBairro(JComboBox<String> jComboBoxBairro) {
+        this.jComboBoxBairro = jComboBoxBairro;
+    }
+
+    public JComboBox<String> getjComboBoxCidade() {
+        return jComboBoxCidade;
+    }
+
+    public void setjComboBoxCidade(JComboBox<String> jComboBoxCidade) {
+        this.jComboBoxCidade = jComboBoxCidade;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldCEP() {
+        return jFormattedTextFieldCEP;
+    }
+
+    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
+        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldLogradouro() {
+        return jFormattedTextFieldLogradouro;
+    }
+
+    public void setjFormattedTextFieldLogradouro(JFormattedTextField jFormattedTextFieldLogradouro) {
+        this.jFormattedTextFieldLogradouro = jFormattedTextFieldLogradouro;
     }
    
     
