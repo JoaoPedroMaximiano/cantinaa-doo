@@ -10,15 +10,15 @@ public class CarteirinhaService {
     }
 
     public static List<Carteirinha> carregar(){
-        return new CarteirinhaDAO().retrive();
+        return new CarteirinhaDAO().retrieve();
     }
 
     public static Carteirinha carregar(int id){
-        return new CarteirinhaDAO().retrive(id);
+        return new CarteirinhaDAO().retrieve(id);
     }
 
     public static List<Carteirinha> carregar(Carteirinha filtro){
-        return new CarteirinhaDAO().retrive(filtro);
+        return new CarteirinhaDAO().retrieve(filtro);
     }
 
     public void atualizar(Carteirinha objeto){

@@ -10,15 +10,15 @@ public class ProdutoService {
     }
 
     public static List<Produto> carregar(){
-        return new ProdutoDAO().retrive();
+        return new ProdutoDAO().retrieve();
     }
 
     public static Produto carregar(int id){
-        return new ProdutoDAO().retrive(id);
+        return new ProdutoDAO().retrieve(id);
     }
 
     public static List<Produto> carregar(Produto filtro){
-        return new ProdutoDAO().retrive(filtro);
+        return new ProdutoDAO().retrieve(filtro);
     }
 
     public void atualizar(Produto objeto){

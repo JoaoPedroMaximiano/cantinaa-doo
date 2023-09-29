@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import model.bo.Caixa;
+import model.dao.CaixaDAO;
 
 public class CaixaService {
 
@@ -10,15 +11,15 @@ public class CaixaService {
     }
 
     public static List<Caixa> carregar(){
-        return new CaixaDAO().retrive();
+        return new CaixaDAO().retrieve();
     }
 
     public static Caixa carregar(int id){
-        return new CaixaDAO().retrive(id);
+        return new CaixaDAO().retrieve(id);
     }
 
     public static List<Caixa> carregar(Caixa filtro){
-        return new CaixaDAO().retrive(filtro);
+        return new CaixaDAO().retrieve(filtro);
     }
     
     public void atualizar(Caixa objeto){

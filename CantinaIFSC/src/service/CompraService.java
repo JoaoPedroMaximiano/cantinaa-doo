@@ -10,15 +10,15 @@ public class CompraService {
     }
 
     public static List<Compra> carregar(){
-        return new CompraDAO().retrive();
+        return new CompraDAO().retrieve();
     }
 
     public static Compra carregar(int id){
-        return new CompraDAO().retrive(id);
+        return new CompraDAO().retrieve(id);
     }
 
     public static List<Compra> carregar(Compra filtro){
-        return new CompraDAO().retrive(filtro);
+        return new CompraDAO().retrieve(filtro);
     }
 
     public void atualizar(Compra objeto){

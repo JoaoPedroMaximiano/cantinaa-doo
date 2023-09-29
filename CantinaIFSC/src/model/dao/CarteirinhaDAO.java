@@ -32,7 +32,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     }
 
     @Override
-    public List<Carteirinha> retrive() {
+    public List<Carteirinha> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, cliente_id, codigoBarra, dataGeracao, dataCancelamento FROM carteirinha";
 
@@ -52,7 +52,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
                 String dataCancelamento = rs.getString("dataCancelamento");
 
                 ClienteDAO clienteDAO = new ClienteDAO();
-                Cliente cliente = clienteDAO.retrive(clienteId);
+                Cliente cliente = clienteDAO.retrieve(clienteId);
 
                 Carteirinha carteirinha = new Carteirinha(id, codigoBarra, dataGeracao, dataCancelamento, cliente);
                 carteirinhas.add(carteirinha);
@@ -68,7 +68,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     }
 
     @Override
-    public Carteirinha retrive(int id) {
+    public Carteirinha retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT cliente_id, codigoBarra, dataGeracao, dataCancelamento FROM carteirinha WHERE id = ?";
 
@@ -88,7 +88,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
                 String dataCancelamento = rs.getString("dataCancelamento");
 
                 ClienteDAO clienteDAO = new ClienteDAO();
-                Cliente cliente = clienteDAO.retrive(clienteId);
+                Cliente cliente = clienteDAO.retrieve(clienteId);
 
                 carteirinha = new Carteirinha(id, codigoBarra, dataGeracao, dataCancelamento, cliente);
             }
@@ -103,7 +103,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
     }
 
     @Override
-    public List<Carteirinha> retrive(Carteirinha filtro) {
+    public List<Carteirinha> retrieve(Carteirinha filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         StringBuilder sql = new StringBuilder("SELECT c.id, c.cliente_id, c.codigoBarra, c.dataGeracao, c.dataCancelamento"
                 + " FROM carteirinha c"
@@ -156,7 +156,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
                 String dataCancelamento = rs.getString("dataCancelamento");
 
                 ClienteDAO clienteDAO = new ClienteDAO();
-                Cliente cliente = clienteDAO.retrive(clienteId);
+                Cliente cliente = clienteDAO.retrieve(clienteId);
 
                 Carteirinha carteirinha = new Carteirinha(id, codigoBarra, dataGeracao, dataCancelamento, cliente);
                 carteirinhas.add(carteirinha);

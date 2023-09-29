@@ -12,17 +12,16 @@ public class Contas {
     private double valorDesconto;
     private double valorCrescimo;
     private double valorQuitado;
-    private String obervacao;
+    private String observacao;
     private char flagTipoConta;
     private char status;
-    private MovimentoCaixa movimentoCaixa;
     private Venda venda;
     private Compra compra;
 
     public Contas() {
     }
 
-    public Contas(int id, Date dataHoraEmissora, Date dataVencimento, Date dataQuitacao, double valorEmitido, double valorDesconto, double valorCrescimo, double valorQuitado, String obervacao, char flagTipoConta, char status, MovimentoCaixa movimentoCaixa, Venda venda, Compra compra) {
+    public Contas(int id, Date dataHoraEmissora, Date dataVencimento, Date dataQuitacao, double valorEmitido, double valorDesconto, double valorCrescimo, double valorQuitado, String observacao, char flagTipoConta, char status, Venda venda, Compra compra) {
         this.id = id;
         this.dataHoraEmissora = dataHoraEmissora;
         this.dataVencimento = dataVencimento;
@@ -31,10 +30,9 @@ public class Contas {
         this.valorDesconto = valorDesconto;
         this.valorCrescimo = valorCrescimo;
         this.valorQuitado = valorQuitado;
-        this.obervacao = obervacao;
+        this.observacao = observacao;
         this.flagTipoConta = flagTipoConta;
         this.status = status;
-        this.movimentoCaixa = movimentoCaixa;
         this.venda = venda;
         this.compra = compra;
     }
@@ -103,12 +101,12 @@ public class Contas {
         this.valorQuitado = valorQuitado;
     }
 
-    public String getObervacao() {
-        return obervacao;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setObervacao(String obervacao) {
-        this.obervacao = obervacao;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
     public char getFlagTipoConta() {
@@ -125,14 +123,6 @@ public class Contas {
 
     public void setStatus(char status) {
         this.status = status;
-    }
-
-    public MovimentoCaixa getMovimentoCaixa() {
-        return movimentoCaixa;
-    }
-
-    public void setMovimentoCaixa(MovimentoCaixa movimentoCaixa) {
-        this.movimentoCaixa = movimentoCaixa;
     }
 
     public Venda getVenda() {
@@ -153,7 +143,7 @@ public class Contas {
 
     @Override
     public String toString() {
-        return "Contas{" + "id=" + id + ", dataHoraEmissora=" + dataHoraEmissora + ", dataVencimento=" + dataVencimento + ", dataQuitacao=" + dataQuitacao + ", valorEmitido=" + valorEmitido + ", valorDesconto=" + valorDesconto + ", valorCrescimo=" + valorCrescimo + ", valorQuitado=" + valorQuitado + ", obervacao=" + obervacao + ", flagTipoConta=" + flagTipoConta + ", status=" + status + ", movimentoCaixa=" + movimentoCaixa + ", venda=" + venda + ", compra=" + compra + '}';
+        return "Contas{" + "id=" + id + ", dataHoraEmissora=" + dataHoraEmissora + ", dataVencimento=" + dataVencimento + ", dataQuitacao=" + dataQuitacao + ", valorEmitido=" + valorEmitido + ", valorDesconto=" + valorDesconto + ", valorCrescimo=" + valorCrescimo + ", valorQuitado=" + valorQuitado + ", observacao=" + observacao + ", flagTipoConta=" + flagTipoConta + ", status=" + status + ", venda=" + venda + ", compra=" + compra + '}';
     }
     
 }

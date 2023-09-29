@@ -38,7 +38,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
     }
 
     @Override
-    public List<Fornecedor> retrive() {
+    public List<Fornecedor> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, endereco_id, nome, email, fone1, fone2, status, complemento_endereco, cnpj, inscricaoEstadual, razaoSocial FROM fornecedor";
 
@@ -63,7 +63,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
                 String inscricaoEstadual = rs.getString("inscricaoEstadual");
                 String razaoSocial = rs.getString("razaoSocial");
                 
-                Endereco endereco = new EnderecoDAO().retrive(enderecoId);
+                Endereco endereco = new EnderecoDAO().retrieve(enderecoId);
                 Fornecedor fornecedor = new Fornecedor(cnpj, inscricaoEstadual, razaoSocial, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
                 fornecedores.add(fornecedor);
             }
@@ -78,7 +78,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
     }
 
     @Override
-    public Fornecedor retrive(int id) {
+    public Fornecedor retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT endereco_id, nome, email, fone1, fone2, status, complemento_endereco, cnpj, inscricaoEstadual, razaoSocial FROM fornecedor WHERE id = ?";
 
@@ -103,7 +103,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
                 String inscricaoEstadual = rs.getString("inscricaoEstadual");
                 String razaoSocial = rs.getString("razaoSocial");
                 
-                Endereco endereco = new EnderecoDAO().retrive(enderecoId);
+                Endereco endereco = new EnderecoDAO().retrieve(enderecoId);
                 fornecedor = new Fornecedor(cnpj, inscricaoEstadual, razaoSocial, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
             }
 
@@ -117,7 +117,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
     }
 
     @Override
-    public List<Fornecedor> retrive(Fornecedor filtro) {
+    public List<Fornecedor> retrieve(Fornecedor filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         StringBuilder sql = new StringBuilder("SELECT id, endereco_id, nome, email, fone1, fone2, status, complemento_endereco, cnpj, inscricaoEstadual, razaoSocial FROM fornecedor WHERE 1=1");
         List<Object> parametros = new ArrayList<>();
@@ -210,7 +210,7 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
                 String inscricaoEstadual = rs.getString("inscricaoEstadual");
                 String razaoSocial = rs.getString("razaoSocial");
 
-                Endereco endereco = new EnderecoDAO().retrive(enderecoId);
+                Endereco endereco = new EnderecoDAO().retrieve(enderecoId);
                 Fornecedor fornecedor = new Fornecedor(cnpj, inscricaoEstadual, razaoSocial, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
                 fornecedores.add(fornecedor);
             }

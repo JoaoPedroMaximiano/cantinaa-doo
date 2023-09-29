@@ -39,7 +39,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     }
 
     @Override
-    public List<Cliente> retrive() {
+    public List<Cliente> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT c.cpf, c.rg, c.matricula, c.dataNascimento, c.id, c.nome, c.fone1, c.fone2, c.email, c.complementoEndereco, c.status, e.id AS endereco_id"
                 + " FROM cliente c"
@@ -68,7 +68,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
                 String dataNascimento = rs.getString("dataNascimento");
 
                 EnderecoDAO enderecoDAO = new EnderecoDAO();
-                Endereco endereco = enderecoDAO.retrive(enderecoId);
+                Endereco endereco = enderecoDAO.retrieve(enderecoId);
 
                 Cliente cliente = new Cliente(cpf, rg, matricula, dataNascimento, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
                 clientes.add(cliente);
@@ -84,7 +84,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     }
 
     @Override
-    public Cliente retrive(int id) {
+    public Cliente retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT c.cpf, c.rg, c.matricula, c.dataNascimento, c.nome, c.fone1, c.fone2, c.email, c.complementoEndereco, c.status, e.id AS endereco_id"
                 + " FROM cliente c"
@@ -114,7 +114,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
                 String dataNascimento = rs.getString("dataNascimento");
 
                 EnderecoDAO enderecoDAO = new EnderecoDAO();
-                Endereco endereco = enderecoDAO.retrive(enderecoId);
+                Endereco endereco = enderecoDAO.retrieve(enderecoId);
 
                 cliente = new Cliente(cpf, rg, matricula, dataNascimento, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
             }
@@ -129,7 +129,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
     }
 
     @Override
-    public List<Cliente> retrive(Cliente filtro) {
+    public List<Cliente> retrieve(Cliente filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         StringBuilder sql = new StringBuilder("SELECT c.cpf, c.rg, c.matricula, c.dataNascimento, c.id, c.nome, c.fone1, c.fone2, c.email, c.complementoEndereco, c.status, e.id AS endereco_id"
                 + " FROM cliente c"
@@ -189,7 +189,7 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
                 String dataNascimento = rs.getString("dataNascimento");
 
                 EnderecoDAO enderecoDAO = new EnderecoDAO();
-                Endereco endereco = enderecoDAO.retrive(enderecoId);
+                Endereco endereco = enderecoDAO.retrieve(enderecoId);
 
                 Cliente cliente = new Cliente(cpf, rg, matricula, dataNascimento, id, nome, fone1, fone2, email, complementoEndereco, status, endereco);
                 clientes.add(cliente);

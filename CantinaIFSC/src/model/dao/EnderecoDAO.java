@@ -34,7 +34,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
     }
 
     @Override
-    public List<Endereco> retrive() {
+    public List<Endereco> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, cep, logradouro, status, cidade_id, bairro_id FROM endereco";
 
@@ -54,8 +54,8 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
                 int cidadeId = rs.getInt("cidade_id");
                 int bairroId = rs.getInt("bairro_id");
 
-                Cidade cidade = new CidadeDAO().retrive(cidadeId);
-                Bairro bairro = new BairroDAO().retrive(bairroId);
+                Cidade cidade = new CidadeDAO().retrieve(cidadeId);
+                Bairro bairro = new BairroDAO().retrieve(bairroId);
 
                 Endereco endereco = new Endereco(id, cep, logradouro, status, cidade, bairro);
                 enderecos.add(endereco);
@@ -71,7 +71,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
     }
 
     @Override
-    public Endereco retrive(int id) {
+    public Endereco retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT cep, logradouro, status, cidade_id, bairro_id FROM endereco WHERE id = ?";
 
@@ -91,8 +91,8 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
                 int cidadeId = rs.getInt("cidade_id");
                 int bairroId = rs.getInt("bairro_id");
 
-                Cidade cidade = new CidadeDAO().retrive(cidadeId);
-                Bairro bairro = new BairroDAO().retrive(bairroId);
+                Cidade cidade = new CidadeDAO().retrieve(cidadeId);
+                Bairro bairro = new BairroDAO().retrieve(bairroId);
 
                 endereco = new Endereco(id, cep, logradouro, status, cidade, bairro);
             }
@@ -107,7 +107,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
     }
 
     @Override
-    public List<Endereco> retrive(Endereco filtro) {
+    public List<Endereco> retrieve(Endereco filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, cep, logradouro, status, cidade_id, bairro_id FROM endereco WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
@@ -165,8 +165,8 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
                 int cidadeId = rs.getInt("cidade_id");
                 int bairroId = rs.getInt("bairro_id");
 
-                Cidade cidade = new CidadeDAO().retrive(cidadeId);
-                Bairro bairro = new BairroDAO().retrive(bairroId);
+                Cidade cidade = new CidadeDAO().retrieve(cidadeId);
+                Bairro bairro = new BairroDAO().retrieve(bairroId);
 
                 Endereco endereco = new Endereco(id, cep, logradouro, status, cidade, bairro);
                 enderecos.add(endereco);

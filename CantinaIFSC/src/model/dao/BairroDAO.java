@@ -29,7 +29,7 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public List<Bairro> retrive() {
+    public List<Bairro> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao FROM bairro";
 
@@ -58,7 +58,7 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public Bairro retrive(int id) {
+    public Bairro retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao FROM bairro WHERE id = ?";
 
@@ -86,7 +86,7 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
     }
 
     @Override
-    public List<Bairro> retrive(Bairro filtro) {
+    public List<Bairro> retrieve(Bairro filtro) {
         Connection conexao = ConnectionFactory.getConnection();
         String sql = "SELECT id, descricao FROM bairro WHERE 1=1";
         List<Object> parametros = new ArrayList<>();
