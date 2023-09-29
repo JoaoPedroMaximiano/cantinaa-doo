@@ -14,7 +14,7 @@ import model.bo.Venda;
 
 public class ContasDAO {
 
-    public void insert(Contas conta) {
+    public void create(Contas conta) {
         Connection conexao = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;
 
@@ -298,14 +298,14 @@ public class ContasDAO {
         }
     }
 
-    public void delete(int id) {
+    public void delete(Contas conta) {
         Connection conexao = ConnectionFactory.getConnection();
         PreparedStatement pstm = null;
 
         try {
             String sql = "DELETE FROM contas WHERE id = ?";
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, id);
+            pstm.setInt(1, conta.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
