@@ -256,7 +256,7 @@
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Component id="jLabelEmail" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextEmail" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
+                              <Component id="jTextFieldEmail" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextFieldComplementoEndereco" max="32767" attributes="0"/>
@@ -373,7 +373,7 @@
                               <Component id="jLabelEmail" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextEmail" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldEmail" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jTextFieldComplementoEndereco" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -477,7 +477,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldTelefone1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextEmail">
+        <Component class="javax.swing.JTextField" name="jTextFieldEmail">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEmailActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldComplementoEndereco">
         </Component>

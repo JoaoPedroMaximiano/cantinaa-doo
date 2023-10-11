@@ -97,23 +97,28 @@ public class ControllerCadastroFornecedor {
         fornecedor.setId(model.dao.Persiste.getInstancia().listaFornecedor.size() + 1);
         fornecedor.setNome(this.telaCadastroFornecedor.getjTextFieldNome().getText());
         fornecedor.setCnpj(this.telaCadastroFornecedor.getjFormattedTextFieldCNPJ().getText());
-        fornecedor.setInscricaoEstadual(this.telaCadastroFornecedor.getjTextFieldInscricaoEstadual().getText());
         fornecedor.setRazaoSocial(this.telaCadastroFornecedor.getjTextFieldRazaoSocial().getText());
+        fornecedor.setInscricaoEstadual(this.telaCadastroFornecedor.getjTextFieldInscricaoEstadual().getText());
         fornecedor.setFone1(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone1().getText());
         fornecedor.setFone2(this.telaCadastroFornecedor.getjFormattedTextFieldTelefone2().getText());
         fornecedor.setEmail(this.telaCadastroFornecedor.getjTextEmail().getText());
         fornecedor.setComplementoEndereco(this.telaCadastroFornecedor.getjTextFieldComplementoEndereco().getText());
+
         String status = this.telaCadastroFornecedor.getjComboBoxStatus().getSelectedItem().toString();
         fornecedor.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
-
         Endereco filtro = new Endereco();
         filtro.setCep(this.telaCadastroFornecedor.getjFormattedTextFieldCEP().getText());
         List<Endereco> enderecos = new EnderecoService().carregar(filtro);
-        fornecedor.setEndereco(enderecos.get(0));        
-        
-        model.dao.Persiste.getInstancia().listaFornecedor.add(fornecedor);
+        fornecedor.setEndereco(enderecos.get(0));
+
+        if (this.telaCadastroFornecedor.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.FornecedorService().adicionar(fornecedor);
+        } else {
+            fornecedor.setId(Integer.parseInt(this.telaCadastroFornecedor.getjTextFieldID().getText()));
+            new service.FornecedorService().atualizar(fornecedor);
+        }        
         ativa(true, telaCadastroFornecedor.getjPanelBotoes());
-        limpaCompenentes(false, telaCadastroFornecedor.getjPanelCorpo());       
+        limpaCompenentes(false, telaCadastroFornecedor.getjPanelCorpo());            
     }
 
     private void abrirTelaBuscarCepEndereco() {

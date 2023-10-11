@@ -1,8 +1,10 @@
 package controller.funcionario;
 
 import controller.endereco.ControllerCadastroEndereco;
+import java.util.List;
 import model.bo.Endereco;
 import model.bo.Funcionario;
+import service.EnderecoService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.endereco.TelaCadastroEndereco;
@@ -107,13 +109,17 @@ public class ControllerCadastroFuncionario {
         
         String status = this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem().toString();
         funcionario.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
-        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
-            if (endereco.getCep().equals(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())) {
-                funcionario.setEndereco(endereco);
-            }
-        }
+        Endereco filtro = new Endereco();
+        filtro.setCep(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText());
+        List<Endereco> enderecos = new EnderecoService().carregar(filtro);
+        funcionario.setEndereco(enderecos.get(0));
         
-        model.dao.Persiste.getInstancia().listaFuncionario.add(funcionario);
+        if (this.telaCadastroFuncionario.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.FuncionarioService().adicionar(funcionario);
+        } else {
+            funcionario.setId(Integer.parseInt(this.telaCadastroFuncionario.getjTextFieldID().getText()));
+            new service.FuncionarioService().atualizar(funcionario);
+        }        
         ativa(true, telaCadastroFuncionario.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroFuncionario.getjPanelCorpo());       
     }
