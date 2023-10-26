@@ -98,7 +98,7 @@ public class BairroDAO implements InterfaceDAO<Bairro> {
             }
 
             if (filtro.getDescricao() != null && !filtro.getDescricao().isEmpty()) {
-                sql += " AND descricao = ?";
+                sql += " AND SOUNDEX(descricao) = SOUNDEX(?)";
                 parametros.add(filtro.getDescricao());
             }
         }
