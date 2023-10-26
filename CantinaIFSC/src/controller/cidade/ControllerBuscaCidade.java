@@ -13,6 +13,7 @@ public class ControllerBuscaCidade {
     public ControllerBuscaCidade(TelaBuscaCidade telaBuscaCidade) {
         this.telaBuscaCidade = telaBuscaCidade;
         setupActionListeners();
+        filtrarPesquisa();
     }
     
     private void setupActionListeners() {

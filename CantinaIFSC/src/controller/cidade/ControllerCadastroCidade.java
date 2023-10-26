@@ -39,7 +39,6 @@ public class ControllerCadastroCidade {
         if (codigo != 0) {
             Cidade cidade = new Cidade();
             cidade = service.CidadeService.carregar(codigo);
-            
             ativa(false, this.telaCadastroCidade.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCidade.getjPanelCorpo());
             
