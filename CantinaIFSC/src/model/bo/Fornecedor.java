@@ -42,6 +42,6 @@ public class Fornecedor extends Pessoa {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "cnpj=" + cnpj + ", inscricaoEstadual=" + inscricaoEstadual + ", razaoSocial=" + razaoSocial + '}';
+        return getId() + " - " + getNome();
     }
 }

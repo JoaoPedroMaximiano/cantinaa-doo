@@ -29,4 +29,8 @@ public class Bairro {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return id + " - " + descricao;
+    }
 }

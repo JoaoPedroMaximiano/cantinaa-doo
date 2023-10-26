@@ -52,7 +52,7 @@ public class Funcionario extends Pessoa{
 
     @Override
     public String toString() {
-        return "Funcionario{" + "cpf=" + cpf + ", rg=" + rg + ", usuario=" + usuario + ", senha=" + senha + '}';
+        return getId() + " - " + getNome();
     }
     
 }

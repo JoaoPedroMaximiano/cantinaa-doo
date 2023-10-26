@@ -49,10 +49,10 @@ public class Cliente extends Pessoa{
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
+    
     @Override
     public String toString() {
-        return "Cliente{" + "cpf=" + cpf + ", rg=" + rg + ", matricula=" + matricula + ", dataNascimento=" + dataNascimento + '}';
+        return getId() + " - " + getNome();
     }
     
 }

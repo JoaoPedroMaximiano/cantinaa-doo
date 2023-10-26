@@ -61,7 +61,7 @@ public class Carteirinha {
 
     @Override
     public String toString() {
-        return "Carteirinha{" + "id=" + id + ", codigoBarra=" + codigoBarra + ", dataGeracao=" + dataGeracao + ", dataCancelamento=" + dataCancelamento + ", cliente=" + cliente + '}';
+        return id + " - " + getCliente().getNome();
     }
     
 }
