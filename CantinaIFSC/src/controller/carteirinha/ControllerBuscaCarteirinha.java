@@ -46,8 +46,8 @@ public class ControllerBuscaCarteirinha {
         }
 
         List<Carteirinha> carteirinhas = !filtro.getCodigoBarra().equals("") || 
-                !filtro.getCliente().getNome().equals("") || !filtro.getDataCancelamento().equals("")
-                || !filtro.getDataGeracao().equals("") 
+                !filtro.getCliente().getNome().equals("") || !filtro.getDataCancelamento().equals("  /  /       :  :  ")
+                || !filtro.getDataGeracao().equals("  /  /       :  :  ") 
                 ? new CarteirinhaService().carregar(filtro) 
                 : new CarteirinhaService().carregar() ;
         

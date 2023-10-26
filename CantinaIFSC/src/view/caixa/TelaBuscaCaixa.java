@@ -1,6 +1,8 @@
 package view.caixa;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 
 public class TelaBuscaCaixa extends javax.swing.JDialog {
@@ -309,6 +311,54 @@ public class TelaBuscaCaixa extends javax.swing.JDialog {
 
     public JButton getjButtonSair() {
         return jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxFuncionario() {
+        return jComboBoxFuncionario;
+    }
+
+    public void setjComboBoxFuncionario(JComboBox<String> jComboBoxFuncionario) {
+        this.jComboBoxFuncionario = jComboBoxFuncionario;
+    }
+
+    public JComboBox<String> getjComboBoxStatus() {
+        return jComboBoxStatus;
+    }
+
+    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
+        this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataAbertura() {
+        return jFormattedTextFieldDataAbertura;
+    }
+
+    public void setjFormattedTextFieldDataAbertura(JFormattedTextField jFormattedTextFieldDataAbertura) {
+        this.jFormattedTextFieldDataAbertura = jFormattedTextFieldDataAbertura;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataFechamento() {
+        return jFormattedTextFieldDataFechamento;
+    }
+
+    public void setjFormattedTextFieldDataFechamento(JFormattedTextField jFormattedTextFieldDataFechamento) {
+        this.jFormattedTextFieldDataFechamento = jFormattedTextFieldDataFechamento;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldValorAbertura() {
+        return jFormattedTextFieldValorAbertura;
+    }
+
+    public void setjFormattedTextFieldValorAbertura(JFormattedTextField jFormattedTextFieldValorAbertura) {
+        this.jFormattedTextFieldValorAbertura = jFormattedTextFieldValorAbertura;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldValorFechamento() {
+        return jFormattedTextFieldValorFechamento;
+    }
+
+    public void setjFormattedTextFieldValorFechamento(JFormattedTextField jFormattedTextFieldValorFechamento) {
+        this.jFormattedTextFieldValorFechamento = jFormattedTextFieldValorFechamento;
     }
 
     

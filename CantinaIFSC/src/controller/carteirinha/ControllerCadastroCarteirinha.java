@@ -3,6 +3,7 @@ package controller.carteirinha;
 import java.util.List;
 import model.bo.Carteirinha;
 import model.bo.Cliente;
+import service.CarteirinhaService;
 import service.ClienteService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
@@ -43,7 +44,7 @@ public class ControllerCadastroCarteirinha {
         
         if (codigo != 0) {
             Carteirinha carteirinha = new Carteirinha();
-            carteirinha = model.dao.Persiste.getInstancia().listaCarteirinha.get(codigo -1);
+            carteirinha = CarteirinhaService.carregar(codigo);
             
             ativa(false, this.telaCadastroCarteirinha.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCarteirinha.getjPanelCorpo());
@@ -78,13 +79,7 @@ public class ControllerCadastroCarteirinha {
             carteirinha.setDataCancelamento(this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText());
         }
         
-        carteirinha.setCodigoBarra(this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText());
-        for (Cliente cliente : model.dao.Persiste.getInstancia().listaCliente) {
-            if (cliente.getCpf().equals(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString())) {
-                carteirinha.setCliente(cliente);
-            }
-        }
-        
+        carteirinha.setCodigoBarra(this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText());  
         Cliente filtro = new Cliente();
         filtro.setCpf(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString());
         List<Cliente> clientes = new ClienteService().carregar(filtro);

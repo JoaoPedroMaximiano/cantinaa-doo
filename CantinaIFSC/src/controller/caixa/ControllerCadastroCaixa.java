@@ -1,7 +1,10 @@
 package controller.caixa;
 
+import java.util.List;
 import model.bo.Caixa;
 import model.bo.Funcionario;
+import service.CaixaService;
+import service.FuncionarioService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.caixa.TelaBuscaCaixa;
@@ -41,7 +44,7 @@ public class ControllerCadastroCaixa {
         
         if (codigo != 0) {
             Caixa caixa = new Caixa();
-            caixa = model.dao.Persiste.getInstancia().listaCaixa.get(codigo -1);
+            caixa = new CaixaService().carregar(codigo);
             
             ativa(false, this.telaCadastroCaixa.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCaixa.getjPanelCorpo());
@@ -78,7 +81,6 @@ public class ControllerCadastroCaixa {
 
     private void realizarAcaoGravar() {
         Caixa caixa = new Caixa();
-        caixa.setId(model.dao.Persiste.getInstancia().listaCaixa.size() + 1);
         
         String status = this.telaCadastroCaixa.getjComboBoxStatus().getSelectedItem().toString();
         caixa.setStatus(status.equals("Aberto") ? '1' : (status.equals("Fechado") ? '2' : (status.equals("Cancelado") ? '3' : '4')));
@@ -87,11 +89,10 @@ public class ControllerCadastroCaixa {
         caixa.setValorAbertura(Double.parseDouble(this.telaCadastroCaixa.getjFormattedTextFieldValorAbertura().getText().replace(',', '.')));
         caixa.setDataHoraAberto(this.telaCadastroCaixa.getjFormattedTextFieldDataAbertura().getText());
         
-        for (Funcionario funcionario : model.dao.Persiste.getInstancia().listaFuncionario) {
-            if (funcionario.getCpf().equals(this.telaCadastroCaixa.getjComboBoxFuncionario().getSelectedItem().toString())) {
-                caixa.setFuncionario(funcionario);
-            }
-        }
+        Funcionario filtro = new Funcionario();
+        filtro.setCpf(this.telaCadastroCaixa.getjComboBoxFuncionario().getSelectedItem().toString());
+        List<Funcionario> funcionarios = new FuncionarioService().carregar(filtro);
+        caixa.setFuncionario(funcionarios.get(0));
         
         if (!this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().getText().equals("")) {
             caixa.setValorFechamento(Double.parseDouble(this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().getText().replace(',', '.')));
@@ -101,7 +102,13 @@ public class ControllerCadastroCaixa {
             caixa.setDataHoraFechamento(this.telaCadastroCaixa.getjFormattedTextFieldDataFechamento().getText());
         }
         
-        model.dao.Persiste.getInstancia().listaCaixa.add(caixa);
+        if (this.telaCadastroCaixa.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.CaixaService().adicionar(caixa);
+        } else {
+            caixa.setId(Integer.parseInt(this.telaCadastroCaixa.getjTextFieldID().getText()));
+            new service.CaixaService().atualizar(caixa);    
+        }
+        
         ativa(true, telaCadastroCaixa.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCaixa.getjPanelCorpo());   
     }
