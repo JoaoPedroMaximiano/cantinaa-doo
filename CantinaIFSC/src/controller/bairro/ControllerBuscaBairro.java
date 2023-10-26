@@ -34,7 +34,7 @@ public class ControllerBuscaBairro {
 
         Bairro filtro = new Bairro();
         filtro.setDescricao(telaBuscaBairro.getjTextFieldDescricao().getText());
-        List<Bairro> bairros = !filtro.getDescricao().equals("") ? BairroService.carregar() : BairroService.carregar(filtro);
+        List<Bairro> bairros = filtro.getDescricao().equals("") ? BairroService.carregar() : BairroService.carregar(filtro);
 
         bairros.forEach(bairro -> {
             table.addRow(new Object[]{
