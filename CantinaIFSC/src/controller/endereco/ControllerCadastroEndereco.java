@@ -1,7 +1,10 @@
 package controller.endereco;
+import java.util.List;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
+import service.BairroService;
+import service.CidadeService;
 import service.EnderecoService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
@@ -17,11 +20,11 @@ public class ControllerCadastroEndereco {
         this.telaCadastroEndereco = telaCadastroEndereco;
 
         setupActionListeners();
-        for (Cidade cidade : model.dao.Persiste.getInstancia().listaCidade) {
-            this.telaCadastroEndereco.getjComboBoxCidade().addItem(cidade.getDescricao());
+        for (Cidade cidade : new CidadeService().carregar()) {
+            this.telaCadastroEndereco.getjComboBoxCidade().addItem(cidade.toString());
         }
-        for (Bairro bairro : model.dao.Persiste.getInstancia().listaBairro) {
-            this.telaCadastroEndereco.getjComboBoxBairro().addItem(bairro.getDescricao());
+        for (Bairro bairro : new BairroService().carregar()) {
+            this.telaCadastroEndereco.getjComboBoxBairro().addItem(bairro.toString());
         }        
         ativa(true, this.telaCadastroEndereco.getjPanelBotoes());
         limpaCompenentes(false, this.telaCadastroEndereco.getjPanelCorpo());
@@ -83,17 +86,12 @@ public class ControllerCadastroEndereco {
         endereco.setId(model.dao.Persiste.getInstancia().listaEndereco.size() + 1);
         endereco.setCep(this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText());
         endereco.setLogradouro(this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().getText());
-        for (Bairro bairro : model.dao.Persiste.getInstancia().listaBairro) {
-            if (bairro.getDescricao().equals(this.telaCadastroEndereco.getjComboBoxBairro().getSelectedItem().toString())) {
-                endereco.setBairro(bairro);
-            }
-        }
+
+        Bairro bairro = new BairroService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxBairro().getSelectedItem().toString().split(" - ")[0]));
+        endereco.setBairro(bairro);
         
-        for (Cidade cidade : model.dao.Persiste.getInstancia().listaCidade) {
-            if (cidade.getDescricao().equals(this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem().toString())) {
-                endereco.setCidade(cidade);
-            }
-        }
+        Cidade cidade = new CidadeService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem().toString().split(" - ")[0]));
+        
         String item = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
         endereco.setStatus(item.equals("Ativo") ? '1' : (item.equals("Desativado") ? '2' : '3'));
         
