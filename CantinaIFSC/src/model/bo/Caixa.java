@@ -91,7 +91,7 @@ public class Caixa {
 
     @Override
     public String toString() {
-        return "Caixa{" + "id=" + id + ", dataHoraAberto=" + dataHoraAberto + ", dataHoraFechamento=" + dataHoraFechamento + ", valorAbertura=" + valorAbertura + ", valorFechamento=" + valorFechamento + ", observacao=" + observacao + ", status=" + status + ", funcionario=" + funcionario + '}';
+        return id + " - " + getFuncionario().getNome();
     }
     
 }
