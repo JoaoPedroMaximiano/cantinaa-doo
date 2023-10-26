@@ -1,7 +1,10 @@
 package view.carteirinha;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class TelaBuscaCarteirinha extends javax.swing.JDialog {
 
@@ -277,6 +280,38 @@ public class TelaBuscaCarteirinha extends javax.swing.JDialog {
 
     public JButton getjButtonSair() {
         return jButtonSair;
+    }
+
+    public JComboBox<String> getjComboBoxCliente() {
+        return jComboBoxCliente;
+    }
+
+    public void setjComboBoxCliente(JComboBox<String> jComboBoxCliente) {
+        this.jComboBoxCliente = jComboBoxCliente;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataCancelamento() {
+        return jFormattedTextFieldDataCancelamento;
+    }
+
+    public void setjFormattedTextFieldDataCancelamento(JFormattedTextField jFormattedTextFieldDataCancelamento) {
+        this.jFormattedTextFieldDataCancelamento = jFormattedTextFieldDataCancelamento;
+    }
+
+    public JFormattedTextField getjFormattedTextFieldDataGeracao() {
+        return jFormattedTextFieldDataGeracao;
+    }
+
+    public void setjFormattedTextFieldDataGeracao(JFormattedTextField jFormattedTextFieldDataGeracao) {
+        this.jFormattedTextFieldDataGeracao = jFormattedTextFieldDataGeracao;
+    }
+
+    public JTextField getjTextFieldCodigoBarra() {
+        return jTextFieldCodigoBarra;
+    }
+
+    public void setjTextFieldCodigoBarra(JTextField jTextFieldCodigoBarra) {
+        this.jTextFieldCodigoBarra = jTextFieldCodigoBarra;
     }
     
     public static void main(String args[]) {

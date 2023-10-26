@@ -94,7 +94,6 @@ public class ControllerCadastroFornecedor {
 
     private void realizarAcaoGravar() {
         Fornecedor fornecedor  = new Fornecedor();
-        fornecedor.setId(model.dao.Persiste.getInstancia().listaFornecedor.size() + 1);
         fornecedor.setNome(this.telaCadastroFornecedor.getjTextFieldNome().getText());
         fornecedor.setCnpj(this.telaCadastroFornecedor.getjFormattedTextFieldCNPJ().getText());
         fornecedor.setRazaoSocial(this.telaCadastroFornecedor.getjTextFieldRazaoSocial().getText());

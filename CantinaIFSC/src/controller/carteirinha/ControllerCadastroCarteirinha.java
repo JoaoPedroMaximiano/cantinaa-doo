@@ -1,7 +1,9 @@
 package controller.carteirinha;
 
+import java.util.List;
 import model.bo.Carteirinha;
 import model.bo.Cliente;
+import service.ClienteService;
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -70,7 +72,6 @@ public class ControllerCadastroCarteirinha {
 
     private void realizarAcaoGravar() {
         Carteirinha carteirinha = new Carteirinha();
-        carteirinha.setId(model.dao.Persiste.getInstancia().listaCarteirinha.size() + 1);
         carteirinha.setDataGeracao(this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText());
         
         if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText().equals("  /  /    ")) {
@@ -84,7 +85,18 @@ public class ControllerCadastroCarteirinha {
             }
         }
         
-        model.dao.Persiste.getInstancia().listaCarteirinha.add(carteirinha);
+        Cliente filtro = new Cliente();
+        filtro.setCpf(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString());
+        List<Cliente> clientes = new ClienteService().carregar(filtro);
+        carteirinha.setCliente(clientes.get(0));
+        
+        if (this.telaCadastroCarteirinha.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
+            new service.CarteirinhaService().adicionar(carteirinha);
+        } else {
+            carteirinha.setId(Integer.parseInt(this.telaCadastroCarteirinha.getjTextFieldID().getText()));
+            new service.CarteirinhaService().atualizar(carteirinha);    
+        }
+        
         ativa(true, telaCadastroCarteirinha.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroCarteirinha.getjPanelCorpo());   
     }

@@ -96,7 +96,6 @@ public class ControllerCadastroFuncionario {
 
     private void realizarAcaoGravar() {
         Funcionario funcionario  = new Funcionario();
-        funcionario.setId(model.dao.Persiste.getInstancia().listaFuncionario.size() + 1);
         funcionario.setNome(this.telaCadastroFuncionario.getjTextFieldNome().getText());
         funcionario.setCpf(this.telaCadastroFuncionario.getjFormattedTextFieldCPF().getText());
         funcionario.setRg(this.telaCadastroFuncionario.getjFormattedTextFieldRG().getText());

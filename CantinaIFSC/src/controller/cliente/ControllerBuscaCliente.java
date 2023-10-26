@@ -37,7 +37,7 @@ public class ControllerBuscaCliente {
         table.setRowCount(0);
         
         Cliente filtro = new Cliente();
-        filtro.setComplementoEndereco(this.telaBuscaCliente.getjTextFieldComplementoEndereco().getText());
+            filtro.setComplementoEndereco(this.telaBuscaCliente.getjTextFieldComplementoEndereco().getText());
         filtro.setCpf(this.telaBuscaCliente.getjFormattedTextFieldCPF().getText());
         filtro.setDataNascimento(this.telaBuscaCliente.getjFormattedTextFieldDataNascimento().getText());
         filtro.setEmail(this.telaBuscaCliente.getjTextEmail().getText());
