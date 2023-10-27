@@ -19,8 +19,8 @@ public class ControllerCadastroCaixa {
 
         setupActionListeners();
         
-        for (Funcionario funcionario : model.dao.Persiste.getInstancia().listaFuncionario) {
-            this.telaCadastroCaixa.getjComboBoxFuncionario().addItem(funcionario.getCpf());
+        for (Funcionario funcionario : new FuncionarioService().carregar()) {
+            this.telaCadastroCaixa.getjComboBoxFuncionario().addItem(funcionario.toString());
         }
 
         ativa(true, this.telaCadastroCaixa.getjPanelBotoes());
@@ -89,10 +89,8 @@ public class ControllerCadastroCaixa {
         caixa.setValorAbertura(Double.parseDouble(this.telaCadastroCaixa.getjFormattedTextFieldValorAbertura().getText().replace(',', '.')));
         caixa.setDataHoraAberto(this.telaCadastroCaixa.getjFormattedTextFieldDataAbertura().getText());
         
-        Funcionario filtro = new Funcionario();
-        filtro.setCpf(this.telaCadastroCaixa.getjComboBoxFuncionario().getSelectedItem().toString());
-        List<Funcionario> funcionarios = new FuncionarioService().carregar(filtro);
-        caixa.setFuncionario(funcionarios.get(0));
+        Funcionario funcionario = new FuncionarioService().carregar(Integer.parseInt(this.telaCadastroCaixa.getjComboBoxFuncionario().getSelectedItem().toString().split(" - ")[0]));
+        caixa.setFuncionario(funcionario);        
         
         if (!this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().getText().equals("")) {
             caixa.setValorFechamento(Double.parseDouble(this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().getText().replace(',', '.')));
