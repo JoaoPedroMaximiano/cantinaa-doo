@@ -2,6 +2,8 @@ package controller.endereco;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import model.bo.Bairro;
+import model.bo.Cidade;
 import model.bo.Endereco;
 import service.BairroService;
 import service.CidadeService;
@@ -13,6 +15,13 @@ public class ControllerBuscaEndereco {
 
     public ControllerBuscaEndereco(TelaBuscaEndereco telaBuscaEndereco) {
         this.telaBuscaEndereco = telaBuscaEndereco;
+        
+        for (Cidade cidade : new CidadeService().carregar()) {
+            this.telaBuscaEndereco.getjComboBoxCidade().addItem(cidade.toString());
+        }
+        for (Bairro bairro : new BairroService().carregar()) {
+            this.telaBuscaEndereco.getjComboBoxBairro().addItem(bairro.toString());
+        }  
         setupActionListeners();
     }
     
