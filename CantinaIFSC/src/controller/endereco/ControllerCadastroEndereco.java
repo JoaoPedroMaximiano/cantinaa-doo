@@ -91,6 +91,7 @@ public class ControllerCadastroEndereco {
         endereco.setBairro(bairro);
         
         Cidade cidade = new CidadeService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem().toString().split(" - ")[0]));
+        endereco.setCidade(cidade);
         
         String item = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
         endereco.setStatus(item.equals("Ativo") ? '1' : (item.equals("Desativado") ? '2' : '3'));

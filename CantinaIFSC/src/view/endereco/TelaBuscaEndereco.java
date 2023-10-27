@@ -151,7 +151,6 @@ public class TelaBuscaEndereco extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxBairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBairroActionPerformed(evt);
@@ -159,8 +158,6 @@ public class TelaBuscaEndereco extends javax.swing.JDialog {
         });
 
         jLabelBairro.setText("Bairro");
-
-        jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabelCidade.setText("Cidade");
 
