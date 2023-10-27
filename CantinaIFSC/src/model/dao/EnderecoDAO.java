@@ -113,7 +113,7 @@ public class EnderecoDAO implements InterfaceDAO<Endereco> {
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
-            if (filtro.getCep() != null && !filtro.getCep().isEmpty()) {
+            if (filtro.getCep() != null && !filtro.getCep().trim().equals("-")) {
                 sql += " AND cep = ?";
                 parametros.add(filtro.getCep());
             }
