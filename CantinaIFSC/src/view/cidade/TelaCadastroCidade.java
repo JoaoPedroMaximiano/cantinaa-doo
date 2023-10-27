@@ -150,6 +150,7 @@ public class TelaCadastroCidade extends javax.swing.JDialog {
 
         jLabelID.setText("ID");
 
+        jTextFieldID.setActionCommand("comboBoxChanged");
         jTextFieldID.setEnabled(false);
         jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
