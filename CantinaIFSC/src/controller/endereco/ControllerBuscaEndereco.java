@@ -1,7 +1,5 @@
 package controller.endereco;
-
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Bairro;
 import model.bo.Cidade;
@@ -23,6 +21,7 @@ public class ControllerBuscaEndereco {
         for (Bairro bairro : new BairroService().carregar()) {
             this.telaBuscaEndereco.getjComboBoxBairro().addItem(bairro.getDescricao());
         }  
+        filtrarPesquisa();
         setupActionListeners();
     }
     
@@ -58,14 +57,14 @@ public class ControllerBuscaEndereco {
             filtro.setCidade(cidades.get(0));
         }
         
-        filtro.setCidade(new CidadeService().carregar(telaBuscaEndereco.getjComboBoxCidade().getSelectedIndex()));
-        
-        filtro.setCep(telaBuscaEndereco.getjFormattedTextFieldCEP().getText());
+        filtro.setCep(telaBuscaEndereco.getjFormattedTextFieldCEP().getText().trim().equals("-") ? null : telaBuscaEndereco.getjFormattedTextFieldCEP().getText());
         filtro.setLogradouro(telaBuscaEndereco.getjFormattedTextFieldLogradouro().getText());
-        String item = this.telaBuscaEndereco.getjComboBoxStatus().getSelectedItem().toString();
-        filtro.setStatus(item.equals("Ativo") ? '1' : (item.equals("Desativado") ? '2' : '3'));
+        
+        String status = this.telaBuscaEndereco.getjComboBoxStatus().getSelectedItem().toString();
+        filtro.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
+
         List<Endereco> enderecos = (filtro.getBairro() != null) || (filtro.getCidade() != null) || 
-                (!filtro.getCep().trim().equals("-")) || (!filtro.getLogradouro().equals("")) ||
+                (!filtro.getCep().isEmpty()) || (!filtro.getLogradouro().equals("")) ||
                 (!Character.isDefined(filtro.getStatus()))
                 ? EnderecoService.carregar(filtro) : EnderecoService.carregar();
         

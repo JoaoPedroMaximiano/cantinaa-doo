@@ -10,15 +10,15 @@ public class CidadeService {
         new CidadeDAO().create(objeto);
     }
 
-    public static List<Cidade> carregar(){
+    public List<Cidade> carregar(){
         return new CidadeDAO().retrieve();
     }
 
-    public static Cidade carregar(int id){
+    public Cidade carregar(int id){
         return new CidadeDAO().retrieve(id);
     }
 
-    public static List<Cidade> carregar(Cidade filtro){
+    public List<Cidade> carregar(Cidade filtro){
         return new CidadeDAO().retrieve(filtro);
     }
     

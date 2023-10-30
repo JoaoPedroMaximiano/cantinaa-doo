@@ -1,5 +1,4 @@
 package controller.endereco;
-import java.util.List;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
@@ -26,6 +25,7 @@ public class ControllerCadastroEndereco {
         for (Bairro bairro : new BairroService().carregar()) {
             this.telaCadastroEndereco.getjComboBoxBairro().addItem(bairro.toString());
         }        
+        
         ativa(true, this.telaCadastroEndereco.getjPanelBotoes());
         limpaCompenentes(false, this.telaCadastroEndereco.getjPanelCorpo());
     }
@@ -83,18 +83,14 @@ public class ControllerCadastroEndereco {
 
     private void realizarAcaoGravar() {
         Endereco endereco = new Endereco();
-        endereco.setId(model.dao.Persiste.getInstancia().listaEndereco.size() + 1);
+
         endereco.setCep(this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText());
         endereco.setLogradouro(this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().getText());
-
-        Bairro bairro = new BairroService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxBairro().getSelectedItem().toString().split(" - ")[0]));
-        endereco.setBairro(bairro);
+        endereco.setBairro(new BairroService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxBairro().getSelectedItem().toString().split(" - ")[0])));
+        endereco.setCidade(new CidadeService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem().toString().split(" - ")[0])));
         
-        Cidade cidade = new CidadeService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem().toString().split(" - ")[0]));
-        endereco.setCidade(cidade);
-        
-        String item = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
-        endereco.setStatus(item.equals("Ativo") ? '1' : (item.equals("Desativado") ? '2' : '3'));
+        String status = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
+        endereco.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
         
         if (this.telaCadastroEndereco.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.EnderecoService().adicionar(endereco);

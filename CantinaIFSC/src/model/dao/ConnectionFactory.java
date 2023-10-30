@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
 public class ConnectionFactory {
-   private static final String BANCO = "jdbc:mysql://127.0.0.1:3306/Cantina";
+   private static final String BANCO = "jdbc:mysql://127.0.0.1:3306/cantina";
    private static final String USUARIO = "root";
-   private static final String SENHA = "ifsc"; 
+   private static final String SENHA = ""; 
 
    public static Connection getConnection() {
     try {

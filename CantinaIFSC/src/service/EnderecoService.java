@@ -13,7 +13,7 @@ public class EnderecoService {
         return new EnderecoDAO().retrieve();
     }
 
-    public static Endereco carregar(int id){
+    public Endereco carregar(int id){
         return new EnderecoDAO().retrieve(id);
     }
 

@@ -135,7 +135,7 @@ public class TelaBuscaEndereco extends javax.swing.JDialog {
 
         jLabelStatus.setText("Status");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo", "Pendente" }));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Desativado", "Pendente" }));
 
         jLabelCEP.setText("CEP");
 

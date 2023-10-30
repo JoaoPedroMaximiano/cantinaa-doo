@@ -10,15 +10,15 @@ public class BairroService {
         new BairroDAO().create(objeto);
     }
 
-    public static List<Bairro> carregar(){
+    public List<Bairro> carregar(){
         return new BairroDAO().retrieve();
     }
 
-    public static Bairro carregar(int id){
+    public Bairro carregar(int id){
         return new BairroDAO().retrieve(id);
     }
 
-    public static List<Bairro> carregar(Bairro filtro){
+    public List<Bairro> carregar(Bairro filtro){
         return new BairroDAO().retrieve(filtro);
     }
     
