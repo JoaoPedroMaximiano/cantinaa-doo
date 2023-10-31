@@ -145,7 +145,7 @@ public class CarteirinhaDAO implements InterfaceDAO<Carteirinha> {
                 Object parametro = parametros.get(i);
                 pstm.setString(i + 1, parametro.toString());
             }
-
+            System.out.println(pstm);
             rs = pstm.executeQuery();
 
             while (rs.next()) {

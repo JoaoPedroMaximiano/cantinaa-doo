@@ -201,6 +201,7 @@ public class TelaCadastroCarteirinha extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldDataCancelamento.setText("  /  /       :  :  ");
         jFormattedTextFieldDataCancelamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextFieldDataCancelamentoActionPerformed(evt);

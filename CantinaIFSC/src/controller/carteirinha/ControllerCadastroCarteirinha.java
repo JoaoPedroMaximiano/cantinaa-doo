@@ -3,7 +3,6 @@ import model.bo.Carteirinha;
 import model.bo.Cliente;
 import service.CarteirinhaService;
 import service.ClienteService;
-
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -18,7 +17,7 @@ public class ControllerCadastroCarteirinha {
 
         setupActionListeners();
 
-        for (Cliente cliente : model.dao.Persiste.getInstancia().listaCliente) {
+        for (Cliente cliente : new ClienteService().carregar()) {
             this.telaCadastroCarteirinha.getjComboBoxCliente().addItem(cliente.toString());
         }
         
@@ -72,10 +71,14 @@ public class ControllerCadastroCarteirinha {
 
     private void realizarAcaoGravar() {
         Carteirinha carteirinha = new Carteirinha();
-        carteirinha.setDataGeracao(this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText());
+        carteirinha.setCodigoBarra(this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText());
         
         if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText().equals("  /  /    ")) {
             carteirinha.setDataCancelamento(this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText());
+        }
+
+        if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText().equals("  /  /    ")) {
+            carteirinha.setDataGeracao(this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText());
         }
 
         carteirinha.setCliente(new ClienteService().carregar(Integer.parseInt(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString().split(" - ")[0])));
