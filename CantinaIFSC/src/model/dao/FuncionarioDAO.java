@@ -128,15 +128,6 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
-            if (filtro.getId() != 0) {
-                sql += " AND id = ?";
-                parametros.add(filtro.getId());
-            }
-
-            if (filtro.getEndereco() != null && filtro.getEndereco().getId() != 0) {
-                sql += " AND endereco_id = ?";
-                parametros.add(filtro.getEndereco().getId());
-            }
             
             if (filtro.getCpf() != null && !filtro.getCpf().isEmpty()) {
                 sql += " AND cpf = ?";
@@ -156,31 +147,6 @@ public class FuncionarioDAO implements InterfaceDAO<Funcionario> {
             if (filtro.getNome() != null && !filtro.getNome().isEmpty()) {
                 sql += " AND nome = ?";
                 parametros.add(filtro.getNome());
-            }
-
-            if (filtro.getEmail() != null && !filtro.getEmail().isEmpty()) {
-                sql += " AND email = ?";
-                parametros.add(filtro.getEmail());
-            }
-
-            if (filtro.getFone1() != null && !filtro.getFone1().isEmpty()) {
-                sql += " AND fone1 = ?";
-                parametros.add(filtro.getFone1());
-            }
-
-            if (filtro.getFone2() != null && !filtro.getFone2().isEmpty()) {
-                sql += " AND fone2 = ?";
-                parametros.add(filtro.getFone2());
-            }
-
-            if (filtro.getComplementoEndereco() != null && !filtro.getComplementoEndereco().isEmpty()) {
-                sql += " AND complementoEndereco = ?";
-                parametros.add(filtro.getComplementoEndereco());
-            }
-
-            if (filtro.getStatus() != 0) {
-                sql += " AND status = ?";
-                parametros.add(String.valueOf(filtro.getStatus()));
             }
         }
 

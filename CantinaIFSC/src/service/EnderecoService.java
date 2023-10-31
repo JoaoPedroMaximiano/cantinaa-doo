@@ -9,7 +9,7 @@ public class EnderecoService {
         new EnderecoDAO().create(objeto);
     }
 
-    public static List<Endereco> carregar(){
+    public List<Endereco> carregar(){
         return new EnderecoDAO().retrieve();
     }
 
@@ -17,7 +17,7 @@ public class EnderecoService {
         return new EnderecoDAO().retrieve(id);
     }
 
-    public static List<Endereco> carregar(Endereco filtro){
+    public List<Endereco> carregar(Endereco filtro){
         return new EnderecoDAO().retrieve(filtro);
     }
 

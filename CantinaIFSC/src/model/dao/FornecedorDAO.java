@@ -123,15 +123,6 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
-            if (filtro.getId() != 0) {
-                sql.append(" AND id = ?");
-                parametros.add(filtro.getId());
-            }
-
-            if (filtro.getEndereco().getId() != 0) {
-                sql.append(" AND endereco_id = ?");
-                parametros.add(filtro.getEndereco().getId());
-            }
 
             if (filtro.getNome() != null && !filtro.getNome().isEmpty()) {
                 sql.append(" AND nome = ?");
@@ -151,31 +142,6 @@ public class FornecedorDAO implements InterfaceDAO<Fornecedor> {
             if (filtro.getRazaoSocial() != null && !filtro.getRazaoSocial().isEmpty()) {
                 sql.append(" AND razaoSocial = ?");
                 parametros.add(filtro.getRazaoSocial());
-            }
-
-            if (filtro.getStatus() != 0) {
-                sql.append(" AND status = ?");
-                parametros.add(String.valueOf(filtro.getStatus()));
-            }
-
-            if (filtro.getComplementoEndereco() != null && !filtro.getComplementoEndereco().isEmpty()) {
-                sql.append(" AND complemento_endereco = ?");
-                parametros.add(filtro.getComplementoEndereco());
-            }
-
-            if (filtro.getEmail() != null && !filtro.getEmail().isEmpty()) {
-                sql.append(" AND email = ?");
-                parametros.add(filtro.getEmail());
-            }
-
-            if (filtro.getFone1() != null && !filtro.getFone1().isEmpty()) {
-                sql.append(" AND fone1 = ?");
-                parametros.add(filtro.getFone1());
-            }
-
-            if (filtro.getFone2() != null && !filtro.getFone2().isEmpty()) {
-                sql.append(" AND fone2 = ?");
-                parametros.add(filtro.getFone2());
             }
         }
 

@@ -9,15 +9,15 @@ public class FornecedorService {
         new FornecedorDAO().create(objeto);
     }
 
-    public static List<Fornecedor> carregar(){
+    public List<Fornecedor> carregar(){
         return new FornecedorDAO().retrieve();
     }
 
-    public static Fornecedor carregar(int id){
+    public Fornecedor carregar(int id){
         return new FornecedorDAO().retrieve(id);
     }
 
-    public static List<Fornecedor> carregar(Fornecedor filtro){
+    public List<Fornecedor> carregar(Fornecedor filtro){
         return new FornecedorDAO().retrieve(filtro);
     }
 

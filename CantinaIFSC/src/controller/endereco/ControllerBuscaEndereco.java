@@ -66,7 +66,7 @@ public class ControllerBuscaEndereco {
         List<Endereco> enderecos = (filtro.getBairro() != null) || (filtro.getCidade() != null) || 
                 (!filtro.getCep().isEmpty()) || (!filtro.getLogradouro().equals("")) ||
                 (!Character.isDefined(filtro.getStatus()))
-                ? EnderecoService.carregar(filtro) : EnderecoService.carregar();
+                ? new EnderecoService().carregar(filtro) : new EnderecoService().carregar();
         
         enderecos.forEach(endereco -> {
             table.addRow(new Object[]{

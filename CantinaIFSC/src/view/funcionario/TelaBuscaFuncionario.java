@@ -28,33 +28,13 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
         jPanelFiltros = new javax.swing.JPanel();
         jButtonPesquisar = new javax.swing.JButton();
         jTextFieldNome = new javax.swing.JTextField();
-        jComboBoxStatus = new javax.swing.JComboBox<>();
-        jFormattedTextFieldTelefone2 = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldTelefone1 = new javax.swing.JFormattedTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldComplementoEndereco = new javax.swing.JTextField();
         jFormattedTextFieldRG = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCPF = new javax.swing.JFormattedTextField();
         jTextFieldUsuario = new javax.swing.JTextField();
         jLabelUsuario = new javax.swing.JLabel();
         jLabelCPF = new javax.swing.JLabel();
         jLabelRG = new javax.swing.JLabel();
-        jLabelComplementoEndereco = new javax.swing.JLabel();
-        jLabelEmail = new javax.swing.JLabel();
-        jLabelTelefone1 = new javax.swing.JLabel();
-        jLabelTelefone2 = new javax.swing.JLabel();
-        jLabelStatus = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
-        jComboBoxEndereco = new javax.swing.JComboBox<>();
-        jLabelEndereco = new javax.swing.JLabel();
-        jTextFieldLogradouro = new javax.swing.JTextField();
-        jTextFieldBairro = new javax.swing.JTextField();
-        jTextFieldCidade = new javax.swing.JTextField();
-        jFormattedTextFieldCEP = new javax.swing.JFormattedTextField();
-        jLabelCEP = new javax.swing.JLabel();
-        jLabelCidade = new javax.swing.JLabel();
-        jLabelBairro = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar por Funcionário");
@@ -155,36 +135,6 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
         jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Find.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo", "Pendente" }));
-        jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxStatusActionPerformed(evt);
-            }
-        });
-
-        try {
-            jFormattedTextFieldTelefone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            jFormattedTextFieldTelefone1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldTelefone1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldTelefone1ActionPerformed(evt);
-            }
-        });
-
-        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailActionPerformed(evt);
-            }
-        });
-
         try {
             jFormattedTextFieldRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###################################")));
         } catch (java.text.ParseException ex) {
@@ -214,36 +164,7 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
 
         jLabelRG.setText("RG");
 
-        jLabelComplementoEndereco.setText("Complemento endereço");
-
-        jLabelEmail.setText("E-mail");
-
-        jLabelTelefone1.setText("Telefone 1");
-
-        jLabelTelefone2.setText("Telefone 2");
-
-        jLabelStatus.setText("Status");
-
         jLabelNome.setText("Nome");
-
-        jComboBoxEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabelEndereco.setText("Endereço");
-
-        try {
-            jFormattedTextFieldCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldCEP.setPreferredSize(new java.awt.Dimension(104, 22));
-
-        jLabelCEP.setText("CEP");
-
-        jLabelCidade.setText("Cidade");
-
-        jLabelBairro.setText("Bairro");
-
-        jLabel4.setText("Logradouro");
 
         javax.swing.GroupLayout jPanelFiltrosLayout = new javax.swing.GroupLayout(jPanelFiltros);
         jPanelFiltros.setLayout(jPanelFiltrosLayout);
@@ -254,64 +175,26 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabelEmail))
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelNome)
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldComplementoEndereco))
-                    .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(jLabelUsuario)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldUsuario)
-                                        .addComponent(jFormattedTextFieldTelefone1))
-                                    .addComponent(jLabelTelefone1)
-                                    .addComponent(jLabelCPF)
-                                    .addComponent(jLabelNome)
-                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltrosLayout.createSequentialGroup()
-                                .addComponent(jComboBoxStatus, 0, 220, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jFormattedTextFieldRG, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltrosLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelComplementoEndereco)
-                                    .addComponent(jFormattedTextFieldTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelEndereco)
-                                    .addComponent(jLabelTelefone2)
-                                    .addComponent(jLabelRG)
-                                    .addComponent(jLabelStatus))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBoxEndereco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(327, 327, 327))
+                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)))
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCEP)
-                            .addComponent(jFormattedTextFieldCEP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabelCPF)
+                            .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCidade)
-                            .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelBairro)
-                            .addComponent(jTextFieldBairro))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextFieldLogradouro))))
+                            .addComponent(jLabelRG)
+                            .addComponent(jFormattedTextFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
                 .addContainerGap())
         );
         jPanelFiltrosLayout.setVerticalGroup(
@@ -319,71 +202,27 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
             .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelNome)
-                        .addComponent(jLabelEndereco))
+                    .addComponent(jLabelNome)
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                        .addComponent(jLabelTelefone1)
+                        .addComponent(jLabelUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextFieldTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                        .addComponent(jLabelTelefone2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextFieldTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelComplementoEndereco, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelEmail))
+                        .addComponent(jLabelCPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextFieldComplementoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPF)
-                    .addComponent(jLabelRG))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jFormattedTextFieldCPF)
-                    .addComponent(jFormattedTextFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 16, Short.MAX_VALUE)
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldBairro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltrosLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCEP)
-                            .addComponent(jLabelCidade))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFormattedTextFieldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltrosLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabelBairro))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelUsuario)
-                            .addComponent(jLabelStatus))
+                        .addComponent(jLabelRG)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelFiltrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonPesquisar)))
-                    .addGroup(jPanelFiltrosLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                            .addComponent(jFormattedTextFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonPesquisar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -417,12 +256,6 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusActionPerformed
-    }//GEN-LAST:event_jComboBoxStatusActionPerformed
-
-    private void jFormattedTextFieldTelefone1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefone1ActionPerformed
-    }//GEN-LAST:event_jFormattedTextFieldTelefone1ActionPerformed
-
     private void jFormattedTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCPFActionPerformed
     }//GEN-LAST:event_jFormattedTextFieldCPFActionPerformed
 
@@ -431,10 +264,6 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
     }//GEN-LAST:event_jButtonSairActionPerformed
-
-    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
     public JButton getjButtonCarregar() {
         return jButtonCarregar;
@@ -448,40 +277,8 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
         return jTable;
     }
 
-    public JTextField getjTextFieldEmail() {
-        return jTextFieldEmail;
-    }
-
-    public void setjTextFieldEmail(JTextField jTextFieldEmail) {
-        this.jTextFieldEmail = jTextFieldEmail;
-    }
-
     public JButton getjButtonSair() {
         return jButtonSair;
-    }
-
-    public JComboBox<String> getjComboBoxEndereco() {
-        return jComboBoxEndereco;
-    }
-
-    public void setjComboBoxEndereco(JComboBox<String> jComboBoxEndereco) {
-        this.jComboBoxEndereco = jComboBoxEndereco;
-    }
-
-    public JComboBox<String> getjComboBoxStatus() {
-        return jComboBoxStatus;
-    }
-
-    public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
-        this.jComboBoxStatus = jComboBoxStatus;
-    }
-
-    public JFormattedTextField getjFormattedTextFieldCEP() {
-        return jFormattedTextFieldCEP;
-    }
-
-    public void setjFormattedTextFieldCEP(JFormattedTextField jFormattedTextFieldCEP) {
-        this.jFormattedTextFieldCEP = jFormattedTextFieldCEP;
     }
 
     public JFormattedTextField getjFormattedTextFieldCPF() {
@@ -498,54 +295,6 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
 
     public void setjFormattedTextFieldRG(JFormattedTextField jFormattedTextFieldRG) {
         this.jFormattedTextFieldRG = jFormattedTextFieldRG;
-    }
-
-    public JFormattedTextField getjFormattedTextFieldTelefone1() {
-        return jFormattedTextFieldTelefone1;
-    }
-
-    public void setjFormattedTextFieldTelefone1(JFormattedTextField jFormattedTextFieldTelefone1) {
-        this.jFormattedTextFieldTelefone1 = jFormattedTextFieldTelefone1;
-    }
-
-    public JFormattedTextField getjFormattedTextFieldTelefone2() {
-        return jFormattedTextFieldTelefone2;
-    }
-
-    public void setjFormattedTextFieldTelefone2(JFormattedTextField jFormattedTextFieldTelefone2) {
-        this.jFormattedTextFieldTelefone2 = jFormattedTextFieldTelefone2;
-    }
-
-    public JTextField getjTextFieldBairro() {
-        return jTextFieldBairro;
-    }
-
-    public void setjTextFieldBairro(JTextField jTextFieldBairro) {
-        this.jTextFieldBairro = jTextFieldBairro;
-    }
-
-    public JTextField getjTextFieldCidade() {
-        return jTextFieldCidade;
-    }
-
-    public void setjTextFieldCidade(JTextField jTextFieldCidade) {
-        this.jTextFieldCidade = jTextFieldCidade;
-    }
-
-    public JTextField getjTextFieldComplementoEndereco() {
-        return jTextFieldComplementoEndereco;
-    }
-
-    public void setjTextFieldComplementoEndereco(JTextField jTextFieldComplementoEndereco) {
-        this.jTextFieldComplementoEndereco = jTextFieldComplementoEndereco;
-    }
-
-    public JTextField getjTextFieldLogradouro() {
-        return jTextFieldLogradouro;
-    }
-
-    public void setjTextFieldLogradouro(JTextField jTextFieldLogradouro) {
-        this.jTextFieldLogradouro = jTextFieldLogradouro;
     }
 
     public JTextField getjTextFieldNome() {
@@ -585,26 +334,11 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
     private javax.swing.JButton jButtonCarregar;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonSair;
-    private javax.swing.JComboBox<String> jComboBoxEndereco;
-    private javax.swing.JComboBox<String> jComboBoxStatus;
-    private javax.swing.JFormattedTextField jFormattedTextFieldCEP;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
     private javax.swing.JFormattedTextField jFormattedTextFieldRG;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelBairro;
-    private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCPF;
-    private javax.swing.JLabel jLabelCidade;
-    private javax.swing.JLabel jLabelComplementoEndereco;
-    private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelRG;
-    private javax.swing.JLabel jLabelStatus;
-    private javax.swing.JLabel jLabelTelefone1;
-    private javax.swing.JLabel jLabelTelefone2;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelConteudo;
@@ -612,11 +346,6 @@ public class TelaBuscaFuncionario extends javax.swing.JDialog {
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
-    private javax.swing.JTextField jTextFieldBairro;
-    private javax.swing.JTextField jTextFieldCidade;
-    private javax.swing.JTextField jTextFieldComplementoEndereco;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldLogradouro;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldUsuario;
     private java.awt.Label labelTitulo;

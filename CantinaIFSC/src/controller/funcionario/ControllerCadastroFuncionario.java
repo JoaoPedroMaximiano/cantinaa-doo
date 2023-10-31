@@ -1,10 +1,11 @@
 package controller.funcionario;
 
 import controller.endereco.ControllerCadastroEndereco;
-import java.util.List;
 import model.bo.Endereco;
 import model.bo.Funcionario;
 import service.EnderecoService;
+import service.FuncionarioService;
+
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.endereco.TelaCadastroEndereco;
@@ -45,7 +46,7 @@ public class ControllerCadastroFuncionario {
         
         if (codigo != 0) {
             Funcionario funcionario = new Funcionario();
-            funcionario = model.dao.Persiste.getInstancia().listaFuncionario.get(codigo -1);
+            funcionario = new FuncionarioService().carregar(codigo);
             
             ativa(false, this.telaCadastroFuncionario.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroFuncionario.getjPanelCorpo());
@@ -108,10 +109,8 @@ public class ControllerCadastroFuncionario {
         
         String status = this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem().toString();
         funcionario.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
-        Endereco filtro = new Endereco();
-        filtro.setCep(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText());
-        List<Endereco> enderecos = new EnderecoService().carregar(filtro);
-        funcionario.setEndereco(enderecos.get(0));
+
+        funcionario.setEndereco(new EnderecoService().carregar(new Endereco(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())).get(0));
         
         if (this.telaCadastroFuncionario.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.FuncionarioService().adicionar(funcionario);
@@ -124,12 +123,9 @@ public class ControllerCadastroFuncionario {
     }
 
     private void abrirTelaBuscaEndereco() {
-        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
-            if (endereco.getCep().equals(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())) {
-                this.telaCadastroFuncionario.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
-                this.telaCadastroFuncionario.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
-                this.telaCadastroFuncionario.getjTextFieldLogradouro().setText(endereco.getLogradouro());
-            }
-        }    
+        Endereco endereco = new EnderecoService().carregar(new Endereco(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())).get(0);
+        this.telaCadastroFuncionario.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
+        this.telaCadastroFuncionario.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
+        this.telaCadastroFuncionario.getjTextFieldLogradouro().setText(endereco.getLogradouro());  
     }
 }

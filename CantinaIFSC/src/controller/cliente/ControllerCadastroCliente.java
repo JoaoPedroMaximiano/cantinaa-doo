@@ -1,7 +1,5 @@
 package controller.cliente;
-
 import controller.endereco.ControllerCadastroEndereco;
-import java.util.List;
 import model.bo.Cliente;
 import model.bo.Endereco;
 import service.ClienteService;
@@ -101,15 +99,13 @@ public class ControllerCadastroCliente {
         cliente.setFone1(this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText());
         cliente.setFone2(this.telaCadastroCliente.getjFormattedTextFieldTelefone2().getText());
         cliente.setEmail(this.telaCadastroCliente.getjTextEmail().getText());
+        cliente.setComplementoEndereco(this.telaCadastroCliente.getjTextFieldComplementoEndereco().getText());
         
         String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
         cliente.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
 
-        Endereco filtro = new Endereco();
-        filtro.setCep(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText());
-        List<Endereco> enderecos = new EnderecoService().carregar(filtro);
-        cliente.setEndereco(enderecos.get(0));
-        
+        cliente.setEndereco(new EnderecoService().carregar(new Endereco(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())).get(0));
+
         if (this.telaCadastroCliente.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.ClienteService().adicionar(cliente);
         } else {
@@ -121,12 +117,9 @@ public class ControllerCadastroCliente {
     }
 
     private void abrirTelaBuscaEndereco() {
-        for (Endereco endereco : model.dao.Persiste.getInstancia().listaEndereco) {
-            if (endereco.getCep().equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
-                this.telaCadastroCliente.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
-                this.telaCadastroCliente.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
-                this.telaCadastroCliente.getjTextFieldLogradouro().setText(endereco.getLogradouro());
-            }
-        }   
+        Endereco endereco = new EnderecoService().carregar(new Endereco(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())).get(0);
+        this.telaCadastroCliente.getjTextFieldCidade().setText(endereco.getCidade().getDescricao());
+        this.telaCadastroCliente.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
+        this.telaCadastroCliente.getjTextFieldLogradouro().setText(endereco.getLogradouro());
     }
 }

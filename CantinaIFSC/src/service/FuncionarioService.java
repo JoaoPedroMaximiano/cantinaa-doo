@@ -9,15 +9,15 @@ public class FuncionarioService {
         new FuncionarioDAO().create(objeto);
     }
 
-    public static List<Funcionario> carregar(){
+    public List<Funcionario> carregar(){
         return new FuncionarioDAO().retrieve();
     }
 
-    public static Funcionario carregar(int id){
+    public Funcionario carregar(int id){
         return new FuncionarioDAO().retrieve(id);
     }
 
-    public static List<Funcionario> carregar(Funcionario filtro){
+    public List<Funcionario> carregar(Funcionario filtro){
         return new FuncionarioDAO().retrieve(filtro);
     }
 

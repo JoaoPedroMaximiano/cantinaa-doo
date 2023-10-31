@@ -139,6 +139,12 @@ public class ClienteDAO implements InterfaceDAO<Cliente> {
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
+
+            if (filtro.getNome() != null && !filtro.getNome().isEmpty()) {
+                sql.append(" AND c.nome = ?");
+                parametros.add(filtro.getNome());
+            }
+
             if (filtro.getCpf() != null && !filtro.getCpf().isEmpty()) {
                 sql.append(" AND c.cpf = ?");
                 parametros.add(filtro.getCpf());
