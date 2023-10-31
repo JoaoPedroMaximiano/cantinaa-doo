@@ -1,10 +1,9 @@
 package controller.carteirinha;
-
-import java.util.List;
 import model.bo.Carteirinha;
 import model.bo.Cliente;
 import service.CarteirinhaService;
 import service.ClienteService;
+
 import static utilies.Utilities.ativa;
 import static utilies.Utilities.limpaCompenentes;
 import view.carteirinha.TelaBuscaCarteirinha;
@@ -20,7 +19,7 @@ public class ControllerCadastroCarteirinha {
         setupActionListeners();
 
         for (Cliente cliente : model.dao.Persiste.getInstancia().listaCliente) {
-            this.telaCadastroCarteirinha.getjComboBoxCliente().addItem(cliente.getCpf());
+            this.telaCadastroCarteirinha.getjComboBoxCliente().addItem(cliente.toString());
         }
         
         ativa(true, this.telaCadastroCarteirinha.getjPanelBotoes());
@@ -49,7 +48,7 @@ public class ControllerCadastroCarteirinha {
             ativa(false, this.telaCadastroCarteirinha.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroCarteirinha.getjPanelCorpo());
             this.telaCadastroCarteirinha.getjTextFieldID().setText(carteirinha.getId() + "");
-            this.telaCadastroCarteirinha.getjComboBoxCliente().setSelectedItem(carteirinha.getCliente().getCpf());
+            this.telaCadastroCarteirinha.getjComboBoxCliente().setSelectedItem(carteirinha.getCliente().toString());
             this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().setText(carteirinha.getCodigoBarra());
             this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().setText(carteirinha.getDataCancelamento());
             this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().setText(carteirinha.getDataGeracao());
@@ -78,12 +77,8 @@ public class ControllerCadastroCarteirinha {
         if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText().equals("  /  /    ")) {
             carteirinha.setDataCancelamento(this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText());
         }
-        
-        carteirinha.setCodigoBarra(this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText());  
-        Cliente filtro = new Cliente();
-        filtro.setCpf(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString());
-        List<Cliente> clientes = new ClienteService().carregar(filtro);
-        carteirinha.setCliente(clientes.get(0));
+
+        carteirinha.setCliente(new ClienteService().carregar(Integer.parseInt(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString().split(" - ")[0])));
         
         if (this.telaCadastroCarteirinha.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.CarteirinhaService().adicionar(carteirinha);

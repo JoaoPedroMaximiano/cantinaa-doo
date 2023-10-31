@@ -56,8 +56,8 @@ public class ControllerCadastroEndereco {
             String status = String.valueOf(endereco.getStatus());
             this.telaCadastroEndereco.getjTextFieldID().setText(endereco.getId() + "");
             this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().setText(endereco.getLogradouro());
-            this.telaCadastroEndereco.getjComboBoxBairro().setSelectedItem(endereco.getBairro().getDescricao());
-            this.telaCadastroEndereco.getjComboBoxCidade().setSelectedItem(endereco.getCidade().getDescricao());
+            this.telaCadastroEndereco.getjComboBoxBairro().setSelectedItem(endereco.getBairro().toString());
+            this.telaCadastroEndereco.getjComboBoxCidade().setSelectedItem(endereco.getCidade().toString());
             this.telaCadastroEndereco.getjComboBoxStatus().setSelectedItem(
                 status.equals("1") ? "Ativo" : (status.equals("2") ? "Desativado" : "Pendente")
             );

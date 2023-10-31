@@ -9,15 +9,15 @@ public class ClienteService {
         new ClienteDAO().create(objeto);
     }
 
-    public static List<Cliente> carregar(){
+    public List<Cliente> carregar(){
         return new ClienteDAO().retrieve();
     }
 
-    public static Cliente carregar(int id){
+    public Cliente carregar(int id){
         return new ClienteDAO().retrieve(id);
     }
 
-    public static List<Cliente> carregar(Cliente filtro){
+    public List<Cliente> carregar(Cliente filtro){
         return new ClienteDAO().retrieve(filtro);
     }
 

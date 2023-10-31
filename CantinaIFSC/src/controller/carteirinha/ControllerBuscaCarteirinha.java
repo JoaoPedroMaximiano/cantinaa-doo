@@ -15,6 +15,12 @@ public class ControllerBuscaCarteirinha {
 
     public ControllerBuscaCarteirinha(TelaBuscaCarteirinha telaBuscaCarteirinha) {
         this.telaBuscaCarteirinha = telaBuscaCarteirinha;
+
+        for (Cliente cliente : new ClienteService().carregar()) {
+            this.telaBuscaCarteirinha.getjComboBoxCliente().addItem(cliente.toString() + cliente.getCpf());
+        }
+
+        filtrarPesquisa();
         setupActionListeners();
     }
     
@@ -36,18 +42,18 @@ public class ControllerBuscaCarteirinha {
         
         Carteirinha filtro = new Carteirinha();
         filtro.setCodigoBarra(this.telaBuscaCarteirinha.getjTextFieldCodigoBarra().toString());
-        filtro.setDataCancelamento(this.telaBuscaCarteirinha.getjFormattedTextFieldDataCancelamento().toString());
-        filtro.setDataGeracao(this.telaBuscaCarteirinha.getjFormattedTextFieldDataGeracao().toString());
-        Cliente cliente = new Cliente();
+
+        filtro.setDataCancelamento(this.telaBuscaCarteirinha.getjFormattedTextFieldDataCancelamento().toString().trim().equals("//::") ? null : this.telaBuscaCarteirinha.getjFormattedTextFieldDataCancelamento().toString());
+        filtro.setDataGeracao(this.telaBuscaCarteirinha.getjFormattedTextFieldDataGeracao().toString().trim().equals("//::") ? null : this.telaBuscaCarteirinha.getjFormattedTextFieldDataGeracao().toString());
+
         if (!this.telaBuscaCarteirinha.getjComboBoxCliente().getSelectedItem().toString().equals("")) {
-            cliente.setNome(this.telaBuscaCarteirinha.getjComboBoxCliente().getSelectedItem().toString());
-            List<Cliente> clientes = new ClienteService().carregar(cliente);
-            filtro.setCliente(clientes.get(0));
+            filtro.setCliente(new ClienteService().carregar(Integer.parseInt(this.telaBuscaCarteirinha.getjComboBoxCliente().getSelectedItem().toString().split(" - ")[0])));
         }
 
-        List<Carteirinha> carteirinhas = !filtro.getCodigoBarra().equals("") || 
-                !filtro.getCliente().getNome().equals("") || !filtro.getDataCancelamento().equals("  /  /       :  :  ")
-                || !filtro.getDataGeracao().equals("  /  /       :  :  ") 
+        List<Carteirinha> carteirinhas = !filtro.getCodigoBarra().equals("") 
+                || !filtro.getCliente().getNome().equals("") 
+                || !filtro.getDataCancelamento().isEmpty()
+                || !filtro.getDataGeracao().isEmpty() 
                 ? new CarteirinhaService().carregar(filtro) 
                 : new CarteirinhaService().carregar() ;
         

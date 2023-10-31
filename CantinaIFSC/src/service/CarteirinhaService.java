@@ -9,7 +9,7 @@ public class CarteirinhaService {
         new CarteirinhaDAO().create(objeto);
     }
 
-    public static List<Carteirinha> carregar(){
+    public List<Carteirinha> carregar(){
         return new CarteirinhaDAO().retrieve();
     }
 
@@ -17,7 +17,7 @@ public class CarteirinhaService {
         return new CarteirinhaDAO().retrieve(id);
     }
 
-    public static List<Carteirinha> carregar(Carteirinha filtro){
+    public List<Carteirinha> carregar(Carteirinha filtro){
         return new CarteirinhaDAO().retrieve(filtro);
     }
 
