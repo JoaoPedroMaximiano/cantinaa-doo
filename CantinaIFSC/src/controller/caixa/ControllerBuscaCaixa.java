@@ -13,6 +13,12 @@ public class ControllerBuscaCaixa {
 
     public ControllerBuscaCaixa(TelaBuscaCaixa telaBuscaCaixa) {
         this.telaBuscaCaixa = telaBuscaCaixa;
+        
+        for (Funcionario funcionario : new FuncionarioService().carregar()) {
+            this.telaBuscaCaixa.getjComboBoxFuncionario().addItem(funcionario.toString() + ' ' + funcionario.getCpf());
+        }
+
+        filtrarPesquisa();
         setupActionListeners();
     }
     
@@ -31,28 +37,23 @@ public class ControllerBuscaCaixa {
     private void filtrarPesquisa() {
         DefaultTableModel table = (DefaultTableModel) this.telaBuscaCaixa.getjTable().getModel();
         table.setRowCount(0);
-        
         Caixa filtro = new Caixa();
-        filtro.setDataHoraAberto(this.telaBuscaCaixa.getjFormattedTextFieldValorAbertura().toString());
-        filtro.setDataHoraFechamento(this.telaBuscaCaixa.getjFormattedTextFieldDataFechamento().toString());
-        
-        if (!this.telaBuscaCaixa.getjComboBoxFuncionario().getSelectedItem().toString().equals("")) {
-            Funcionario funcionario = new Funcionario();
-            funcionario.setNome(this.telaBuscaCaixa.getjComboBoxFuncionario().getSelectedItem().toString());
-            List<Funcionario> funcionarios = new FuncionarioService().carregar(funcionario);
-            filtro.setFuncionario(funcionarios.get(0));
-        }
+        filtro.setDataHoraAberto(this.telaBuscaCaixa.getjFormattedTextFieldDataAbertura().getText().trim().equals("/  /       :  :") ? "" : this.telaBuscaCaixa.getjFormattedTextFieldDataAbertura().getText());
+        filtro.setDataHoraFechamento(this.telaBuscaCaixa.getjFormattedTextFieldDataFechamento().getText().trim().equals("/  /       :  :") ? "" : this.telaBuscaCaixa.getjFormattedTextFieldDataFechamento().getText());
+
+        filtro.setFuncionario(new FuncionarioService().carregar(Integer.parseInt(this.telaBuscaCaixa.getjComboBoxFuncionario().getSelectedItem().toString().split(" - ")[0])));
         
         String status = this.telaBuscaCaixa.getjComboBoxStatus().getSelectedItem().toString();
         filtro.setStatus(status.equals("Aberto") ? '1' : (status.equals("Fechado") ? '2' : (status.equals("Cancelado") ? '3' : '4')));
-        filtro.setValorAbertura(Double.parseDouble(this.telaBuscaCaixa.getjFormattedTextFieldValorAbertura().toString()));
-        filtro.setValorFechamento(Double.parseDouble(this.telaBuscaCaixa.getjFormattedTextFieldValorAbertura().toString()));
+        filtro.setValorAbertura(Double.parseDouble(this.telaBuscaCaixa.getjFormattedTextFieldValorAbertura().getText().equals("") ? "0.0" : this.telaBuscaCaixa.getjFormattedTextFieldValorAbertura().getText()));
+        filtro.setValorFechamento(Double.parseDouble(this.telaBuscaCaixa.getjFormattedTextFieldValorFechamento().getText().equals("") ? "0.0" : this.telaBuscaCaixa.getjFormattedTextFieldValorFechamento().getText()));
         
-        
-        List<Caixa> caixas = !filtro.getDataHoraAberto().equals("  /  /       :  :  ")
-                || !filtro.getDataHoraFechamento().equals("  /  /       :  :  ")
+        List<Caixa> caixas = !filtro.getDataHoraAberto().equals("")
+                || !filtro.getDataHoraFechamento().equals("")
                 || !filtro.getFuncionario().getNome().equals("")
                 || !Character.isDefined(filtro.getStatus())
+                || filtro.getValorAbertura() != 0.0 
+                || filtro.getValorFechamento() != 0.0
                 ? new CaixaService().carregar(filtro)
                 : new CaixaService().carregar();
         

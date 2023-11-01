@@ -10,7 +10,7 @@ public class CaixaService {
         new CaixaDAO().create(objeto);
     }
 
-    public static List<Caixa> carregar(){
+    public List<Caixa> carregar(){
         return new CaixaDAO().retrieve();
     }
 
@@ -18,7 +18,7 @@ public class CaixaService {
         return new CaixaDAO().retrieve(id);
     }
 
-    public static List<Caixa> carregar(Caixa filtro){
+    public List<Caixa> carregar(Caixa filtro){
         return new CaixaDAO().retrieve(filtro);
     }
     

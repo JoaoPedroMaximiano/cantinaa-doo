@@ -1,6 +1,4 @@
 package controller.caixa;
-
-import java.util.List;
 import model.bo.Caixa;
 import model.bo.Funcionario;
 import service.CaixaService;
@@ -89,8 +87,7 @@ public class ControllerCadastroCaixa {
         caixa.setValorAbertura(Double.parseDouble(this.telaCadastroCaixa.getjFormattedTextFieldValorAbertura().getText().replace(',', '.')));
         caixa.setDataHoraAberto(this.telaCadastroCaixa.getjFormattedTextFieldDataAbertura().getText());
         
-        Funcionario funcionario = new FuncionarioService().carregar(Integer.parseInt(this.telaCadastroCaixa.getjComboBoxFuncionario().getSelectedItem().toString().split(" - ")[0]));
-        caixa.setFuncionario(funcionario);        
+        caixa.setFuncionario(new FuncionarioService().carregar(Integer.parseInt(this.telaCadastroCaixa.getjComboBoxFuncionario().getSelectedItem().toString().split(" - ")[0])));        
         
         if (!this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().getText().equals("")) {
             caixa.setValorFechamento(Double.parseDouble(this.telaCadastroCaixa.getjFormattedTextFieldValorFechamento().getText().replace(',', '.')));
