@@ -50,8 +50,7 @@ public class ControllerCadastroCaixa {
             String status = String.valueOf(caixa.getStatus());
             this.telaCadastroCaixa.getjTextFieldID().setText(caixa.getId() + "");
             this.telaCadastroCaixa.getjComboBoxStatus().setSelectedItem(
-            status.equals("1") ? "Aberto" : (status.equals("2") ? "Fechado" : (status.equals("3") ? "Cancelado" : "Pendente"))
-            );
+            status.equals("1") ? "Aberto" : (status.equals("2") ? "Fechado" : (status.equals("3") ? "Cancelado" : "Pendente")));
             this.telaCadastroCaixa.getjComboBoxFuncionario().setSelectedItem(caixa.getFuncionario().toString());
             this.telaCadastroCaixa.getjFormattedTextFieldDataAbertura().setText(caixa.getDataHoraAberto());
             this.telaCadastroCaixa.getjFormattedTextFieldDataFechamento().setText(caixa.getDataHoraFechamento());
