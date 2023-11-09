@@ -24,6 +24,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         model.dao.Persiste.getInstancia();
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
