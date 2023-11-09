@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 public class ConnectionFactory {
    private static final String BANCO = "jdbc:mysql://127.0.0.1:3306/cantina";
    private static final String USUARIO = "root";
-   private static final String SENHA = ""; 
+   private static final String SENHA = "ifsc"; 
 
    public static Connection getConnection() {
     try {
