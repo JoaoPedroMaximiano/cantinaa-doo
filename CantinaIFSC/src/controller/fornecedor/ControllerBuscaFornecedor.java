@@ -11,6 +11,7 @@ public class ControllerBuscaFornecedor {
 
     public ControllerBuscaFornecedor(TelaBuscaFornecedor telaBuscaFornecedor) {
         this.telaBuscaFornecedor = telaBuscaFornecedor;
+        filtrarPesquisa();
         setupActionListeners();
     }
     
@@ -32,7 +33,7 @@ public class ControllerBuscaFornecedor {
         Fornecedor filtro = new Fornecedor();
         filtro.setInscricaoEstadual(this.telaBuscaFornecedor.getjTextFieldInscricaoEstadual().getText());
         filtro.setRazaoSocial(this.telaBuscaFornecedor.getjTextFieldRazaoSocial().getText());
-        filtro.setCnpj(this.telaBuscaFornecedor.getjFormattedTextFieldCNPJ().getText().trim().equals(".   .   -") ? "" : this.telaBuscaFornecedor.getjFormattedTextFieldCNPJ().getText());
+        filtro.setCnpj(this.telaBuscaFornecedor.getjFormattedTextFieldCNPJ().getText().trim().equals("  .   .   /    -  ".trim()) ? "" : this.telaBuscaFornecedor.getjFormattedTextFieldCNPJ().getText());
         filtro.setNome(this.telaBuscaFornecedor.getjTextFieldNome().getText());
         
         List<Fornecedor> fornecedores = !filtro.getCnpj().equals("")  

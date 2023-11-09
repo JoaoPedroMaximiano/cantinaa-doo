@@ -12,6 +12,7 @@ public class ControllerBuscaProduto {
 
     public ControllerBuscaProduto(TelaBuscaProduto telaBuscaProduto) {
         this.telaBuscaProduto = telaBuscaProduto;
+        filtrarPesquisa();
         setupActionListeners();
     }
     
