@@ -21,16 +21,16 @@ public class TelaVenda extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProdutos = new javax.swing.JTable();
         jLabelCaixa = new javax.swing.JLabel();
-        jLabelCodigoBarraProduto2 = new javax.swing.JLabel();
+        jLabelCodigoBarraCarteirinha = new javax.swing.JLabel();
         jComboBoxCaixa = new javax.swing.JComboBox<>();
         jLabelCodigoBarraProduto3 = new javax.swing.JLabel();
         jTextFieldTotal = new javax.swing.JTextField();
-        jTextFieldCodigoBarraProduto1 = new javax.swing.JTextField();
-        jLabelCodigoBarraProduto4 = new javax.swing.JLabel();
+        jTextFieldCodigoBarraCarteirinha = new javax.swing.JTextField();
+        jLabelObs = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextFieldCodigoBarraProduto2 = new javax.swing.JTextField();
-        jLabelCodigoBarraProduto1 = new javax.swing.JLabel();
+        jTextAreaObs = new javax.swing.JTextArea();
+        jTextFieldQtd = new javax.swing.JTextField();
+        jLabelQtd = new javax.swing.JLabel();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonIniciarVenda = new javax.swing.JButton();
         jButtonFinalizarVenda = new javax.swing.JButton();
@@ -104,8 +104,8 @@ public class TelaVenda extends javax.swing.JDialog {
         jLabelCaixa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelCaixa.setText("Caixa");
 
-        jLabelCodigoBarraProduto2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabelCodigoBarraProduto2.setText("Cód. de barra da carteirinha");
+        jLabelCodigoBarraCarteirinha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelCodigoBarraCarteirinha.setText("Cód. de barra da carteirinha");
 
         jComboBoxCaixa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -122,34 +122,34 @@ public class TelaVenda extends javax.swing.JDialog {
             }
         });
 
-        jTextFieldCodigoBarraProduto1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextFieldCodigoBarraProduto1.setFocusCycleRoot(true);
-        jTextFieldCodigoBarraProduto1.setFocusable(false);
-        jTextFieldCodigoBarraProduto1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCodigoBarraCarteirinha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextFieldCodigoBarraCarteirinha.setFocusCycleRoot(true);
+        jTextFieldCodigoBarraCarteirinha.setFocusable(false);
+        jTextFieldCodigoBarraCarteirinha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCodigoBarraProduto1ActionPerformed(evt);
+                jTextFieldCodigoBarraCarteirinhaActionPerformed(evt);
             }
         });
 
-        jLabelCodigoBarraProduto4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabelCodigoBarraProduto4.setText("Observação");
+        jLabelObs.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelObs.setText("Observação");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextAreaObs.setColumns(20);
+        jTextAreaObs.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaObs);
 
-        jTextFieldCodigoBarraProduto2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextFieldCodigoBarraProduto2.setFocusCycleRoot(true);
-        jTextFieldCodigoBarraProduto2.setFocusable(false);
-        jTextFieldCodigoBarraProduto2.setPreferredSize(new java.awt.Dimension(70, 31));
-        jTextFieldCodigoBarraProduto2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldQtd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextFieldQtd.setFocusCycleRoot(true);
+        jTextFieldQtd.setFocusable(false);
+        jTextFieldQtd.setPreferredSize(new java.awt.Dimension(70, 31));
+        jTextFieldQtd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCodigoBarraProduto2ActionPerformed(evt);
+                jTextFieldQtdActionPerformed(evt);
             }
         });
 
-        jLabelCodigoBarraProduto1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabelCodigoBarraProduto1.setText("Qtd.");
+        jLabelQtd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelQtd.setText("Qtd.");
 
         javax.swing.GroupLayout jPanelCorpoLayout = new javax.swing.GroupLayout(jPanelCorpo);
         jPanelCorpo.setLayout(jPanelCorpoLayout);
@@ -160,8 +160,8 @@ public class TelaVenda extends javax.swing.JDialog {
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCodigoBarraProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCodigoBarraProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelCodigoBarraProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
@@ -169,7 +169,7 @@ public class TelaVenda extends javax.swing.JDialog {
                         .addGap(12, 12, 12))
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabelCodigoBarraProduto4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelObs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelCodigoBarraProduto3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldTotal)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
@@ -177,8 +177,8 @@ public class TelaVenda extends javax.swing.JDialog {
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCodigoBarraProduto2)
-                            .addComponent(jTextFieldCodigoBarraProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelCodigoBarraCarteirinha)
+                            .addComponent(jTextFieldCodigoBarraCarteirinha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,23 +194,23 @@ public class TelaVenda extends javax.swing.JDialog {
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelCaixa)
-                            .addComponent(jLabelCodigoBarraProduto2))
+                            .addComponent(jLabelCodigoBarraCarteirinha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxCaixa)
                             .addComponent(jTextFieldCodigoBarraProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCodigoBarraProduto1)))
+                            .addComponent(jTextFieldCodigoBarraCarteirinha)))
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCodigoBarraProduto1)
+                            .addComponent(jLabelQtd)
                             .addComponent(jLabelCodigoBarraProduto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldCodigoBarraProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
-                        .addComponent(jLabelCodigoBarraProduto4)
+                        .addComponent(jLabelObs)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -314,13 +314,13 @@ public class TelaVenda extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTotalActionPerformed
 
-    private void jTextFieldCodigoBarraProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraProduto1ActionPerformed
+    private void jTextFieldCodigoBarraCarteirinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraCarteirinhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCodigoBarraProduto1ActionPerformed
+    }//GEN-LAST:event_jTextFieldCodigoBarraCarteirinhaActionPerformed
 
-    private void jTextFieldCodigoBarraProduto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraProduto2ActionPerformed
+    private void jTextFieldQtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQtdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCodigoBarraProduto2ActionPerformed
+    }//GEN-LAST:event_jTextFieldQtdActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -368,11 +368,11 @@ public class TelaVenda extends javax.swing.JDialog {
     private javax.swing.JButton jButtonIniciarVenda;
     private javax.swing.JComboBox<String> jComboBoxCaixa;
     private javax.swing.JLabel jLabelCaixa;
+    private javax.swing.JLabel jLabelCodigoBarraCarteirinha;
     private javax.swing.JLabel jLabelCodigoBarraProduto;
-    private javax.swing.JLabel jLabelCodigoBarraProduto1;
-    private javax.swing.JLabel jLabelCodigoBarraProduto2;
     private javax.swing.JLabel jLabelCodigoBarraProduto3;
-    private javax.swing.JLabel jLabelCodigoBarraProduto4;
+    private javax.swing.JLabel jLabelObs;
+    private javax.swing.JLabel jLabelQtd;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelCorpo;
     private javax.swing.JPanel jPanelTitulo;
@@ -380,10 +380,10 @@ public class TelaVenda extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableProdutos;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaObs;
+    private javax.swing.JTextField jTextFieldCodigoBarraCarteirinha;
     private javax.swing.JTextField jTextFieldCodigoBarraProduto;
-    private javax.swing.JTextField jTextFieldCodigoBarraProduto1;
-    private javax.swing.JTextField jTextFieldCodigoBarraProduto2;
+    private javax.swing.JTextField jTextFieldQtd;
     private javax.swing.JTextField jTextFieldTotal;
     private java.awt.Label labelTitulo;
     // End of variables declaration//GEN-END:variables
