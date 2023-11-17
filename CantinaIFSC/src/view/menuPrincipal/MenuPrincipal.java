@@ -9,6 +9,7 @@ import controller.endereco.ControllerCadastroEndereco;
 import controller.fornecedor.ControllerCadastroFornecedor;
 import controller.funcionario.ControllerCadastroFuncionario;
 import controller.produto.ControllerCadastroProduto;
+import controller.venda.ControllerVenda;
 import view.bairro.TelaCadastroBairro;
 import view.caixa.TelaCadastroCaixa;
 import view.carteirinha.TelaCadastroCarteirinha;
@@ -18,6 +19,7 @@ import view.endereco.TelaCadastroEndereco;
 import view.fornecedor.TelaCadastroFornecedor;
 import view.funcionario.TelaCadastroFuncionario;
 import view.produto.TelaCadastroProduto;
+import view.venda.TelaVenda;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -31,6 +33,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonVenda = new javax.swing.JButton();
         jMenuBarPrincipal = new javax.swing.JMenuBar();
         jMenuCadastros = new javax.swing.JMenu();
         jMenuItemCliente = new javax.swing.JMenuItem();
@@ -58,6 +61,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(770, 396));
         setResizable(false);
         setSize(new java.awt.Dimension(770, 396));
+
+        jButtonVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Dollar.png"))); // NOI18N
+        jButtonVenda.setText("Venda");
+        jButtonVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVendaActionPerformed(evt);
+            }
+        });
 
         jMenuCadastros.setText("Cadastros");
 
@@ -195,11 +207,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(602, Short.MAX_VALUE)
+                .addComponent(jButtonVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(277, Short.MAX_VALUE)
+                .addComponent(jButtonVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -269,6 +287,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         telaCadastroCaixa.setVisible(true);
     }//GEN-LAST:event_jMenuItemCaixaActionPerformed
 
+    private void jButtonVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendaActionPerformed
+        TelaVenda telaVenda = new TelaVenda(null, true);
+        ControllerVenda controllerVenda = new ControllerVenda(telaVenda);
+        telaVenda.setVisible(true);
+    }//GEN-LAST:event_jButtonVendaActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -278,6 +302,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonVenda;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBarPrincipal;
