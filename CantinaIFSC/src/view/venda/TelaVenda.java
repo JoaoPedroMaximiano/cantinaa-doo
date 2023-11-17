@@ -98,6 +98,7 @@ public class TelaVenda extends javax.swing.JDialog {
             }
         });
         jTableProdutos.setFocusable(false);
+        jTableProdutos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableProdutos);
 
         jLabelCaixa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
