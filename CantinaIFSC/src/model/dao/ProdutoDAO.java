@@ -13,7 +13,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public void create(Produto objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO produto (descricao, codigoBarra, status) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO produto (descricao, codigoBarra, status, valor) VALUES (?, ?, ?, ?)";
 
         PreparedStatement pstm = null;
         try {
@@ -21,6 +21,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
             pstm.setString(1, objeto.getDescricao());
             pstm.setString(2, objeto.getCodigoBarra());
             pstm.setString(3, String.valueOf(objeto.getStatus()));
+            pstm.setString(4, String.valueOf(objeto.getValor()));
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -32,7 +33,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public List<Produto> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT id, descricao, codigoBarra, status FROM produto";
+        String sql = "SELECT id, descricao, codigoBarra, status, valor FROM produto";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -47,8 +48,9 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
                 String descricao = rs.getString("descricao");
                 String codigoBarra = rs.getString("codigoBarra");
                 char status = rs.getString("status").charAt(0);
+                float valor = Float.parseFloat(rs.getString("valor"));
 
-                Produto produto = new Produto(id, descricao, codigoBarra, status);
+                Produto produto = new Produto(id, descricao, codigoBarra, status, valor);
                 produtos.add(produto);
             }
 
@@ -64,7 +66,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public Produto retrieve(int id) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT descricao, codigoBarra, status FROM produto WHERE id = ?";
+        String sql = "SELECT descricao, codigoBarra, status, valor FROM produto WHERE id = ?";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -79,8 +81,9 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
                 String descricao = rs.getString("descricao");
                 String codigoBarra = rs.getString("codigoBarra");
                 char status = rs.getString("status").charAt(0);
-
-                produto = new Produto(id, descricao, codigoBarra, status);
+                float valor = Float.parseFloat(rs.getString("valor"));
+                
+                produto = new Produto(id, descricao, codigoBarra, status, valor);
             }
 
         } catch (SQLException ex) {
@@ -95,7 +98,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public List<Produto> retrieve(Produto filtro) {
         Connection conexao = ConnectionFactory.getConnection();
-        StringBuilder sql = new StringBuilder("SELECT id, descricao, codigoBarra, status FROM produto WHERE 1=1");
+        StringBuilder sql = new StringBuilder("SELECT id, descricao, codigoBarra, status, valor FROM produto WHERE 1=1");
         List<Object> parametros = new ArrayList<>();
 
         if (filtro != null) {
@@ -117,6 +120,11 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
             if (filtro.getStatus() != 0) {
                 sql.append(" AND status = ?");
                 parametros.add(String.valueOf(filtro.getStatus()));
+            }
+
+            if (filtro.getValor() != 0) {
+                sql.append(" AND valor = ?");
+                parametros.add(String.valueOf(filtro.getValor()));
             }
         }
 
@@ -143,8 +151,9 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
                 String descricao = rs.getString("descricao");
                 String codigoBarra = rs.getString("codigoBarra");
                 char status = rs.getString("status").charAt(0);
+                float valor = Float.parseFloat(rs.getString("valor"));
 
-                Produto produto = new Produto(id, descricao, codigoBarra, status);
+                Produto produto = new Produto(id, descricao, codigoBarra, status, valor);
                 produtos.add(produto);
             }
 
@@ -160,7 +169,7 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
     @Override
     public void update(Produto objeto) {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "UPDATE produto SET descricao = ?, codigoBarra = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE produto SET descricao = ?, codigoBarra = ?, status = ?, valor = ? WHERE id = ?";
 
         PreparedStatement pstm = null;
 
@@ -169,7 +178,8 @@ public class ProdutoDAO implements InterfaceDAO<Produto> {
             pstm.setString(1, objeto.getDescricao());
             pstm.setString(2, objeto.getCodigoBarra());
             pstm.setString(3, String.valueOf(objeto.getStatus()));
-            pstm.setInt(4, objeto.getId());
+            pstm.setString(4, String.valueOf(objeto.getValor()));
+            pstm.setInt(5, objeto.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
