@@ -91,7 +91,7 @@ public class Caixa {
 
     @Override
     public String toString() {
-        return id + " - " + getFuncionario().getNome();
+        return id + " - " + getFuncionario().getNome() + " - Data de Inicio : " + getDataHoraAberto();
     }
     
 }
