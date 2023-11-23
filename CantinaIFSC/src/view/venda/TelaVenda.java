@@ -1,5 +1,16 @@
 package view.venda;
 
+import java.awt.Label;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 public class TelaVenda extends javax.swing.JDialog {
 
 
@@ -107,8 +118,6 @@ public class TelaVenda extends javax.swing.JDialog {
         jLabelCodigoBarraCarteirinha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelCodigoBarraCarteirinha.setText("Cód. de barra da carteirinha");
 
-        jComboBoxCaixa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabelCodigoBarraProduto3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelCodigoBarraProduto3.setText("Total");
 
@@ -181,7 +190,7 @@ public class TelaVenda extends javax.swing.JDialog {
                             .addComponent(jTextFieldCodigoBarraCarteirinha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCaixa)))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -321,6 +330,190 @@ public class TelaVenda extends javax.swing.JDialog {
     private void jTextFieldQtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQtdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldQtdActionPerformed
+
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
+    }
+
+    public void setjButtonCancelar(JButton jButtonCancelar) {
+        this.jButtonCancelar = jButtonCancelar;
+    }
+
+    public JButton getjButtonFinalizarVenda() {
+        return jButtonFinalizarVenda;
+    }
+
+    public void setjButtonFinalizarVenda(JButton jButtonFinalizarVenda) {
+        this.jButtonFinalizarVenda = jButtonFinalizarVenda;
+    }
+
+    public JButton getjButtonIniciarVenda() {
+        return jButtonIniciarVenda;
+    }
+
+    public void setjButtonIniciarVenda(JButton jButtonIniciarVenda) {
+        this.jButtonIniciarVenda = jButtonIniciarVenda;
+    }
+
+    public JComboBox<String> getjComboBoxCaixa() {
+        return jComboBoxCaixa;
+    }
+
+    public void setjComboBoxCaixa(JComboBox<String> jComboBoxCaixa) {
+        this.jComboBoxCaixa = jComboBoxCaixa;
+    }
+
+    public JLabel getjLabelCaixa() {
+        return jLabelCaixa;
+    }
+
+    public void setjLabelCaixa(JLabel jLabelCaixa) {
+        this.jLabelCaixa = jLabelCaixa;
+    }
+
+    public JLabel getjLabelCodigoBarraCarteirinha() {
+        return jLabelCodigoBarraCarteirinha;
+    }
+
+    public void setjLabelCodigoBarraCarteirinha(JLabel jLabelCodigoBarraCarteirinha) {
+        this.jLabelCodigoBarraCarteirinha = jLabelCodigoBarraCarteirinha;
+    }
+
+    public JLabel getjLabelCodigoBarraProduto() {
+        return jLabelCodigoBarraProduto;
+    }
+
+    public void setjLabelCodigoBarraProduto(JLabel jLabelCodigoBarraProduto) {
+        this.jLabelCodigoBarraProduto = jLabelCodigoBarraProduto;
+    }
+
+    public JLabel getjLabelCodigoBarraProduto3() {
+        return jLabelCodigoBarraProduto3;
+    }
+
+    public void setjLabelCodigoBarraProduto3(JLabel jLabelCodigoBarraProduto3) {
+        this.jLabelCodigoBarraProduto3 = jLabelCodigoBarraProduto3;
+    }
+
+    public JLabel getjLabelObs() {
+        return jLabelObs;
+    }
+
+    public void setjLabelObs(JLabel jLabelObs) {
+        this.jLabelObs = jLabelObs;
+    }
+
+    public JLabel getjLabelQtd() {
+        return jLabelQtd;
+    }
+
+    public void setjLabelQtd(JLabel jLabelQtd) {
+        this.jLabelQtd = jLabelQtd;
+    }
+
+    public JPanel getjPanelBotoes() {
+        return jPanelBotoes;
+    }
+
+    public void setjPanelBotoes(JPanel jPanelBotoes) {
+        this.jPanelBotoes = jPanelBotoes;
+    }
+
+    public JPanel getjPanelCorpo() {
+        return jPanelCorpo;
+    }
+
+    public void setjPanelCorpo(JPanel jPanelCorpo) {
+        this.jPanelCorpo = jPanelCorpo;
+    }
+
+    public JPanel getjPanelTitulo() {
+        return jPanelTitulo;
+    }
+
+    public void setjPanelTitulo(JPanel jPanelTitulo) {
+        this.jPanelTitulo = jPanelTitulo;
+    }
+
+    public JProgressBar getjProgressBar1() {
+        return jProgressBar1;
+    }
+
+    public void setjProgressBar1(JProgressBar jProgressBar1) {
+        this.jProgressBar1 = jProgressBar1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTable getjTableProdutos() {
+        return jTableProdutos;
+    }
+
+    public void setjTableProdutos(JTable jTableProdutos) {
+        this.jTableProdutos = jTableProdutos;
+    }
+
+    public JTextArea getjTextAreaObs() {
+        return jTextAreaObs;
+    }
+
+    public void setjTextAreaObs(JTextArea jTextAreaObs) {
+        this.jTextAreaObs = jTextAreaObs;
+    }
+
+    public JTextField getjTextFieldCodigoBarraCarteirinha() {
+        return jTextFieldCodigoBarraCarteirinha;
+    }
+
+    public void setjTextFieldCodigoBarraCarteirinha(JTextField jTextFieldCodigoBarraCarteirinha) {
+        this.jTextFieldCodigoBarraCarteirinha = jTextFieldCodigoBarraCarteirinha;
+    }
+
+    public JTextField getjTextFieldCodigoBarraProduto() {
+        return jTextFieldCodigoBarraProduto;
+    }
+
+    public void setjTextFieldCodigoBarraProduto(JTextField jTextFieldCodigoBarraProduto) {
+        this.jTextFieldCodigoBarraProduto = jTextFieldCodigoBarraProduto;
+    }
+
+    public JTextField getjTextFieldQtd() {
+        return jTextFieldQtd;
+    }
+
+    public void setjTextFieldQtd(JTextField jTextFieldQtd) {
+        this.jTextFieldQtd = jTextFieldQtd;
+    }
+
+    public JTextField getjTextFieldTotal() {
+        return jTextFieldTotal;
+    }
+
+    public void setjTextFieldTotal(JTextField jTextFieldTotal) {
+        this.jTextFieldTotal = jTextFieldTotal;
+    }
+
+    public Label getLabelTitulo() {
+        return labelTitulo;
+    }
+
+    public void setLabelTitulo(Label labelTitulo) {
+        this.labelTitulo = labelTitulo;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
