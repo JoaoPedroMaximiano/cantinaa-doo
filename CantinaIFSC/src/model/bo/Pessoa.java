@@ -69,7 +69,7 @@ public class Pessoa {
         return complementoEndereco;
     }
 
-    public void setComplementoEndereco(String complementeEndereco) {
+    public void setComplementoEndereco(String complementoEndereco) {
         this.complementoEndereco = complementoEndereco;
     }
 

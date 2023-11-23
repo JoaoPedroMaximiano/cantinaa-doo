@@ -153,17 +153,6 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jFormattedTextFieldTelefone1" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jFormattedTextFieldTelefone2" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelTelefone1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
-                          <Component id="jLabelTelefone2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabelCEP" min="-2" max="-2" attributes="0"/>
@@ -195,6 +184,17 @@
                               </Group>
                               <Component id="jTextFieldLogradouro" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelTelefone1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
+                          <Component id="jLabelTelefone2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jFormattedTextFieldTelefone1" min="-2" pref="294" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jFormattedTextFieldTelefone2" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
