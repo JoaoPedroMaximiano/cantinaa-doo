@@ -49,6 +49,7 @@ public class ControllerCadastroProduto {
             this.telaCadastroProduto.getjComboBoxStatus().setSelectedItem(
                 status.equals("1") ? "Ativo" :  "Desativado"
             );
+            this.telaCadastroProduto.getjFormattedTextFieldValor().setText(String.valueOf(produto.getValor()));
             this.telaCadastroProduto.getjTextFieldCodigoBarra().setText(produto.getCodigoBarra());
             this.telaCadastroProduto.getjTextFieldID().setEnabled(false);
         }        
@@ -73,6 +74,7 @@ public class ControllerCadastroProduto {
         produto.setDescricao(this.telaCadastroProduto.getjTextFieldDescricao().getText());
         produto.setCodigoBarra(this.telaCadastroProduto.getjTextFieldCodigoBarra().getText());
         produto.setStatus(this.telaCadastroProduto.getjComboBoxStatus().getSelectedItem().toString().equals("Ativo") ? '1' : '0');
+        produto.setValor((float) Double.parseDouble(this.telaCadastroProduto.getjFormattedTextFieldValor().getText().replace(',', '.')));
         if (this.telaCadastroProduto.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.ProdutoService().adicionar(produto);
         } else {
