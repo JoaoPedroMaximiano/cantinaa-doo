@@ -74,10 +74,11 @@ public class TelaVenda extends javax.swing.JDialog {
 
         jLabelCodigoBarraProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelCodigoBarraProduto.setText("Cód. de barra do produto");
+        jLabelCodigoBarraProduto.setEnabled(false);
 
         jTextFieldCodigoBarraProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextFieldCodigoBarraProduto.setEnabled(false);
         jTextFieldCodigoBarraProduto.setFocusCycleRoot(true);
-        jTextFieldCodigoBarraProduto.setFocusable(false);
         jTextFieldCodigoBarraProduto.setPreferredSize(new java.awt.Dimension(70, 31));
         jTextFieldCodigoBarraProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,16 +94,9 @@ public class TelaVenda extends javax.swing.JDialog {
                 "Cód.", "Produto", "Valor", "Qtd.", "Total"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -133,10 +127,14 @@ public class TelaVenda extends javax.swing.JDialog {
 
         jTextFieldCodigoBarraCarteirinha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextFieldCodigoBarraCarteirinha.setFocusCycleRoot(true);
-        jTextFieldCodigoBarraCarteirinha.setFocusable(false);
         jTextFieldCodigoBarraCarteirinha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCodigoBarraCarteirinhaActionPerformed(evt);
+            }
+        });
+        jTextFieldCodigoBarraCarteirinha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldCodigoBarraCarteirinhaKeyPressed(evt);
             }
         });
 
@@ -148,8 +146,8 @@ public class TelaVenda extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTextAreaObs);
 
         jTextFieldQtd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextFieldQtd.setEnabled(false);
         jTextFieldQtd.setFocusCycleRoot(true);
-        jTextFieldQtd.setFocusable(false);
         jTextFieldQtd.setPreferredSize(new java.awt.Dimension(70, 31));
         jTextFieldQtd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +157,7 @@ public class TelaVenda extends javax.swing.JDialog {
 
         jLabelQtd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelQtd.setText("Qtd.");
+        jLabelQtd.setEnabled(false);
 
         javax.swing.GroupLayout jPanelCorpoLayout = new javax.swing.GroupLayout(jPanelCorpo);
         jPanelCorpo.setLayout(jPanelCorpoLayout);
@@ -235,6 +234,7 @@ public class TelaVenda extends javax.swing.JDialog {
         jButtonIniciarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
         jButtonIniciarVenda.setText("(F1) Iniciar venda");
         jButtonIniciarVenda.setActionCommand("0");
+        jButtonIniciarVenda.setEnabled(false);
         jButtonIniciarVenda.setFocusable(false);
         jButtonIniciarVenda.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jButtonIniciarVenda.setMaximumSize(new java.awt.Dimension(150, 26));
@@ -330,6 +330,13 @@ public class TelaVenda extends javax.swing.JDialog {
     private void jTextFieldQtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQtdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldQtdActionPerformed
+
+    private void jTextFieldCodigoBarraCarteirinhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraCarteirinhaKeyPressed
+        // TODO add your handling code here:
+        if (rootPaneCheckingEnabled) {
+            
+        }
+    }//GEN-LAST:event_jTextFieldCodigoBarraCarteirinhaKeyPressed
 
     public JButton getjButtonCancelar() {
         return jButtonCancelar;
