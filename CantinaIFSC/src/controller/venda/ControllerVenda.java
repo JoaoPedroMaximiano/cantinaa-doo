@@ -58,8 +58,8 @@ public class ControllerVenda {
         filtro.setCodigoBarra(this.telaVenda.getjTextFieldCodigoBarraCarteirinha().getText());
         
         List<Carteirinha> carteirinha = new CarteirinhaService().carregar(filtro);
-        
-        if (!carteirinha.get(0).getCodigoBarra().equals("")) {
+        System.out.println(carteirinha);
+        if (!carteirinha.isEmpty() && !carteirinha.get(0).getCodigoBarra().equals("")) {
             this.telaVenda.getjLabelCodigoBarraProduto().setEnabled(true);
             this.telaVenda.getjTextFieldCodigoBarraProduto().setEnabled(true);
             this.telaVenda.getjLabelQtd().setEnabled(true);
@@ -72,11 +72,10 @@ public class ControllerVenda {
             this.telaVenda.getjLabelCodigoBarraCarteirinha().setEnabled(false);
             
             this.telaVenda.getjTextFieldCodigoBarraProduto().requestFocus();
-            JOptionPane.showMessageDialog(telaVenda, "Carteirinha Encontrada\n" 
-                    + "Nome do Cliente: " + carteirinha.get(0).getCliente().getNome());
-            
+            JOptionPane.showMessageDialog(telaVenda, "Carteirinha encontrada!\n" 
+                    + "Nome do cliente: " + carteirinha.get(0).getCliente().getNome());
         } else {
-            JOptionPane.showMessageDialog(telaVenda, "Carteirinha não Encontrada");
+            JOptionPane.showMessageDialog(telaVenda, "Carteirinha não encontrada!");
         }
     }
     
@@ -99,7 +98,7 @@ public class ControllerVenda {
             this.telaVenda.getjTextFieldCodigoBarraProduto().setText("");
             this.telaVenda.getjTextFieldQtd().setText("");
         } else {
-            JOptionPane.showMessageDialog(telaVenda, "O Codigo de Barra e a Quantidade não pode estar vázio");
+            JOptionPane.showMessageDialog(telaVenda, "Quantidade e código de barras do produto são campos obrigatórios");
         }
         
     }
