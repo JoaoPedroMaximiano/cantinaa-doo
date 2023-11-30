@@ -1,5 +1,6 @@
 package controller.produto;
 
+import javax.swing.JOptionPane;
 import model.bo.Produto;
 import service.ProdutoService;
 import static utilies.Utilities.ativa;
@@ -71,9 +72,29 @@ public class ControllerCadastroProduto {
 
     private void realizarAcaoGravar() {
         Produto produto = new Produto();
+
+        if (this.telaCadastroProduto.getjTextFieldDescricao().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Descrição é obrigatório!");
+            return;
+        }
         produto.setDescricao(this.telaCadastroProduto.getjTextFieldDescricao().getText());
+
+        if (this.telaCadastroProduto.getjTextFieldCodigoBarra().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Código de barra é obrigatório!");
+            return;
+        }
         produto.setCodigoBarra(this.telaCadastroProduto.getjTextFieldCodigoBarra().getText());
+
+        if (this.telaCadastroProduto.getjComboBoxStatus().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo Status é obrigatório!");
+            return;
+        }
         produto.setStatus(this.telaCadastroProduto.getjComboBoxStatus().getSelectedItem().toString().equals("Ativo") ? '1' : '0');
+
+        if (this.telaCadastroProduto.getjFormattedTextFieldValor().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Valor é obrigatório!");
+            return;
+        }
         produto.setValor((float) Double.parseDouble(this.telaCadastroProduto.getjFormattedTextFieldValor().getText().replace(',', '.')));
         if (this.telaCadastroProduto.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.ProdutoService().adicionar(produto);
