@@ -1,4 +1,5 @@
 package controller.carteirinha;
+import javax.swing.JOptionPane;
 import model.bo.Carteirinha;
 import model.bo.Cliente;
 import service.CarteirinhaService;
@@ -49,8 +50,8 @@ public class ControllerCadastroCarteirinha {
             this.telaCadastroCarteirinha.getjTextFieldID().setText(carteirinha.getId() + "");
             this.telaCadastroCarteirinha.getjComboBoxCliente().setSelectedItem(carteirinha.getCliente().toString());
             this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().setText(carteirinha.getCodigoBarra());
-            this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().setText(carteirinha.getDataCancelamento());
-            this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().setText(carteirinha.getDataGeracao());
+            this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().setText(carteirinha.getDataGeracao());
+            this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().setText(carteirinha.getDataCancelamento());
             this.telaCadastroCarteirinha.getjTextFieldID().setEnabled(false);
         }
     }
@@ -71,16 +72,26 @@ public class ControllerCadastroCarteirinha {
 
     private void realizarAcaoGravar() {
         Carteirinha carteirinha = new Carteirinha();
+        if (this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo código de barra é obrigatório!");
+            return;
+        }
         carteirinha.setCodigoBarra(this.telaCadastroCarteirinha.getjTextFieldCodigoBarra().getText());
         
         if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText().equals("  /  /    ")) {
             carteirinha.setDataCancelamento(this.telaCadastroCarteirinha.getjFormattedTextFieldDataCancelamento().getText());
         }
 
-        if (!this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText().equals("  /  /    ")) {
-            carteirinha.setDataGeracao(this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText());
+        if (this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText().equals("  /  /    ")) {
+            JOptionPane.showMessageDialog(null, "Campo data de geração é obrigatório!");
+            return;
         }
+        carteirinha.setDataGeracao(this.telaCadastroCarteirinha.getjFormattedTextFieldDataGeracao().getText());
 
+        if (this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem() == null) {;
+            JOptionPane.showMessageDialog(null, "Campo cliente é obrigatório!");
+            return;
+        }
         carteirinha.setCliente(new ClienteService().carregar(Integer.parseInt(this.telaCadastroCarteirinha.getjComboBoxCliente().getSelectedItem().toString().split(" - ")[0])));
         
         if (this.telaCadastroCarteirinha.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {

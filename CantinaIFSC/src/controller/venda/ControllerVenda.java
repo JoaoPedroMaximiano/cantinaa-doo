@@ -58,25 +58,29 @@ public class ControllerVenda {
         filtro.setCodigoBarra(this.telaVenda.getjTextFieldCodigoBarraCarteirinha().getText());
         
         List<Carteirinha> carteirinha = new CarteirinhaService().carregar(filtro);
-        System.out.println(carteirinha);
-        if (!carteirinha.isEmpty() && !carteirinha.get(0).getCodigoBarra().equals("")) {
-            this.telaVenda.getjLabelCodigoBarraProduto().setEnabled(true);
-            this.telaVenda.getjTextFieldCodigoBarraProduto().setEnabled(true);
-            this.telaVenda.getjLabelQtd().setEnabled(true);
-            this.telaVenda.getjTextFieldQtd().setEnabled(true);
-            this.telaVenda.getjButtonIniciarVenda().setEnabled(true);
-            
-            this.telaVenda.getjComboBoxCaixa().setEnabled(false);
-            this.telaVenda.getjLabelCaixa().setEnabled(false);
-            this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setEnabled(false);
-            this.telaVenda.getjLabelCodigoBarraCarteirinha().setEnabled(false);
-            
-            this.telaVenda.getjTextFieldCodigoBarraProduto().requestFocus();
-            JOptionPane.showMessageDialog(telaVenda, "Carteirinha encontrada!\n" 
-                    + "Nome do cliente: " + carteirinha.get(0).getCliente().getNome());
-        } else {
+        if (carteirinha.isEmpty()) {
             JOptionPane.showMessageDialog(telaVenda, "Carteirinha não encontrada!");
+            return;
         }
+        if (!carteirinha.get(0).getDataCancelamento().isEmpty()) {
+            JOptionPane.showMessageDialog(telaVenda, "Carteirinha cancelada!");
+            return;
+        }
+        
+        this.telaVenda.getjLabelCodigoBarraProduto().setEnabled(true);
+        this.telaVenda.getjTextFieldCodigoBarraProduto().setEnabled(true);
+        this.telaVenda.getjLabelQtd().setEnabled(true);
+        this.telaVenda.getjTextFieldQtd().setEnabled(true);
+        this.telaVenda.getjButtonIniciarVenda().setEnabled(true);
+
+        this.telaVenda.getjComboBoxCaixa().setEnabled(false);
+        this.telaVenda.getjLabelCaixa().setEnabled(false);
+        this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setEnabled(false);
+        this.telaVenda.getjLabelCodigoBarraCarteirinha().setEnabled(false);
+
+        this.telaVenda.getjTextFieldCodigoBarraProduto().requestFocus();
+        JOptionPane.showMessageDialog(telaVenda, "Carteirinha encontrada!\n" 
+                + "Nome do cliente: " + carteirinha.get(0).getCliente().getNome());
     }
     
     private void cadastraProduto(){

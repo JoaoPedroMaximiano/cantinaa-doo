@@ -1,5 +1,6 @@
 package controller.cidade;
 
+import javax.swing.JOptionPane;
 import model.bo.Cidade;
 import service.CidadeService;
 import static utilies.Utilities.ativa;
@@ -66,8 +67,15 @@ public class ControllerCadastroCidade {
 
     private void realizarAcaoGravar() {
         Cidade cidade = new Cidade();
-        
+        if (this.telaCadastroCidade.getjTextFieldDescricao().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo descrição é obrigatório!");
+            return;
+        }
         cidade.setDescricao(this.telaCadastroCidade.getjTextFieldDescricao().getText());
+        if (this.telaCadastroCidade.getjComboBoxUF().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo UF é obrigatório!");
+            return;
+        }
         cidade.setUf(this.telaCadastroCidade.getjComboBoxUF().getSelectedItem().toString());
         if (this.telaCadastroCidade.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.CidadeService().adicionar(cidade);

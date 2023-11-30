@@ -227,7 +227,7 @@ public class TelaCadastroCarteirinha extends javax.swing.JDialog {
                         .addComponent(jFormattedTextFieldDataGeracao, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCorpoLayout.createSequentialGroup()
                             .addComponent(jLabelID)
-                            .addGap(59, 59, 59)
+                            .addGap(44, 44, 44)
                             .addComponent(jLabelCodigoBarra))
                         .addComponent(jLabelDataGeracao, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -1,5 +1,6 @@
 package controller.bairro;
 
+import javax.swing.JOptionPane;
 import model.bo.Bairro;
 import service.BairroService;
 import static utilies.Utilities.ativa;
@@ -29,7 +30,6 @@ public class ControllerCadastroBairro {
     }
 
     private void abrirTelaBuscaBairro() {
-        
         codigo = 0;
         
         TelaBuscaBairro telaBuscaBairro = new TelaBuscaBairro(null, true);
@@ -64,8 +64,11 @@ public class ControllerCadastroBairro {
     }
 
     private void realizarAcaoGravar() {
-        
         Bairro bairro = new Bairro();
+        if (this.telaCadastroBairro.getjTextFieldDescricao().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo descrição é obrigatório!");
+            return;
+        }
         bairro.setDescricao(this.telaCadastroBairro.getjTextFieldDescricao().getText());
         if (this.telaCadastroBairro.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.BairroService().adicionar(bairro);

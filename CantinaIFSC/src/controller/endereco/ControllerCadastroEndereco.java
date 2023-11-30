@@ -1,4 +1,5 @@
 package controller.endereco;
+import javax.swing.JOptionPane;
 import model.bo.Bairro;
 import model.bo.Cidade;
 import model.bo.Endereco;
@@ -84,21 +85,40 @@ public class ControllerCadastroEndereco {
     private void realizarAcaoGravar() {
         Endereco endereco = new Endereco();
 
+        if (this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório!");
+            return;
+        }
         endereco.setCep(this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText());
+        if (this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Logradouro é obrigatório!");
+            return;
+        }
         endereco.setLogradouro(this.telaCadastroEndereco.getjFormattedTextFieldLogradouro().getText());
+        if (this.telaCadastroEndereco.getjComboBoxBairro().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo Bairro é obrigatório!");
+            return;
+        }
         endereco.setBairro(new BairroService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxBairro().getSelectedItem().toString().split(" - ")[0])));
+        if (this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório!");
+            return;
+        }
         endereco.setCidade(new CidadeService().carregar(Integer.parseInt(this.telaCadastroEndereco.getjComboBoxCidade().getSelectedItem().toString().split(" - ")[0])));
-        
+        if (this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo Status é obrigatório!");
+            return;
+        }
         String status = this.telaCadastroEndereco.getjComboBoxStatus().getSelectedItem().toString();
         endereco.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
-        
+
         if (this.telaCadastroEndereco.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.EnderecoService().adicionar(endereco);
         } else {
             endereco.setId(Integer.parseInt(this.telaCadastroEndereco.getjTextFieldID().getText()));
             new service.EnderecoService().atualizar(endereco);
         }
-        
+
         ativa(true, telaCadastroEndereco.getjPanelBotoes());
         limpaCompenentes(false, telaCadastroEndereco.getjPanelCorpo());   
     }

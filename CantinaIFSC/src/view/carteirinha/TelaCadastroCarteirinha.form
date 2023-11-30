@@ -111,7 +111,7 @@
                           <Component id="jFormattedTextFieldDataGeracao" min="-2" pref="293" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               <Component id="jLabelCodigoBarra" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabelDataGeracao" alignment="0" min="-2" max="-2" attributes="0"/>
