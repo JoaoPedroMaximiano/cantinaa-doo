@@ -85,7 +85,7 @@ public class ControllerCadastroEndereco {
     private void realizarAcaoGravar() {
         Endereco endereco = new Endereco();
 
-        if (this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText().isEmpty()) {
+        if (this.telaCadastroEndereco.getjFormattedTextFieldCEP().getText().equals("     -   ")) {
             JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório!");
             return;
         }
