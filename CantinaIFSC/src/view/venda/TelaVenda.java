@@ -304,37 +304,28 @@ public class TelaVenda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldCodigoBarraProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraProdutoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCodigoBarraProdutoActionPerformed
 
     private void jButtonIniciarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarVendaActionPerformed
-
     }//GEN-LAST:event_jButtonIniciarVendaActionPerformed
 
     private void jButtonFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarVendaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonFinalizarVendaActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jTextFieldTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTotalActionPerformed
 
     private void jTextFieldCodigoBarraCarteirinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraCarteirinhaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCodigoBarraCarteirinhaActionPerformed
 
     private void jTextFieldQtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQtdActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldQtdActionPerformed
 
     private void jTextFieldCodigoBarraCarteirinhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarraCarteirinhaKeyPressed
-        // TODO add your handling code here:
         if (rootPaneCheckingEnabled) {
-            
         }
     }//GEN-LAST:event_jTextFieldCodigoBarraCarteirinhaKeyPressed
 
@@ -523,31 +514,6 @@ public class TelaVenda extends javax.swing.JDialog {
     }
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 TelaVenda dialog = new TelaVenda(new javax.swing.JFrame(), true);
