@@ -14,7 +14,7 @@ public class BairroService {
         return new BairroDAO().retrieve();
     }
 
-    public Bairro carregar(int id){
+    public static Bairro carregar(int id){
         return new BairroDAO().retrieve(id);
     }
 

@@ -38,7 +38,7 @@ public class ControllerCadastroBairro {
         
         if (codigo != 0) {
             Bairro bairro = new Bairro();
-            bairro = new BairroService().carregar(codigo);
+            bairro = BairroService.carregar(codigo);
             ativa(false, this.telaCadastroBairro.getjPanelBotoes());
             limpaCompenentes(true, this.telaCadastroBairro.getjPanelCorpo());
             
