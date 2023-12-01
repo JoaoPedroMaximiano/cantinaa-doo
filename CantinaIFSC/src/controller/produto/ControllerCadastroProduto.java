@@ -96,6 +96,7 @@ public class ControllerCadastroProduto {
             return;
         }
         produto.setValor((float) Double.parseDouble(this.telaCadastroProduto.getjFormattedTextFieldValor().getText().replace(',', '.')));
+
         if (this.telaCadastroProduto.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.ProdutoService().adicionar(produto);
         } else {

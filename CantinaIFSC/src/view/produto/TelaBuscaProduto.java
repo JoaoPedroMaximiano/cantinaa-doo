@@ -61,14 +61,24 @@ public class TelaBuscaProduto extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Código", "Descrição", "Status"
+                "Código", "Descrição", "Código de barra", "Valor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable);
         if (jTable.getColumnModel().getColumnCount() > 0) {
             jTable.getColumnModel().getColumn(0).setResizable(false);
             jTable.getColumnModel().getColumn(1).setResizable(false);
-            jTable.getColumnModel().getColumn(1).setPreferredWidth(550);
+            jTable.getColumnModel().getColumn(2).setResizable(false);
+            jTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanelConteudoLayout = new javax.swing.GroupLayout(jPanelConteudo);

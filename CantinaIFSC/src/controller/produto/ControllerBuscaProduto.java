@@ -44,7 +44,8 @@ public class ControllerBuscaProduto {
             table.addRow(new Object[]{
                 produto.getId(),
                 produto.getDescricao(),
-                produto.getStatus()
+                produto.getCodigoBarra(),
+                produto.getValor(),
             });
         });
     }    
