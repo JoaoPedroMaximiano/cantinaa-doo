@@ -32,7 +32,7 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
             pstm.setDouble(6, movimentacao.getQtdMovimentada());
             pstm.setString(7, movimentacao.getObservacaoMovimento());
             pstm.setString(8, String.valueOf(movimentacao.getStatus()));
-            pstm.setTimestamp(9, new java.sql.Timestamp(movimentacao.getDataHoraMovimento().getTime()));
+            pstm.setString(9, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(movimentacao.getDataHoraMovimento()));
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -64,14 +64,16 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
                 double qtdMovimentada = rs.getDouble("qtdMovimentada");
                 String observacaoMovimento = rs.getString("observacaoMovimento");
                 char status = rs.getString("status").charAt(0);
-                Date dataHoraMovimento = rs.getTimestamp("dataHoraMovimento");
+                String dataHoraMovimento = rs.getString("dataHoraMovimento");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date dataHoraMovimentoDate = sdf.parse(dataHoraMovimento);
 
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
                 ItemVenda itemVenda = new ItemVendaDAO().retrieve(itemVendaId);
                 ItemCompra itemCompra = new ItemCompraDAO().retrieve(itemCompraId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
-                MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(id, dataHoraMovimento, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
+                MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(id, dataHoraMovimentoDate, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
                 movimentacoes.add(movimentacao);
             }
 
@@ -107,14 +109,16 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
                 double qtdMovimentada = rs.getDouble("qtdMovimentada");
                 String observacaoMovimento = rs.getString("observacaoMovimento");
                 char status = rs.getString("status").charAt(0);
-                Date dataHoraMovimento = rs.getTimestamp("dataHoraMovimento");
+                String dataHoraMovimento = rs.getString("dataHoraMovimento");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date dataHoraMovimentoDate = sdf.parse(dataHoraMovimento);
 
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
                 ItemVenda itemVenda = new ItemVendaDAO().retrieve(itemVendaId);
                 ItemCompra itemCompra = new ItemCompraDAO().retrieve(itemCompraId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
-                movimentacao = new MovimentacaoEstoque(id, dataHoraMovimento, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
+                movimentacao = new MovimentacaoEstoque(id, dataHoraMovimentoDate, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
             }
 
         } catch (SQLException ex) {
@@ -258,7 +262,7 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
             pstm.setDouble(6, movimentacao.getQtdMovimentada());
             pstm.setString(7, movimentacao.getObservacaoMovimento());
             pstm.setString(8, String.valueOf(movimentacao.getStatus()));
-            pstm.setTimestamp(9, new java.sql.Timestamp(movimentacao.getDataHoraMovimento().getTime()));
+            pstm.setString(9, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(movimentacao.getDataHoraMovimento()));
             pstm.setInt(10, movimentacao.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {
