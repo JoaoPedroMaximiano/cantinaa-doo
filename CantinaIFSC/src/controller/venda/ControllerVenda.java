@@ -60,19 +60,18 @@ public class ControllerVenda {
     }; 
  
     private final KeyListener atalhoProduto = new KeyListener() {
-         @Override
-         public void keyPressed(KeyEvent e) {
-             if (e.getKeyCode() == KeyEvent.VK_ENTER) cadastraProduto();
-         }
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) cadastraProduto();
+        }
 
-         @Override
-         public void keyTyped(KeyEvent e) {}
-         @Override
-         public void keyReleased(KeyEvent e) {}
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyReleased(KeyEvent e) {}
      }; 
     
     private void verificaCarteirinha(){
-
         Carteirinha filtro = new Carteirinha();
         filtro.setCodigoBarra(this.telaVenda.getjTextFieldCodigoBarraCarteirinha().getText());
         
@@ -92,7 +91,6 @@ public class ControllerVenda {
     }
     
     private void cadastraProduto(){
-        
         if (!this.telaVenda.getjTextFieldCodigoBarraProduto().getText().equals("") && !this.telaVenda.getjTextFieldQtd().getText().equals("0") && !this.telaVenda.getjTextFieldQtd().getText().equals("")) {
             DefaultTableModel table = (DefaultTableModel) this.telaVenda.getjTableProdutos().getModel();
             Produto filtro = new Produto();

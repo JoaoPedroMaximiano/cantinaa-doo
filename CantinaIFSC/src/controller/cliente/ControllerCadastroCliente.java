@@ -1,5 +1,6 @@
 package controller.cliente;
 import controller.endereco.ControllerCadastroEndereco;
+import javax.swing.JOptionPane;
 import model.bo.Cliente;
 import model.bo.Endereco;
 import service.ClienteService;
@@ -35,7 +36,6 @@ public class ControllerCadastroCliente {
     }
 
     private void abrirTelaBuscaCliente() {
-        
         codigo = 0;
         
         TelaBuscaCliente telaBuscaCliente = new TelaBuscaCliente(null, true);
@@ -87,23 +87,70 @@ public class ControllerCadastroCliente {
         TelaCadastroEndereco telaCadastroEndereco = new TelaCadastroEndereco(null, true);
         ControllerCadastroEndereco controllerCadastroEndereco = new ControllerCadastroEndereco(telaCadastroEndereco);
         telaCadastroEndereco.setVisible(true);      
-    }   
-
+    }
+    
     private void realizarAcaoGravar() {
         Cliente cliente = new Cliente();
+        if (this.telaCadastroCliente.getjTextFieldNome().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo nome é obrigatório!");
+            return;
+        }
         cliente.setNome(this.telaCadastroCliente.getjTextFieldNome().getText());
+
+        if ("   .   .   -  ".equals(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório!");
+            return;
+        }
         cliente.setCpf(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText());
+
+        if ("         ".equals(this.telaCadastroCliente.getjFormattedTextFieldRG().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo RG é obrigatório!");
+            return;
+        }
         cliente.setRg(this.telaCadastroCliente.getjFormattedTextFieldRG().getText());
+
+        if ("            ".equals(this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo matrícula é obrigatório!");
+            return;
+        }
         cliente.setMatricula(this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText());
+
+        if ("  /  /    ".equals(this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo data de nascimento é obrigatório!");
+            return;
+        }
         cliente.setDataNascimento(this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText());
+
+        if ("(  )      -    ".equals(this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório!");
+            return;
+        }
         cliente.setFone1(this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText());
         cliente.setFone2(this.telaCadastroCliente.getjFormattedTextFieldTelefone2().getText());
+
+        if (this.telaCadastroCliente.getjTextEmail().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo e-mail é obrigatório!");
+            return;
+        }
         cliente.setEmail(this.telaCadastroCliente.getjTextEmail().getText());
+
+        if (this.telaCadastroCliente.getjTextFieldComplementoEndereco().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo complemento endereço é obrigatório!");
+            return;
+        }
         cliente.setComplementoEndereco(this.telaCadastroCliente.getjTextFieldComplementoEndereco().getText());
-        
+
+        if (this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo Status é obrigatório!");
+            return;
+        }
         String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
         cliente.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
 
+        if ("     -   ".equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório!");
+            return;
+        }
         cliente.setEndereco(new EnderecoService().carregar(new Endereco(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())).get(0));
 
         if (this.telaCadastroCliente.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
@@ -113,7 +160,7 @@ public class ControllerCadastroCliente {
             new service.ClienteService().atualizar(cliente);
         }
         ativa(true, telaCadastroCliente.getjPanelBotoes());
-        limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo()); 
+        limpaCompenentes(false, telaCadastroCliente.getjPanelCorpo());
     }
 
     private void abrirTelaBuscaEndereco() {
