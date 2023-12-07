@@ -2,6 +2,8 @@ package controller.venda;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -160,7 +162,10 @@ public class ControllerVenda {
             movimentacaoEstoque.setFuncionario(funcionario);
             movimentacaoEstoque.setFlagTipoMovimento('s');
             movimentacaoEstoque.setQtdMovimentada(itemVenda.getQtdProduto());
-            movimentacaoEstoque.setDataHoraMovimento(new Date());
+            Date dataAtual = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String dataFormatada = dateFormat.format(dataAtual);            
+            movimentacaoEstoque.setDataHoraMovimento(dataFormatada);
             movimentacaoEstoque.setStatus('1');
             
             new MovimentacaoEstoqueService().adicionar(movimentacaoEstoque);

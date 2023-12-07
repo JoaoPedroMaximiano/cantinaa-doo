@@ -5,7 +5,7 @@ import java.util.Date;
 public class MovimentacaoEstoque {
 
     private int id;
-    private Date dataHoraMovimento;
+    private String dataHoraMovimento;
     private double qtdMovimentada;
     private String observacaoMovimento;
     private char flagTipoMovimento;
@@ -18,7 +18,7 @@ public class MovimentacaoEstoque {
     public MovimentacaoEstoque() {
     }
 
-    public MovimentacaoEstoque(int id, Date dataHoraMovimento, double qtdMovimentada, String observacaoMovimento, char flagTipoMovimento, char status, Produto produto, ItemVenda itemVenda, ItemCompra itemCompra, Funcionario funcionario) {
+    public MovimentacaoEstoque(int id, String dataHoraMovimento, double qtdMovimentada, String observacaoMovimento, char flagTipoMovimento, char status, Produto produto, ItemVenda itemVenda, ItemCompra itemCompra, Funcionario funcionario) {
         this.id = id;
         this.dataHoraMovimento = dataHoraMovimento;
         this.qtdMovimentada = qtdMovimentada;
@@ -39,11 +39,11 @@ public class MovimentacaoEstoque {
         this.id = id;
     }
 
-    public Date getDataHoraMovimento() {
+    public String getDataHoraMovimento() {
         return dataHoraMovimento;
     }
 
-    public void setDataHoraMovimento(Date dataHoraMovimento) {
+    public void setDataHoraMovimento(String dataHoraMovimento) {
         this.dataHoraMovimento = dataHoraMovimento;
     }
 
