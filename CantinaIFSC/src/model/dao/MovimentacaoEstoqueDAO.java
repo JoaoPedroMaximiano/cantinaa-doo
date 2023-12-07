@@ -32,7 +32,8 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
             pstm.setDouble(6, movimentacao.getQtdMovimentada());
             pstm.setString(7, movimentacao.getObservacaoMovimento());
             pstm.setString(8, String.valueOf(movimentacao.getStatus()));
-            pstm.setString(9, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(movimentacao.getDataHoraMovimento()));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            pstm.setString(7, sdf.format(movimentacao.getDataHoraMovimento()));
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
