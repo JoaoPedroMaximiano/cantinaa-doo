@@ -62,7 +62,7 @@ public class ControllerVenda {
             JOptionPane.showMessageDialog(telaVenda, "Carteirinha não encontrada!");
             return;
         }
-        if (!carteirinha.get(0).getDataCancelamento().isEmpty()) {
+        if (carteirinha.get(0).getDataCancelamento() != null) {
             JOptionPane.showMessageDialog(telaVenda, "Carteirinha cancelada!");
             return;
         }
