@@ -251,6 +251,7 @@ public class TelaVenda extends javax.swing.JDialog {
         jButtonFinalizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Buy.png"))); // NOI18N
         jButtonFinalizarVenda.setText("(F2) Finalizar venda");
         jButtonFinalizarVenda.setActionCommand("0");
+        jButtonFinalizarVenda.setEnabled(false);
         jButtonFinalizarVenda.setFocusable(false);
         jButtonFinalizarVenda.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jButtonFinalizarVenda.setPreferredSize(new java.awt.Dimension(190, 30));
@@ -265,6 +266,7 @@ public class TelaVenda extends javax.swing.JDialog {
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Delete.png"))); // NOI18N
         jButtonCancelar.setText("(F3) Cancelar");
         jButtonCancelar.setActionCommand("0");
+        jButtonCancelar.setEnabled(false);
         jButtonCancelar.setFocusable(false);
         jButtonCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         jButtonCancelar.setPreferredSize(new java.awt.Dimension(190, 30));
@@ -553,4 +555,8 @@ public class TelaVenda extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldTotal;
     private java.awt.Label labelTitulo;
     // End of variables declaration//GEN-END:variables
+
+    public void setjTextFieldTotal(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
