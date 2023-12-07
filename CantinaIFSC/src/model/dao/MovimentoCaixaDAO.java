@@ -79,46 +79,43 @@ public class MovimentoCaixaDAO {
         return movimentoCaixas;
     }
 
-    public void update(MovimentoCaixa movimentoCaixa) {
+    public MovimentoCaixa retrieve(int movimentoCaixaId) {
         Connection conexao = ConnectionFactory.getConnection();
+        String sql = "SELECT * FROM movimentocaixa WHERE id = ?";
         PreparedStatement pstm = null;
+        ResultSet rs = null;
+        MovimentoCaixa movimentoCaixa = null;
 
         try {
-            String sql = "UPDATE movimentocaixa SET caixa_id = ?, contas_id = ?, valorMovimento = ?, observacao = ?, flagTipoMovimento = ?, status = ?, dataHoraMovimento = ? WHERE id = ?";
             pstm = conexao.prepareStatement(sql);
+            pstm.setInt(1, movimentoCaixaId);
+            rs = pstm.executeQuery();
 
-            pstm.setInt(1, movimentoCaixa.getCaixa().getId());
-            pstm.setInt(2, movimentoCaixa.getContas().getId());
-            pstm.setDouble(3, movimentoCaixa.getValorMovimento());
-            pstm.setString(4, movimentoCaixa.getObservacao());
-            pstm.setString(5, String.valueOf(movimentoCaixa.getFlagTipoMovimento()));
-            pstm.setString(6, String.valueOf(movimentoCaixa.getStatus()));
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            pstm.setString(7, sdf.format(movimentoCaixa.getDataHoraMovimento()));
-            pstm.setInt(8, movimentoCaixa.getId());
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                int caixaId = rs.getInt("caixa_id");
+                int contasId = rs.getInt("contas_id");
+                double valorMovimento = rs.getDouble("valorMovimento");
+                String observacao = rs.getString("observacao");
+                char flagTipoMovimento = rs.getString("flagTipoMovimento").charAt(0);
+                char status = rs.getString("status").charAt(0);
+                String dataHoraMovimentoStr = rs.getString("dataHoraMovimento");
 
-            pstm.executeUpdate();
-        } catch (SQLException ex) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                java.util.Date dataHoraMovimento = sdf.parse(dataHoraMovimentoStr);
+
+                Caixa caixa = new CaixaDAO().retrieve(caixaId);
+                Contas contas = new ContasDAO().retrieve(contasId);
+
+                movimentoCaixa = new MovimentoCaixa(id, dataHoraMovimento, valorMovimento, observacao, flagTipoMovimento, status, caixa, contas);
+            }
+        } catch (SQLException | ParseException ex) {
             ex.printStackTrace();
         } finally {
-            ConnectionFactory.closeConnection(conexao, pstm);
+            ConnectionFactory.closeConnection(conexao, pstm, rs);
         }
-    }
 
-    public void delete(MovimentoCaixa movimentoCaixa) {
-        Connection conexao = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-
-        try {
-            String sql = "DELETE FROM movimentocaixa WHERE id = ?";
-            pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, movimentoCaixa.getId());
-            pstm.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            ConnectionFactory.closeConnection(conexao, pstm);
-        }
+        return movimentoCaixa;
     }
 
     public List<MovimentoCaixa> retrieve(MovimentoCaixa filtro) {
@@ -217,6 +214,48 @@ public class MovimentoCaixaDAO {
         }
 
         return movimentoCaixas;
+    }
+    
+    public void update(MovimentoCaixa movimentoCaixa) {
+        Connection conexao = ConnectionFactory.getConnection();
+        PreparedStatement pstm = null;
+
+        try {
+            String sql = "UPDATE movimentocaixa SET caixa_id = ?, contas_id = ?, valorMovimento = ?, observacao = ?, flagTipoMovimento = ?, status = ?, dataHoraMovimento = ? WHERE id = ?";
+            pstm = conexao.prepareStatement(sql);
+
+            pstm.setInt(1, movimentoCaixa.getCaixa().getId());
+            pstm.setInt(2, movimentoCaixa.getContas().getId());
+            pstm.setDouble(3, movimentoCaixa.getValorMovimento());
+            pstm.setString(4, movimentoCaixa.getObservacao());
+            pstm.setString(5, String.valueOf(movimentoCaixa.getFlagTipoMovimento()));
+            pstm.setString(6, String.valueOf(movimentoCaixa.getStatus()));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            pstm.setString(7, sdf.format(movimentoCaixa.getDataHoraMovimento()));
+            pstm.setInt(8, movimentoCaixa.getId());
+
+            pstm.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm);
+        }
+    }
+
+    public void delete(MovimentoCaixa movimentoCaixa) {
+        Connection conexao = ConnectionFactory.getConnection();
+        PreparedStatement pstm = null;
+
+        try {
+            String sql = "DELETE FROM movimentocaixa WHERE id = ?";
+            pstm = conexao.prepareStatement(sql);
+            pstm.setInt(1, movimentoCaixa.getId());
+            pstm.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionFactory.closeConnection(conexao, pstm);
+        }
     }
 
 }
