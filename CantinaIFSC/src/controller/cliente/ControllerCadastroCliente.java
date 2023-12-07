@@ -36,7 +36,6 @@ public class ControllerCadastroCliente {
     }
 
     private void abrirTelaBuscaCliente() {
-        
         codigo = 0;
         
         TelaBuscaCliente telaBuscaCliente = new TelaBuscaCliente(null, true);
@@ -98,31 +97,31 @@ public class ControllerCadastroCliente {
         }
         cliente.setNome(this.telaCadastroCliente.getjTextFieldNome().getText());
 
-        if (this.telaCadastroCliente.getjFormattedTextFieldCPF().getText() == "   .   .   -  ") {
+        if ("   .   .   -  ".equals(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText())) {
             JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório!");
             return;
         }
         cliente.setCpf(this.telaCadastroCliente.getjFormattedTextFieldCPF().getText());
 
-        if (this.telaCadastroCliente.getjFormattedTextFieldRG().getText() == "         ") {
+        if ("         ".equals(this.telaCadastroCliente.getjFormattedTextFieldRG().getText())) {
             JOptionPane.showMessageDialog(null, "Campo RG é obrigatório!");
             return;
         }
         cliente.setRg(this.telaCadastroCliente.getjFormattedTextFieldRG().getText());
 
-        if (this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText() == "            ") {
+        if ("            ".equals(this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText())) {
             JOptionPane.showMessageDialog(null, "Campo matrícula é obrigatório!");
             return;
         }
         cliente.setMatricula(this.telaCadastroCliente.getjFormattedTextFieldMatricula().getText());
 
-        if (this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText() == "  /  /    ") {
+        if ("  /  /    ".equals(this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText())) {
             JOptionPane.showMessageDialog(null, "Campo data de nascimento é obrigatório!");
             return;
         }
         cliente.setDataNascimento(this.telaCadastroCliente.getjFormattedTextFieldDataNascimento().getText());
 
-        if (this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText() == "(  )      -    ") {
+        if ("(  )      -    ".equals(this.telaCadastroCliente.getjFormattedTextFieldTelefone1().getText())) {
             JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório!");
             return;
         }
@@ -148,7 +147,7 @@ public class ControllerCadastroCliente {
         String status = this.telaCadastroCliente.getjComboBoxStatus().getSelectedItem().toString();
         cliente.setStatus(status.equals("Ativo") ? '1' : (status.equals("Desativado") ? '2' : '3'));
 
-        if (this.telaCadastroCliente.getjFormattedTextFieldCEP().getText() == "     -   ") {
+        if ("     -   ".equals(this.telaCadastroCliente.getjFormattedTextFieldCEP().getText())) {
             JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório!");
             return;
         }
