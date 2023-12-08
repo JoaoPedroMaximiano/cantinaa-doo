@@ -1,6 +1,7 @@
 package controller.funcionario;
 
 import controller.endereco.ControllerCadastroEndereco;
+import javax.swing.JOptionPane;
 import model.bo.Endereco;
 import model.bo.Funcionario;
 import service.EnderecoService;
@@ -97,21 +98,69 @@ public class ControllerCadastroFuncionario {
 
     private void realizarAcaoGravar() {
         Funcionario funcionario  = new Funcionario();
+
+        if (this.telaCadastroFuncionario.getjTextFieldNome().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo nome é obrigatório!");
+            return;
+        }
         funcionario.setNome(this.telaCadastroFuncionario.getjTextFieldNome().getText());
+
+        if ("   .   .   -  ".equals(this.telaCadastroFuncionario.getjFormattedTextFieldCPF().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório!");
+            return;
+        }
         funcionario.setCpf(this.telaCadastroFuncionario.getjFormattedTextFieldCPF().getText());
+
+        if ("         ".equals(this.telaCadastroFuncionario.getjFormattedTextFieldRG().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo RG é obrigatório!");
+            return;
+        }
         funcionario.setRg(this.telaCadastroFuncionario.getjFormattedTextFieldRG().getText());
+
+        if ("(  )      -    ".equals(this.telaCadastroFuncionario.getjFormattedTextFieldTelefone1().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório!");
+            return;
+        }
         funcionario.setFone1(this.telaCadastroFuncionario.getjFormattedTextFieldTelefone1().getText());
         funcionario.setFone2(this.telaCadastroFuncionario.getjFormattedTextFieldTelefone2().getText());
+
+        if (this.telaCadastroFuncionario.getjTextEmail().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo e-mail é obrigatório!");
+            return;
+        }
         funcionario.setEmail(this.telaCadastroFuncionario.getjTextEmail().getText());
+
+        if (this.telaCadastroFuncionario.getjPasswordFieldSenha().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo senha é obrigatório!");
+            return;
+        }
         funcionario.setSenha(this.telaCadastroFuncionario.getjPasswordFieldSenha().getText());
+
+        if (this.telaCadastroFuncionario.getjTextFieldUsuario().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo usuário é obrigatório!");
+            return;
+        }
         funcionario.setUsuario(this.telaCadastroFuncionario.getjTextFieldUsuario().getText());
+
+        if (this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo complemento endereço é obrigatório!");
+            return;
+        }
         funcionario.setComplementoEndereco(this.telaCadastroFuncionario.getjTextFieldComplementoEndereco().getText());
-        
+
+        if (this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Campo Status é obrigatório!");
+            return;
+        }
         String status = this.telaCadastroFuncionario.getjComboBoxStatus().getSelectedItem().toString();
         funcionario.setStatus(status == "Ativo" ? '1' : (status == "Desativado" ? '2' : '3'));
 
+        if ("     -   ".equals(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())) {
+            JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório!");
+            return;
+        }
         funcionario.setEndereco(new EnderecoService().carregar(new Endereco(this.telaCadastroFuncionario.getjFormattedTextFieldCEP().getText())).get(0));
-        
+
         if (this.telaCadastroFuncionario.getjTextFieldID().getText().trim().equalsIgnoreCase("")) {
             new service.FuncionarioService().adicionar(funcionario);
         } else {
