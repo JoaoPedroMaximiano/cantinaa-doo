@@ -5,7 +5,7 @@ import java.util.Date;
 public class Venda {
 
     private int id;
-    private Date dataHoraVenda;
+    private String dataHoraVenda;
     private double valorDesconto;
     private String observacao;
     private char flagTipoDesconto;
@@ -16,7 +16,7 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(int id, Date dataHoraVenda, double valorDesconto, String observacao, char flagTipoDesconto, char Status, Carteirinha carteirinha, Funcionario funcionario) {
+    public Venda(int id, String dataHoraVenda, double valorDesconto, String observacao, char flagTipoDesconto, char Status, Carteirinha carteirinha, Funcionario funcionario) {
         this.id = id;
         this.dataHoraVenda = dataHoraVenda;
         this.valorDesconto = valorDesconto;
@@ -35,11 +35,11 @@ public class Venda {
         this.id = id;
     }
 
-    public Date getDataHoraVenda() {
+    public String getDataHoraVenda() {
         return dataHoraVenda;
     }
 
-    public void setDataHoraVenda(Date dataHoraVenda) {
+    public void setDataHoraVenda(String dataHoraVenda) {
         this.dataHoraVenda = dataHoraVenda;
     }
 

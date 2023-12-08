@@ -64,7 +64,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
                 char flagTipoDesconto = rs.getString("flagTipoDesconto").charAt(0);
                 String observacao = rs.getString("observacao");
                 char status = rs.getString("status").charAt(0);
-                Date dataHoraVenda = rs.getTimestamp("dataHoraVenda");
+                String dataHoraVenda = rs.getString("dataHoraVenda");
 
                 Carteirinha carteirinha = new CarteirinhaDAO().retrieve(carteirinhaId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
@@ -102,7 +102,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
                 char flagTipoDesconto = rs.getString("flagTipoDesconto").charAt(0);
                 String observacao = rs.getString("observacao");
                 char status = rs.getString("status").charAt(0);
-                Date dataHoraVenda = rs.getTimestamp("dataHoraVenda");
+                String dataHoraVenda = rs.getString("dataHoraVenda");
 
                 Carteirinha carteirinha = new CarteirinhaDAO().retrieve(carteirinhaId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
@@ -157,7 +157,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
 
             if (filtro.getDataHoraVenda() != null) {
                 sql += " AND dataHoraVenda = ?";
-                parametros.add(new java.sql.Timestamp(filtro.getDataHoraVenda().getTime()));
+                parametros.add(String.valueOf(filtro.getDataHoraVenda()));
             }
         }
 
@@ -191,7 +191,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
                 char flagTipoDesconto = rs.getString("flagTipoDesconto").charAt(0);
                 String observacao = rs.getString("observacao");
                 char status = rs.getString("status").charAt(0);
-                Date dataHoraVenda = rs.getTimestamp("dataHoraVenda");
+                String dataHoraVenda = rs.getString("dataHoraVenda");
 
                 Carteirinha carteirinha = new CarteirinhaDAO().retrieve(carteirinhaId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
@@ -224,7 +224,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
             pstm.setString(4, String.valueOf(venda.getFlagTipoDesconto()));
             pstm.setString(5, venda.getObservacao());
             pstm.setString(6, String.valueOf(venda.getStatus()));
-            pstm.setTimestamp(7, new java.sql.Timestamp(venda.getDataHoraVenda().getTime()));
+            pstm.setString(7, String.valueOf(venda.getDataHoraVenda()));
             pstm.setInt(8, venda.getId());
             pstm.executeUpdate();
         } catch (SQLException ex) {

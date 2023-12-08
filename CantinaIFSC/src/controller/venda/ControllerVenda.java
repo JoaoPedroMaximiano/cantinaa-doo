@@ -158,9 +158,11 @@ public class ControllerVenda {
         venda.setObservacao(this.telaVenda.getjTextAreaObs().getText());
         venda.setStatus('1');
 //        venda.setValorDesconto(0);
-
         new VendaService().adicionar(venda);
+        
+        List<Venda> ultimaVendas = new VendaService().carregar();
         for (ItemVenda itemVenda : itemVendas) {
+            itemVenda.setVenda(ultimaVendas.get(ultimaVendas.size()-1));
             new ItemVendaService().adicionar(itemVenda);
             MovimentacaoEstoque movimentacaoEstoque = new MovimentacaoEstoque();
             movimentacaoEstoque.setItemVenda(itemVenda);
