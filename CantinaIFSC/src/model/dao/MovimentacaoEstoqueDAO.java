@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.bo.Funcionario;
 import model.bo.ItemCompra;
 import model.bo.ItemVenda;
@@ -66,15 +69,13 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
                 String observacaoMovimento = rs.getString("observacaoMovimento");
                 char status = rs.getString("status").charAt(0);
                 String dataHoraMovimento = rs.getString("dataHoraMovimento");
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date dataHoraMovimentoDate = sdf.parse(dataHoraMovimento);
 
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
                 ItemVenda itemVenda = new ItemVendaDAO().retrieve(itemVendaId);
                 ItemCompra itemCompra = new ItemCompraDAO().retrieve(itemCompraId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
-                MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(id, dataHoraMovimentoDate, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
+                MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(id, dataHoraMovimento, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
                 movimentacoes.add(movimentacao);
             }
 
@@ -111,15 +112,13 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
                 String observacaoMovimento = rs.getString("observacaoMovimento");
                 char status = rs.getString("status").charAt(0);
                 String dataHoraMovimento = rs.getString("dataHoraMovimento");
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date dataHoraMovimentoDate = sdf.parse(dataHoraMovimento);
 
                 Produto produto = new ProdutoDAO().retrieve(produtoId);
                 ItemVenda itemVenda = new ItemVendaDAO().retrieve(itemVendaId);
                 ItemCompra itemCompra = new ItemCompraDAO().retrieve(itemCompraId);
                 Funcionario funcionario = new FuncionarioDAO().retrieve(funcionarioId);
 
-                movimentacao = new MovimentacaoEstoque(id, dataHoraMovimentoDate, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
+                movimentacao = new MovimentacaoEstoque(id, dataHoraMovimento, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
             }
 
         } catch (SQLException ex) {
@@ -234,7 +233,7 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 java.util.Date dataHora = sdf.parse(dataHoraMovimento);
 
-                MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(id, dataHora, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
+                MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(id, dataHoraMovimento, qtdMovimentada, observacaoMovimento, flagTipoMovimento, status, produto, itemVenda, itemCompra, funcionario);
                 movimentacoes.add(movimentacao);
             }
         } catch (SQLException | java.text.ParseException ex) {

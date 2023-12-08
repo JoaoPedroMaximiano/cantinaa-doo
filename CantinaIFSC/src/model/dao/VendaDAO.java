@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +29,12 @@ public class VendaDAO implements InterfaceDAO<Venda> {
             pstm.setString(4, String.valueOf(venda.getFlagTipoDesconto()));
             pstm.setString(5, venda.getObservacao());
             pstm.setString(6, String.valueOf(venda.getStatus()));
-            pstm.setTimestamp(7, new java.sql.Timestamp(venda.getDataHoraVenda().getTime()));
+            
+            Date dataAtual = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String dataFormatada = dateFormat.format(dataAtual); 
+            
+            pstm.setString(7, dataFormatada);
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

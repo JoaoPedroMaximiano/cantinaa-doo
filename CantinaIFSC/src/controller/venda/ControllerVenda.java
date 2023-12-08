@@ -11,16 +11,18 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bo.Caixa;
 import model.bo.Carteirinha;
-import model.bo.Funcionario;
+import model.bo.Contas;
 import model.bo.ItemVenda;
 import model.bo.MovimentacaoEstoque;
+import model.bo.MovimentoCaixa;
 import model.bo.Produto;
 import model.bo.Venda;
 import service.CaixaService;
 import service.CarteirinhaService;
-import service.FuncionarioService;
+import service.ContasService;
 import service.ItemVendaService;
 import service.MovimentacaoEstoqueService;
+import service.MovimentoCaixaService;
 import service.ProdutoService;
 import service.VendaService;
 import view.venda.TelaVenda;
@@ -113,6 +115,7 @@ public class ControllerVenda {
             itemVenda.setStatus('1');
             itemVenda.setQtdProduto(Float.parseFloat(this.telaVenda.getjTextFieldQtd().getText()));
             
+            itemVendas.add(itemVenda);
             this.telaVenda.getjTextFieldTotal().setText(String.valueOf(Float.parseFloat(this.telaVenda.getjTextFieldTotal().getText()) + Float.parseFloat(this.telaVenda.getjTextFieldQtd().getText())*produto.get(0).getValor()));
             this.telaVenda.getjTextFieldCodigoBarraProduto().setText("");
             this.telaVenda.getjTextFieldQtd().setText("");
@@ -143,11 +146,14 @@ public class ControllerVenda {
     
     private void finalizarVenda(){
         limparTelaVenda();
+  
+        Caixa filtro = new Caixa();
+        filtro.setId(Integer.parseInt(this.telaVenda.getjComboBoxCaixa().getSelectedItem().toString().split(" - ")[0]));
+        List<Caixa> caixa = new CaixaService().carregar(filtro);        
         
-        Funcionario funcionario = new FuncionarioService().carregar(Integer.parseInt(this.telaVenda.getjComboBoxCaixa().getSelectedItem().toString().split(" - ")[0]));
         Venda venda = new Venda();
         
-        venda.setFuncionario(funcionario);
+        venda.setFuncionario(caixa.get(0).getFuncionario());
         venda.setCarteirinha(carteirinha.get(0));
         venda.setObservacao(this.telaVenda.getjTextAreaObs().getText());
         venda.setStatus('1');
@@ -159,7 +165,7 @@ public class ControllerVenda {
             MovimentacaoEstoque movimentacaoEstoque = new MovimentacaoEstoque();
             movimentacaoEstoque.setItemVenda(itemVenda);
             movimentacaoEstoque.setProduto(itemVenda.getProduto());
-            movimentacaoEstoque.setFuncionario(funcionario);
+            movimentacaoEstoque.setFuncionario(caixa.get(0).getFuncionario());
             movimentacaoEstoque.setFlagTipoMovimento('s');
             movimentacaoEstoque.setQtdMovimentada(itemVenda.getQtdProduto());
             Date dataAtual = new Date();
@@ -170,6 +176,26 @@ public class ControllerVenda {
             
             new MovimentacaoEstoqueService().adicionar(movimentacaoEstoque);
         }
+        
+        Contas contas = new Contas();
+        contas.setVenda(venda);
+        contas.setValorQuitado(Float.parseFloat(this.telaVenda.getjTextFieldTotal().getText()));
+        contas.setObservacao(this.telaVenda.getjTextAreaObs().getText());
+        contas.setFlagTipoConta('e');
+        contas.setStatus('1');
+        
+        new ContasService().adicionar(contas);
+        
+        MovimentoCaixa movimentoCaixa = new MovimentoCaixa();
+        movimentoCaixa.setCaixa(caixa.get(0));
+        movimentoCaixa.setContas(contas);
+        movimentoCaixa.setFlagTipoMovimento('e');
+        movimentoCaixa.setStatus('1');
+        movimentoCaixa.setValorMovimento(0);         
+        movimentoCaixa.setDataHoraMovimento(new Date());
+        
+        new MovimentoCaixaService().adicionar(movimentoCaixa);
+        
     }
     
     private void cancelarVenda(){
