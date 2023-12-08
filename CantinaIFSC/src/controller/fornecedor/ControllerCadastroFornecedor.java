@@ -166,6 +166,5 @@ public class ControllerCadastroFornecedor {
         this.telaCadastroFornecedor.getjTextFieldBairro().setText(endereco.getBairro().getDescricao());
         this.telaCadastroFornecedor.getjTextFieldLogradouro().setText(endereco.getLogradouro());
     }
-
     
 }
