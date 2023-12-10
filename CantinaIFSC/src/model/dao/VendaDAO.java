@@ -35,6 +35,7 @@ public class VendaDAO implements InterfaceDAO<Venda> {
             String dataFormatada = dateFormat.format(dataAtual); 
             
             pstm.setString(7, dataFormatada);
+            
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -22,8 +22,17 @@ public class ContasDAO {
             String sql = "INSERT INTO contas (venda_id, compra_id, valorEmitido, valorDesconto, valorCrescimo, valorQuitado, observacao, flagTipoConta, status, dataHoraEmissao, dataVencimento, dataQuitacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstm = conexao.prepareStatement(sql);
 
-            pstm.setInt(1, conta.getVenda().getId());
-            pstm.setInt(2, conta.getCompra().getId());
+            if (conta.getVenda() != null) {
+                pstm.setInt(1, conta.getVenda().getId());
+            } else {
+                pstm.setNull(1, java.sql.Types.INTEGER);
+            }
+
+            if (conta.getCompra() != null) {
+                pstm.setInt(2, conta.getCompra().getId());
+            } else {
+                pstm.setNull(2, java.sql.Types.INTEGER);
+            }
             pstm.setDouble(3, conta.getValorEmitido());
             pstm.setDouble(4, conta.getValorDesconto());
             pstm.setDouble(5, conta.getValorCrescimo());

@@ -24,16 +24,23 @@ public class MovimentacaoEstoqueDAO implements InterfaceDAO<MovimentacaoEstoque>
         PreparedStatement pstm = null;
         try {
             pstm = conexao.prepareStatement(sql);
-            pstm.setInt(1, movimentacao.getItemVenda().getId());
+            if (movimentacao.getItemVenda() != null) {
+                pstm.setInt(1, movimentacao.getItemVenda().getId());
+            } else {
+                pstm.setNull(1, java.sql.Types.INTEGER);
+            }   
             pstm.setInt(2, movimentacao.getProduto().getId());
-            pstm.setInt(3, movimentacao.getItemCompra().getId());
+            if (movimentacao.getItemCompra() != null) {
+                pstm.setInt(3, movimentacao.getItemCompra().getId());
+            } else {
+                pstm.setNull(3, java.sql.Types.INTEGER);
+            }
             pstm.setInt(4, movimentacao.getFuncionario().getId());
             pstm.setString(5, String.valueOf(movimentacao.getFlagTipoMovimento()));
             pstm.setDouble(6, movimentacao.getQtdMovimentada());
             pstm.setString(7, movimentacao.getObservacaoMovimento());
             pstm.setString(8, String.valueOf(movimentacao.getStatus()));
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            pstm.setString(7, sdf.format(movimentacao.getDataHoraMovimento()));
+            pstm.setString(9, movimentacao.getDataHoraMovimento());
             pstm.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

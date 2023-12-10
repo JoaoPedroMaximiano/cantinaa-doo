@@ -42,6 +42,9 @@ public class TelaVenda extends javax.swing.JDialog {
         jTextAreaObs = new javax.swing.JTextArea();
         jTextFieldQtd = new javax.swing.JTextField();
         jLabelQtd = new javax.swing.JLabel();
+        jComboBoxTipoDesconto = new javax.swing.JComboBox<>();
+        jLabelValorDesconto = new javax.swing.JLabel();
+        jTextFieldValorDesconto = new javax.swing.JFormattedTextField();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonIniciarVenda = new javax.swing.JButton();
         jButtonFinalizarVenda = new javax.swing.JButton();
@@ -159,6 +162,17 @@ public class TelaVenda extends javax.swing.JDialog {
         jLabelQtd.setText("Qtd.");
         jLabelQtd.setEnabled(false);
 
+        jComboBoxTipoDesconto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Porcentagem", "Dinheiro" }));
+        jComboBoxTipoDesconto.setToolTipText("");
+        jComboBoxTipoDesconto.setEnabled(false);
+
+        jLabelValorDesconto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelValorDesconto.setText("Valor do Desconto");
+        jLabelValorDesconto.setEnabled(false);
+
+        jTextFieldValorDesconto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0.00"))));
+        jTextFieldValorDesconto.setEnabled(false);
+
         javax.swing.GroupLayout jPanelCorpoLayout = new javax.swing.GroupLayout(jPanelCorpo);
         jPanelCorpo.setLayout(jPanelCorpoLayout);
         jPanelCorpoLayout.setHorizontalGroup(
@@ -166,22 +180,29 @@ public class TelaVenda extends javax.swing.JDialog {
             .addGroup(jPanelCorpoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorpoLayout.createSequentialGroup()
-                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelCodigoBarraProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCodigoBarraProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(12, 12, 12))
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabelObs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelCodigoBarraProduto3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldTotal)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelCorpoLayout.createSequentialGroup()
+                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldQtd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelQtd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelCodigoBarraProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCodigoBarraProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorpoLayout.createSequentialGroup()
+                        .addComponent(jComboBoxTipoDesconto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelValorDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(jTextFieldValorDesconto))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelCorpoLayout.createSequentialGroup()
                         .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,17 +235,23 @@ public class TelaVenda extends javax.swing.JDialog {
                             .addComponent(jLabelCodigoBarraProduto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelCorpoLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCorpoLayout.createSequentialGroup()
+                        .addComponent(jLabelValorDesconto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxTipoDesconto, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(jTextFieldValorDesconto))
+                        .addGap(105, 105, 105)
                         .addComponent(jLabelObs)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelCodigoBarraProduto3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -232,7 +259,7 @@ public class TelaVenda extends javax.swing.JDialog {
 
         jButtonIniciarVenda.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonIniciarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
-        jButtonIniciarVenda.setText("(F1) Iniciar venda");
+        jButtonIniciarVenda.setText("Iniciar venda");
         jButtonIniciarVenda.setActionCommand("0");
         jButtonIniciarVenda.setEnabled(false);
         jButtonIniciarVenda.setFocusable(false);
@@ -330,6 +357,34 @@ public class TelaVenda extends javax.swing.JDialog {
         if (rootPaneCheckingEnabled) {
         }
     }//GEN-LAST:event_jTextFieldCodigoBarraCarteirinhaKeyPressed
+
+    public JLabel getjLabelValorDesconto() {
+        return jLabelValorDesconto;
+    }
+
+    public void setjLabelValorDesconto(JLabel jLabelValorDesconto) {
+        this.jLabelValorDesconto = jLabelValorDesconto;
+    }
+
+    public JComboBox<String> getjComboBoxTipoDesconto() {
+        return jComboBoxTipoDesconto;
+    }
+
+    public void setjComboBoxTipoDesconto(JComboBox<String> jComboBoxTipoDesconto) {
+        this.jComboBoxTipoDesconto = jComboBoxTipoDesconto;
+    }
+
+    public JLabel getjLabelCodigoBarraProduto1() {
+        return jLabelValorDesconto;
+    }
+
+    public void setjLabelCodigoBarraProduto1(JLabel jLabelCodigoBarraProduto1) {
+        this.jLabelValorDesconto = jLabelCodigoBarraProduto1;
+    }
+
+    public JTextField getjTextFieldValorDesconto() {
+        return jTextFieldValorDesconto;
+    }
 
     public JButton getjButtonCancelar() {
         return jButtonCancelar;
@@ -535,12 +590,14 @@ public class TelaVenda extends javax.swing.JDialog {
     private javax.swing.JButton jButtonFinalizarVenda;
     private javax.swing.JButton jButtonIniciarVenda;
     private javax.swing.JComboBox<String> jComboBoxCaixa;
+    private javax.swing.JComboBox<String> jComboBoxTipoDesconto;
     private javax.swing.JLabel jLabelCaixa;
     private javax.swing.JLabel jLabelCodigoBarraCarteirinha;
     private javax.swing.JLabel jLabelCodigoBarraProduto;
     private javax.swing.JLabel jLabelCodigoBarraProduto3;
     private javax.swing.JLabel jLabelObs;
     private javax.swing.JLabel jLabelQtd;
+    private javax.swing.JLabel jLabelValorDesconto;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelCorpo;
     private javax.swing.JPanel jPanelTitulo;
@@ -553,6 +610,7 @@ public class TelaVenda extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldCodigoBarraProduto;
     private javax.swing.JTextField jTextFieldQtd;
     private javax.swing.JTextField jTextFieldTotal;
+    private javax.swing.JFormattedTextField jTextFieldValorDesconto;
     private java.awt.Label labelTitulo;
     // End of variables declaration//GEN-END:variables
 

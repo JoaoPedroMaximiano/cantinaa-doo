@@ -45,6 +45,7 @@ public class ControllerVenda {
     private void setupActionListeners() {
         telaVenda.getjTextFieldCodigoBarraCarteirinha().addKeyListener(atalhoCarteirinha);
         telaVenda.getjTextFieldCodigoBarraProduto().addKeyListener(atalhoProduto);
+        telaVenda.getjTextFieldQtd().addKeyListener(atalhoProduto);
         
         telaVenda.getjButtonIniciarVenda().addActionListener(e -> iniciarVenda());        
         telaVenda.getjButtonFinalizarVenda().addActionListener(e -> finalizarVenda());        
@@ -67,6 +68,8 @@ public class ControllerVenda {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) cadastraProduto();
+            if (e.getKeyCode() == KeyEvent.VK_F3) cancelarVenda();
+            if (e.getKeyCode() == KeyEvent.VK_F2) finalizarVenda();
         }
 
         @Override
@@ -92,6 +95,10 @@ public class ControllerVenda {
         
         JOptionPane.showMessageDialog(telaVenda, "Carteirinha encontrada!\n" 
                 + "Nome do cliente: " + carteirinha.get(0).getCliente().getNome());
+        
+        if (JOptionPane.showConfirmDialog(telaVenda, "Voce deseja Inciar uma venda?") != 0) return;
+        this.telaVenda.getjTextFieldCodigoBarraCarteirinha().requestFocus();
+        iniciarVenda();
     }
     
     private void cadastraProduto(){
@@ -132,20 +139,23 @@ public class ControllerVenda {
         this.telaVenda.getjTextFieldQtd().setEnabled(true);
         this.telaVenda.getjButtonFinalizarVenda().setEnabled(true);
         this.telaVenda.getjButtonCancelar().setEnabled(true);
-        this.telaVenda.getjButtonIniciarVenda().setEnabled(false);
+        this.telaVenda.getjComboBoxTipoDesconto().setEnabled(true);
+        this.telaVenda.getjTextFieldValorDesconto().setEnabled(true);
+        this.telaVenda.getjLabelValorDesconto().setEnabled(true);
 
         this.telaVenda.getjComboBoxCaixa().setEnabled(false);
         this.telaVenda.getjLabelCaixa().setEnabled(false);
         this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setEnabled(false);
         this.telaVenda.getjLabelCodigoBarraCarteirinha().setEnabled(false);
+        this.telaVenda.getjButtonIniciarVenda().setEnabled(false);
 
         this.telaVenda.getjTextFieldTotal().setText("0.0");
+        this.telaVenda.getjTextFieldValorDesconto().setText("0,0");
         this.telaVenda.getjTextFieldCodigoBarraProduto().requestFocus();
         itemVendas = new ArrayList<ItemVenda>();
     }
     
     private void finalizarVenda(){
-        limparTelaVenda();
   
         Caixa filtro = new Caixa();
         filtro.setId(Integer.parseInt(this.telaVenda.getjComboBoxCaixa().getSelectedItem().toString().split(" - ")[0]));
@@ -157,22 +167,27 @@ public class ControllerVenda {
         venda.setCarteirinha(carteirinha.get(0));
         venda.setObservacao(this.telaVenda.getjTextAreaObs().getText());
         venda.setStatus('1');
-//        venda.setValorDesconto(0);
+//        venda.setValorDesconto(Float.parseFloat(telaVenda.getjTextFieldValorDesconto().getText().replace(',', '.')));
+//        venda.setFlagTipoDesconto(telaVenda.getjComboBoxTipoDesconto().getSelectedItem().toString().equals("Porcentagem") ? '0' : '1');
         new VendaService().adicionar(venda);
         
         List<Venda> ultimaVendas = new VendaService().carregar();
         for (ItemVenda itemVenda : itemVendas) {
             itemVenda.setVenda(ultimaVendas.get(ultimaVendas.size()-1));
             new ItemVendaService().adicionar(itemVenda);
+            List<ItemVenda> ultimoItemVendas = new ItemVendaService().carregar();
+            
+            
             MovimentacaoEstoque movimentacaoEstoque = new MovimentacaoEstoque();
-            movimentacaoEstoque.setItemVenda(itemVenda);
+            
+            movimentacaoEstoque.setItemVenda(ultimoItemVendas.get(ultimoItemVendas.size() - 1));
             movimentacaoEstoque.setProduto(itemVenda.getProduto());
             movimentacaoEstoque.setFuncionario(caixa.get(0).getFuncionario());
             movimentacaoEstoque.setFlagTipoMovimento('s');
             movimentacaoEstoque.setQtdMovimentada(itemVenda.getQtdProduto());
             Date dataAtual = new Date();
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            String dataFormatada = dateFormat.format(dataAtual);            
+            String dataFormatada = dateFormat.format(dataAtual);        
             movimentacaoEstoque.setDataHoraMovimento(dataFormatada);
             movimentacaoEstoque.setStatus('1');
             
@@ -180,17 +195,23 @@ public class ControllerVenda {
         }
         
         Contas contas = new Contas();
-        contas.setVenda(venda);
-        contas.setValorQuitado(Float.parseFloat(this.telaVenda.getjTextFieldTotal().getText()));
+        contas.setVenda(ultimaVendas.get(ultimaVendas.size()-1));
+        contas.setValorQuitado(Float.parseFloat(this.telaVenda.getjTextFieldTotal().getText().replace(',', '.')));
         contas.setObservacao(this.telaVenda.getjTextAreaObs().getText());
         contas.setFlagTipoConta('e');
+        contas.setValorDesconto(this.telaVenda.getjComboBoxTipoDesconto().getSelectedItem().toString().equals("Porcentagem") ? (Float.parseFloat(this.telaVenda.getjTextFieldValorDesconto().getText().replace(',', '.'))/100) * Float.parseFloat(this.telaVenda.getjTextFieldTotal().getText().replace(',', '.')) : Float.parseFloat(this.telaVenda.getjTextFieldValorDesconto().getText().replace(',', '.')));
+        contas.setDataHoraEmissora(new Date());
+        contas.setDataQuitacao(new Date());
+        contas.setDataVencimento(new Date());
         contas.setStatus('1');
         
         new ContasService().adicionar(contas);
         
+        List<Contas> ultimaContas = new ContasService().carregar();
+        
         MovimentoCaixa movimentoCaixa = new MovimentoCaixa();
         movimentoCaixa.setCaixa(caixa.get(0));
-        movimentoCaixa.setContas(contas);
+        movimentoCaixa.setContas(ultimaContas.get(ultimaContas.size() - 1));
         movimentoCaixa.setFlagTipoMovimento('e');
         movimentoCaixa.setStatus('1');
         movimentoCaixa.setValorMovimento(0);         
@@ -198,6 +219,7 @@ public class ControllerVenda {
         
         new MovimentoCaixaService().adicionar(movimentoCaixa);
         
+        limparTelaVenda();
     }
     
     private void cancelarVenda(){
@@ -211,12 +233,15 @@ public class ControllerVenda {
         this.telaVenda.getjTextFieldQtd().setEnabled(false);
         this.telaVenda.getjButtonFinalizarVenda().setEnabled(false);
         this.telaVenda.getjButtonCancelar().setEnabled(false);
-        this.telaVenda.getjButtonIniciarVenda().setEnabled(true);
+        this.telaVenda.getjComboBoxTipoDesconto().setEnabled(false);
+        this.telaVenda.getjTextFieldValorDesconto().setEnabled(false);
+        this.telaVenda.getjLabelValorDesconto().setEnabled(false);
 
         this.telaVenda.getjComboBoxCaixa().setEnabled(true);
         this.telaVenda.getjLabelCaixa().setEnabled(true);
         this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setEnabled(true);
         this.telaVenda.getjLabelCodigoBarraCarteirinha().setEnabled(true);
+        this.telaVenda.getjButtonIniciarVenda().setEnabled(true);
 
         this.telaVenda.getjTextFieldTotal().setText("");
         this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setText("");

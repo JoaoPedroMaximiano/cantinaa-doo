@@ -36,7 +36,7 @@ public class ItemVendaDAO implements InterfaceDAO<ItemVenda> {
     @Override
     public List<ItemVenda> retrieve() {
         Connection conexao = ConnectionFactory.getConnection();
-        String sql = "SELECT venda_id, produto_id, qtdProduto, valorUnitario, status FROM itemvenda";
+        String sql = "SELECT id, venda_id, produto_id, qtdProduto, valorUnitario, status FROM itemvenda";
 
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -45,7 +45,6 @@ public class ItemVendaDAO implements InterfaceDAO<ItemVenda> {
         try {
             pstm = conexao.prepareStatement(sql);
             rs = pstm.executeQuery();
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 int vendaId = rs.getInt("venda_id");
