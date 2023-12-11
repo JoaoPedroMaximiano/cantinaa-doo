@@ -219,7 +219,7 @@ public class ControllerVenda {
         
         new MovimentoCaixaService().adicionar(movimentoCaixa);
         
-        JOptionPane.showMessageDialog(telaVenda, "Venda Finalizada com Sucesso!");
+        JOptionPane.showMessageDialog(telaVenda, "Venda finalizada com sucesso!");
         limparTelaVenda();
     }
     
