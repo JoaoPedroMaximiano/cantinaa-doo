@@ -56,6 +56,7 @@ public class ControllerVenda {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) verificaCarteirinha();
+            if (e.getKeyCode() == KeyEvent.VK_F1) iniciarVenda();
         }
 
         @Override
@@ -95,10 +96,6 @@ public class ControllerVenda {
         
         JOptionPane.showMessageDialog(telaVenda, "Carteirinha encontrada!\n" 
                 + "Nome do cliente: " + carteirinha.get(0).getCliente().getNome());
-        
-        if (JOptionPane.showConfirmDialog(telaVenda, "Você deseja iniciar uma venda?") != 0) return;
-        this.telaVenda.getjTextFieldCodigoBarraCarteirinha().requestFocus();
-        iniciarVenda();
     }
     
     private void cadastraProduto(){

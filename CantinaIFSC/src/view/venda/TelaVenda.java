@@ -259,7 +259,7 @@ public class TelaVenda extends javax.swing.JDialog {
 
         jButtonIniciarVenda.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonIniciarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Create.png"))); // NOI18N
-        jButtonIniciarVenda.setText("Iniciar venda");
+        jButtonIniciarVenda.setText("(F1) Iniciar venda");
         jButtonIniciarVenda.setActionCommand("0");
         jButtonIniciarVenda.setEnabled(false);
         jButtonIniciarVenda.setFocusable(false);
