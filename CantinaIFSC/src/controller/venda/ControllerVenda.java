@@ -36,7 +36,9 @@ public class ControllerVenda {
         this.telaVenda = telaVenda;
         
         for (Caixa caixa : new CaixaService().carregar()) {
-            this.telaVenda.getjComboBoxCaixa().addItem(caixa.toString());
+            if (caixa.getDataHoraFechamento() == null) {
+                this.telaVenda.getjComboBoxCaixa().addItem(caixa.toString());
+            }
         }
         
         setupActionListeners();
