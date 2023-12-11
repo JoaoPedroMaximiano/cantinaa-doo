@@ -83,7 +83,7 @@ public class ControllerVenda {
         filtro.setCodigoBarra(this.telaVenda.getjTextFieldCodigoBarraCarteirinha().getText());
         
         carteirinha = new CarteirinhaService().carregar(filtro);
-        if (carteirinha.isEmpty()) {
+        if (carteirinha.isEmpty() || this.telaVenda.getjTextFieldCodigoBarraCarteirinha().getText().isEmpty()) {
             JOptionPane.showMessageDialog(telaVenda, "Carteirinha não encontrada!");
             return;
         }
