@@ -167,8 +167,8 @@ public class ControllerVenda {
         venda.setCarteirinha(carteirinha.get(0));
         venda.setObservacao(this.telaVenda.getjTextAreaObs().getText());
         venda.setStatus('1');
-//        venda.setValorDesconto(Float.parseFloat(telaVenda.getjTextFieldValorDesconto().getText().replace(',', '.')));
-//        venda.setFlagTipoDesconto(telaVenda.getjComboBoxTipoDesconto().getSelectedItem().toString().equals("Porcentagem") ? '0' : '1');
+        venda.setValorDesconto(Float.parseFloat(telaVenda.getjTextFieldValorDesconto().getText().replace(',', '.')));;
+        venda.setFlagTipoDesconto(telaVenda.getjComboBoxTipoDesconto().getSelectedItem().toString().equals("Porcentagem") ? '0' : '1');
         new VendaService().adicionar(venda);
         
         List<Venda> ultimaVendas = new VendaService().carregar();
