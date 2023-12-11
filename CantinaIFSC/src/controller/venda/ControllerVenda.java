@@ -156,7 +156,6 @@ public class ControllerVenda {
     }
     
     private void finalizarVenda(){
-        System.out.println(itemVendas);
         if (itemVendas.isEmpty()) {
             JOptionPane.showMessageDialog(telaVenda, "Nenhum produto adicionado!");
             return;
