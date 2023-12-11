@@ -151,7 +151,7 @@ public class ControllerVenda {
 
         this.telaVenda.getjTextFieldTotal().setText("0.0");
         this.telaVenda.getjTextFieldValorDesconto().setText("0,0");
-        this.telaVenda.getjTextFieldCodigoBarraProduto().requestFocus();
+        this.telaVenda.getjTextFieldQtd().requestFocus();
         itemVendas = new ArrayList<ItemVenda>();
     }
     
