@@ -96,7 +96,7 @@ public class ControllerVenda {
         JOptionPane.showMessageDialog(telaVenda, "Carteirinha encontrada!\n" 
                 + "Nome do cliente: " + carteirinha.get(0).getCliente().getNome());
         
-        if (JOptionPane.showConfirmDialog(telaVenda, "Voce deseja Inciar uma venda?") != 0) return;
+        if (JOptionPane.showConfirmDialog(telaVenda, "Você deseja iniciar uma venda?") != 0) return;
         this.telaVenda.getjTextFieldCodigoBarraCarteirinha().requestFocus();
         iniciarVenda();
     }
