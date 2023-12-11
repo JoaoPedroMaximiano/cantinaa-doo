@@ -237,16 +237,18 @@ public class ControllerVenda {
         this.telaVenda.getjComboBoxTipoDesconto().setEnabled(false);
         this.telaVenda.getjTextFieldValorDesconto().setEnabled(false);
         this.telaVenda.getjLabelValorDesconto().setEnabled(false);
+        this.telaVenda.getjButtonIniciarVenda().setEnabled(false);
 
         this.telaVenda.getjComboBoxCaixa().setEnabled(true);
         this.telaVenda.getjLabelCaixa().setEnabled(true);
         this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setEnabled(true);
         this.telaVenda.getjLabelCodigoBarraCarteirinha().setEnabled(true);
-        this.telaVenda.getjButtonIniciarVenda().setEnabled(true);
 
         this.telaVenda.getjTextFieldTotal().setText("");
         this.telaVenda.getjTextFieldCodigoBarraCarteirinha().setText("");
         this.telaVenda.getjTextAreaObs().setText("");
+        
+        carteirinha = new ArrayList<>();
         DefaultTableModel table = (DefaultTableModel) this.telaVenda.getjTableProdutos().getModel();                   
         
         table.setRowCount(0);       
