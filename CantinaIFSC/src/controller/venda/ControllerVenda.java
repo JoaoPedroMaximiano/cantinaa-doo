@@ -156,7 +156,11 @@ public class ControllerVenda {
     }
     
     private void finalizarVenda(){
-  
+        System.out.println(itemVendas);
+        if (itemVendas.isEmpty()) {
+            JOptionPane.showMessageDialog(telaVenda, "Nenhum produto adicionado!");
+            return;
+        }
         Caixa filtro = new Caixa();
         filtro.setId(Integer.parseInt(this.telaVenda.getjComboBoxCaixa().getSelectedItem().toString().split(" - ")[0]));
         List<Caixa> caixa = new CaixaService().carregar(filtro);        
@@ -176,7 +180,6 @@ public class ControllerVenda {
             itemVenda.setVenda(ultimaVendas.get(ultimaVendas.size()-1));
             new ItemVendaService().adicionar(itemVenda);
             List<ItemVenda> ultimoItemVendas = new ItemVendaService().carregar();
-            
             
             MovimentacaoEstoque movimentacaoEstoque = new MovimentacaoEstoque();
             
@@ -224,6 +227,7 @@ public class ControllerVenda {
     }
     
     private void cancelarVenda(){
+        JOptionPane.showMessageDialog(telaVenda, "Venda cancelada!");
         limparTelaVenda();
     }
     
